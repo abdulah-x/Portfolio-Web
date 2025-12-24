@@ -82,6 +82,7 @@ export function Navbar() {
 
         {/* Right Side */}
         <div className="hidden md:flex items-center gap-2">
+          <ThemeToggle />
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <Button variant="ghost" size="icon" className="h-8 w-8 rounded border border-primary/20 hover:border-primary/50 hover:neon-border" asChild>
               <a href="https://github.com/abdulah-x" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
