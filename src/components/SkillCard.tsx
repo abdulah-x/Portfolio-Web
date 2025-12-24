@@ -1,83 +1,63 @@
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
 
 interface SkillCardProps {
   name: string;
-  icon?: ReactNode;
-  category: "language" | "ml" | "tool";
-  proficiency?: number; // 0-100
+  proficiency?: number;
   index?: number;
 }
 
-const categoryColors = {
-  language: { bg: "from-cyan-500/20 to-blue-500/20", border: "border-cyan-500/50", glow: "rgba(6, 182, 212, 0.4)" },
-  ml: { bg: "from-purple-500/20 to-pink-500/20", border: "border-purple-500/50", glow: "rgba(168, 85, 247, 0.4)" },
-  tool: { bg: "from-green-500/20 to-emerald-500/20", border: "border-green-500/50", glow: "rgba(34, 197, 94, 0.4)" },
-};
-
-export function SkillCard({ name, icon, category, proficiency = 80, index = 0 }: SkillCardProps) {
-  const colors = categoryColors[category];
-  
+export function SkillCard({ name, proficiency = 80, index = 0 }: SkillCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.9 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
       whileHover={{ 
         scale: 1.05, 
-        y: -5,
-        boxShadow: `0 0 30px ${colors.glow}`
+        y: -3,
       }}
-      className={`group relative overflow-hidden rounded-xl bg-gradient-to-br ${colors.bg} backdrop-blur-sm border ${colors.border} p-4 cursor-default transition-all duration-300`}
+      className="group relative overflow-hidden rounded-lg bg-card/50 backdrop-blur-sm border border-primary/30 p-4 cursor-default hover:border-primary hover:shadow-[0_0_25px_rgba(34,211,238,0.3)] transition-all duration-300"
     >
-      {/* Animated background pulse */}
+      {/* Scan line effect on hover */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
-        initial={{ x: "-100%" }}
-        whileHover={{ x: "100%" }}
-        transition={{ duration: 0.6 }}
+        className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100"
+        initial={{ y: "-100%" }}
+        whileHover={{ y: "100%" }}
+        transition={{ duration: 0.8, repeat: Infinity }}
       />
       
+      {/* Corner brackets */}
+      <div className="absolute top-1 left-1 w-2 h-2 border-l border-t border-primary/50 group-hover:border-primary transition-colors" />
+      <div className="absolute top-1 right-1 w-2 h-2 border-r border-t border-primary/50 group-hover:border-primary transition-colors" />
+      <div className="absolute bottom-1 left-1 w-2 h-2 border-l border-b border-primary/50 group-hover:border-primary transition-colors" />
+      <div className="absolute bottom-1 right-1 w-2 h-2 border-r border-b border-primary/50 group-hover:border-primary transition-colors" />
+
       <div className="relative z-10 flex flex-col items-center gap-3">
-        {/* Icon container with glow */}
-        {icon && (
-          <motion.div 
-            className="text-2xl"
-            whileHover={{ rotate: [0, -10, 10, 0] }}
-            transition={{ duration: 0.4 }}
-          >
-            {icon}
-          </motion.div>
-        )}
-        
-        {/* Skill name */}
+        {/* Skill name in terminal style */}
         <span className="font-mono text-xs text-foreground uppercase tracking-wider text-center">
-          {name}
+          <span className="text-primary/60">[</span>
+          <span className="text-primary group-hover:text-primary transition-colors">{name.toLowerCase()}</span>
+          <span className="text-primary/60">]</span>
         </span>
         
         {/* Proficiency bar */}
-        <div className="w-full h-1 bg-background/30 rounded-full overflow-hidden">
+        <div className="w-full h-1.5 bg-background/50 rounded-full overflow-hidden border border-primary/20">
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: `${proficiency}%` }}
             viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 + index * 0.05 }}
-            className={`h-full rounded-full ${
-              category === "language" ? "bg-cyan-400" :
-              category === "ml" ? "bg-purple-400" :
-              "bg-green-400"
-            }`}
+            transition={{ duration: 0.8, delay: 0.2 + index * 0.05 }}
+            className="h-full rounded-full bg-gradient-to-r from-primary/80 to-primary"
+            style={{
+              boxShadow: "0 0 10px rgba(34, 211, 238, 0.5)"
+            }}
           />
         </div>
+        
+        {/* Percentage */}
+        <span className="font-mono text-[10px] text-primary/70">{proficiency}%</span>
       </div>
-      
-      {/* Corner accent */}
-      <div className={`absolute top-0 right-0 w-8 h-8 ${
-        category === "language" ? "bg-cyan-500/20" :
-        category === "ml" ? "bg-purple-500/20" :
-        "bg-green-500/20"
-      } rounded-bl-xl`} />
     </motion.div>
   );
 }

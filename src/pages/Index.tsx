@@ -252,65 +252,56 @@ const Index = () => {
           {/* Main Content */}
           <div className="max-w-5xl mx-auto">
             {/* Skills Grid */}
-            <div className="space-y-16">
+            <div className="space-y-12">
               {/* Languages */}
               <div>
                 <AnimatedSection delay={0.1}>
-                  <h4 className="font-mono text-xs uppercase tracking-widest mb-8 text-center flex items-center justify-center gap-3">
-                    <span className="w-12 h-px bg-gradient-to-r from-transparent to-cyan-500" />
-                    <span className="text-cyan-400 flex items-center gap-2">
-                      <span className="text-lg">💻</span>
-                      LANGUAGES
-                    </span>
-                    <span className="w-12 h-px bg-gradient-to-l from-transparent to-cyan-500" />
+                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
+                    <span className="w-8 h-px bg-primary/50" />
+                    LANGUAGES
+                    <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
-                <div className="grid grid-cols-3 md:grid-cols-3 gap-4 max-w-md mx-auto">
-                  <SkillCard name="Python" icon="🐍" category="language" proficiency={95} index={0} />
-                  <SkillCard name="SQL" icon="🗃️" category="language" proficiency={90} index={1} />
-                  <SkillCard name="R" icon="📊" category="language" proficiency={75} index={2} />
+                <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+                  <SkillCard name="Python" proficiency={95} index={0} />
+                  <SkillCard name="SQL" proficiency={90} index={1} />
+                  <SkillCard name="R" proficiency={75} index={2} />
                 </div>
               </div>
 
               {/* Machine Learning */}
               <div>
                 <AnimatedSection delay={0.2}>
-                  <h4 className="font-mono text-xs uppercase tracking-widest mb-8 text-center flex items-center justify-center gap-3">
-                    <span className="w-12 h-px bg-gradient-to-r from-transparent to-purple-500" />
-                    <span className="text-purple-400 flex items-center gap-2">
-                      <span className="text-lg">🧠</span>
-                      MACHINE LEARNING
-                    </span>
-                    <span className="w-12 h-px bg-gradient-to-l from-transparent to-purple-500" />
+                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
+                    <span className="w-8 h-px bg-primary/50" />
+                    MACHINE LEARNING
+                    <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
-                  <SkillCard name="Scikit-Learn" icon="⚙️" category="ml" proficiency={90} index={0} />
-                  <SkillCard name="TensorFlow" icon="🔥" category="ml" proficiency={85} index={1} />
-                  <SkillCard name="PyTorch" icon="🔦" category="ml" proficiency={80} index={2} />
-                  <SkillCard name="Pandas" icon="🐼" category="ml" proficiency={95} index={3} />
-                  <SkillCard name="NumPy" icon="🔢" category="ml" proficiency={90} index={4} />
+                  <SkillCard name="Scikit-Learn" proficiency={90} index={0} />
+                  <SkillCard name="TensorFlow" proficiency={85} index={1} />
+                  <SkillCard name="PyTorch" proficiency={80} index={2} />
+                  <SkillCard name="Pandas" proficiency={95} index={3} />
+                  <SkillCard name="NumPy" proficiency={90} index={4} />
                 </div>
               </div>
 
               {/* Deployment & Tools */}
               <div>
                 <AnimatedSection delay={0.3}>
-                  <h4 className="font-mono text-xs uppercase tracking-widest mb-8 text-center flex items-center justify-center gap-3">
-                    <span className="w-12 h-px bg-gradient-to-r from-transparent to-green-500" />
-                    <span className="text-green-400 flex items-center gap-2">
-                      <span className="text-lg">🚀</span>
-                      DEPLOYMENT & TOOLS
-                    </span>
-                    <span className="w-12 h-px bg-gradient-to-l from-transparent to-green-500" />
+                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
+                    <span className="w-8 h-px bg-primary/50" />
+                    DEPLOYMENT & TOOLS
+                    <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
-                  <SkillCard name="Git" icon="📝" category="tool" proficiency={90} index={0} />
-                  <SkillCard name="Docker" icon="🐳" category="tool" proficiency={85} index={1} />
-                  <SkillCard name="Streamlit" icon="🎈" category="tool" proficiency={88} index={2} />
-                  <SkillCard name="AWS" icon="☁️" category="tool" proficiency={80} index={3} />
-                  <SkillCard name="Azure" icon="🔷" category="tool" proficiency={75} index={4} />
+                  <SkillCard name="Git" proficiency={90} index={0} />
+                  <SkillCard name="Docker" proficiency={85} index={1} />
+                  <SkillCard name="Streamlit" proficiency={88} index={2} />
+                  <SkillCard name="AWS" proficiency={80} index={3} />
+                  <SkillCard name="Azure" proficiency={75} index={4} />
                 </div>
               </div>
             </div>
