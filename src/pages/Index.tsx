@@ -143,16 +143,24 @@ const Index = () => {
                 <span className="animate-pulse text-primary">_</span>
               </motion.div>
 
-              <motion.h1
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight"
+                className="mb-4"
               >
-                <span className="text-foreground">MUHAMMAD</span>
-                <br />
-                <span className="gradient-text-cyber">ABDULLAH</span>
-              </motion.h1>
+                <div className="flex items-center gap-4 flex-wrap">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
+                    MUHAMMAD
+                  </h1>
+                  <motion.div
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="h-12 md:h-16 lg:h-20 w-24 md:w-32 lg:w-40 bg-gradient-to-r from-neon-pink via-purple-500 to-accent origin-left"
+                  />
+                </div>
+              </motion.div>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
