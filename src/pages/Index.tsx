@@ -14,6 +14,7 @@ import { CredlyBadge } from "@/components/CredlyBadge";
 import { CertificationCard } from "@/components/CertificationCard";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { EducationCard } from "@/components/EducationCard";
+import { ContactForm } from "@/components/ContactForm";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
@@ -519,9 +520,15 @@ const Index = () => {
             </p>
           </AnimatedSection>
 
+          {/* Contact Form */}
+          <AnimatedSection delay={0.1} className="mb-16">
+            <ContactForm />
+          </AnimatedSection>
+
+          {/* Social Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {/* Email Card */}
-            <AnimatedSection delay={0.1}>
+            <AnimatedSection delay={0.2}>
               <motion.a
                 href="mailto:muhammad.abdullahds1@gmail.com"
                 whileHover={{ scale: 1.02, y: -4 }}
@@ -541,7 +548,7 @@ const Index = () => {
             </AnimatedSection>
 
             {/* LinkedIn Card */}
-            <AnimatedSection delay={0.2}>
+            <AnimatedSection delay={0.3}>
               <motion.a
                 href="https://www.linkedin.com/in/muhammad-abdullah-53b843248/"
                 target="_blank"
@@ -563,7 +570,7 @@ const Index = () => {
             </AnimatedSection>
 
             {/* GitHub Card */}
-            <AnimatedSection delay={0.3}>
+            <AnimatedSection delay={0.4}>
               <motion.a
                 href="https://github.com/abdulah-x"
                 target="_blank"
@@ -585,7 +592,7 @@ const Index = () => {
             </AnimatedSection>
 
             {/* CV Download Card */}
-            <AnimatedSection delay={0.4}>
+            <AnimatedSection delay={0.5}>
               <motion.a
                 href="/resume.pdf"
                 download
