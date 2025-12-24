@@ -1,8 +1,5 @@
-import { Download, Send, Github, Linkedin, Terminal, Code2, Cpu, Database, Zap } from "lucide-react";
+import { Download, Github, Linkedin, Terminal, Code2, Cpu, Zap, Award, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -23,20 +20,12 @@ import {
 } from "@/components/TechLogos";
 import { projects } from "@/data/projects";
 import { useState, useEffect } from "react";
-import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import { CredlyBadge } from "@/components/CredlyBadge";
 
 const Index = () => {
-  const { toast } = useToast();
   const [displayText, setDisplayText] = useState("");
   const fullText = "DATA_SCIENTIST";
-  
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
 
   // Typewriter effect
   useEffect(() => {
@@ -50,15 +39,6 @@ const Index = () => {
     }, 100);
     return () => clearInterval(timer);
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: ">> MESSAGE_SENT",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -357,6 +337,38 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Certifications Section */}
+      <section id="certifications" className="py-24 relative">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
+              <Award className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground">SECTION:</span>
+              <span className="text-primary">CERTIFICATIONS</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              MY <span className="text-primary">CREDENTIALS</span>
+            </h2>
+            <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
+              <span className="text-primary">{`>`}</span> Professional certifications validating my expertise.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            <CredlyBadge 
+              badgeId="d999a021-16a2-4430-bc47-86d4e8e41964" 
+              badgeUrl="https://www.credly.com/badges/d999a021-16a2-4430-bc47-86d4e8e41964/public_url"
+              index={0}
+            />
+            <CredlyBadge 
+              badgeId="2e82b343-d2cd-453a-bfca-898726be0d3f" 
+              badgeUrl="https://www.credly.com/badges/2e82b343-d2cd-453a-bfca-898726be0d3f/public_url"
+              index={1}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-24 relative">
         <div className="container mx-auto px-4">
@@ -375,155 +387,91 @@ const Index = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Left - Contact Form */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {/* Email Card */}
             <AnimatedSection delay={0.1}>
-              <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-8">
-                <div className="flex items-center gap-2 mb-6 font-mono text-xs text-primary">
-                  <Terminal className="w-4 h-4" />
-                  <span>SEND_MESSAGE</span>
+              <motion.a
+                href="mailto:muhammad.abdullahds1@gmail.com"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="block bg-gradient-to-br from-primary/10 to-accent/5 rounded-lg border border-primary/30 p-6 hover:neon-border transition-all duration-300 h-full"
+              >
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="w-14 h-14 rounded bg-primary/20 border border-primary/50 flex items-center justify-center neon-glow">
+                    <Mail className="h-7 w-7 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-mono text-sm text-foreground mb-1">EMAIL</h4>
+                    <p className="font-mono text-xs text-muted-foreground break-all">muhammad.abdullahds1@gmail.com</p>
+                  </div>
+                  <span className="font-mono text-xs text-primary">SEND MAIL →</span>
                 </div>
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="space-y-2">
-                    <Label htmlFor="name" className="font-mono text-xs text-muted-foreground">NAME:</Label>
-                    <Input
-                      id="name"
-                      placeholder="Enter your name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      className="bg-secondary/50 border-primary/20 font-mono text-sm focus:border-primary focus:neon-border"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="font-mono text-xs text-muted-foreground">EMAIL:</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                      className="bg-secondary/50 border-primary/20 font-mono text-sm focus:border-primary focus:neon-border"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="subject" className="font-mono text-xs text-muted-foreground">SUBJECT:</Label>
-                    <Input
-                      id="subject"
-                      placeholder="What's this about?"
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      required
-                      className="bg-secondary/50 border-primary/20 font-mono text-sm focus:border-primary focus:neon-border"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="font-mono text-xs text-muted-foreground">MESSAGE:</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Your message..."
-                      rows={5}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      required
-                      className="bg-secondary/50 border-primary/20 font-mono text-sm focus:border-primary focus:neon-border resize-none"
-                    />
-                  </div>
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    className="w-full gap-2 font-mono text-sm bg-primary/10 border border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                  >
-                    <Send className="h-4 w-4" />
-                    SEND_MESSAGE
-                  </Button>
-                </form>
-              </div>
+              </motion.a>
             </AnimatedSection>
 
-            {/* Right - Quick Links */}
-            <div className="space-y-4">
-              {/* LinkedIn Card */}
-              <AnimatedSection delay={0.2}>
-                <motion.a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
-                      <Linkedin className="h-7 w-7 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-mono text-sm text-foreground">LINKEDIN</h4>
-                      <p className="font-mono text-xs text-muted-foreground">/in/muhammad-abdullah</p>
-                    </div>
-                    <span className="font-mono text-xs text-primary">CONNECT →</span>
+            {/* LinkedIn Card */}
+            <AnimatedSection delay={0.2}>
+              <motion.a
+                href="https://www.linkedin.com/in/muhammad-abdullah-53b843248"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300 h-full"
+              >
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
+                    <Linkedin className="h-7 w-7 text-primary" />
                   </div>
-                </motion.a>
-              </AnimatedSection>
-
-              {/* GitHub Card */}
-              <AnimatedSection delay={0.3}>
-                <motion.a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
-                      <Github className="h-7 w-7 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-mono text-sm text-foreground">GITHUB</h4>
-                      <p className="font-mono text-xs text-muted-foreground">@muhammadabdullah</p>
-                    </div>
-                    <span className="font-mono text-xs text-primary">VIEW →</span>
+                  <div>
+                    <h4 className="font-mono text-sm text-foreground mb-1">LINKEDIN</h4>
+                    <p className="font-mono text-xs text-muted-foreground">/in/muhammad-abdullah</p>
                   </div>
-                </motion.a>
-              </AnimatedSection>
-
-              {/* CV Download Card */}
-              <AnimatedSection delay={0.4}>
-                <motion.a
-                  href="/resume.pdf"
-                  download
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  className="block bg-gradient-to-br from-primary/10 to-accent/5 rounded-lg border border-primary/30 p-6 hover:neon-border transition-all duration-300"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded bg-primary/20 border border-primary/50 flex items-center justify-center neon-glow">
-                      <Download className="h-7 w-7 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-mono text-sm text-foreground">RESUME</h4>
-                      <p className="font-mono text-xs text-muted-foreground">Download my full CV</p>
-                    </div>
-                    <span className="font-mono text-xs text-primary">DOWNLOAD →</span>
-                  </div>
-                </motion.a>
-              </AnimatedSection>
-
-              {/* Status Card */}
-              <AnimatedSection delay={0.5}>
-                <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6">
-                  <div className="flex items-center gap-2 mb-3 font-mono text-xs text-primary">
-                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                    RESPONSE_TIME
-                  </div>
-                  <p className="font-mono text-xs text-muted-foreground leading-relaxed">
-                    {`>`} I typically respond within 24-48 hours.
-                    <br />
-                    {`>`} For urgent matters, reach out via LinkedIn.
-                  </p>
+                  <span className="font-mono text-xs text-primary">CONNECT →</span>
                 </div>
-              </AnimatedSection>
-            </div>
+              </motion.a>
+            </AnimatedSection>
+
+            {/* GitHub Card */}
+            <AnimatedSection delay={0.3}>
+              <motion.a
+                href="https://github.com/abdulah-x"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300 h-full"
+              >
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
+                    <Github className="h-7 w-7 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-mono text-sm text-foreground mb-1">GITHUB</h4>
+                    <p className="font-mono text-xs text-muted-foreground">@abdulah-x</p>
+                  </div>
+                  <span className="font-mono text-xs text-primary">VIEW →</span>
+                </div>
+              </motion.a>
+            </AnimatedSection>
+
+            {/* CV Download Card */}
+            <AnimatedSection delay={0.4}>
+              <motion.a
+                href="/resume.pdf"
+                download
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300 h-full"
+              >
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
+                    <Download className="h-7 w-7 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-mono text-sm text-foreground mb-1">RESUME</h4>
+                    <p className="font-mono text-xs text-muted-foreground">Download my CV</p>
+                  </div>
+                  <span className="font-mono text-xs text-primary">DOWNLOAD →</span>
+                </div>
+              </motion.a>
+            </AnimatedSection>
           </div>
         </div>
       </section>

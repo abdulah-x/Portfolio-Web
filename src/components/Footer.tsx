@@ -29,7 +29,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
-              href="https://github.com"
+              href="https://github.com/abdulah-x"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 font-mono text-xs"
@@ -39,7 +39,7 @@ export function Footer() {
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/muhammad-abdullah-53b843248"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 font-mono text-xs"
