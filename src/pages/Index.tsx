@@ -190,7 +190,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8"
+                className="flex flex-wrap justify-center lg:justify-start gap-4"
               >
                 {quickLinks.map((link, index) => (
                   <motion.button
@@ -207,24 +207,25 @@ const Index = () => {
                     {link.name}
                   </motion.button>
                 ))}
-              </motion.div>
 
-              {/* Download CV button */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                <Button 
-                  size="lg" 
-                  className="gap-2 font-mono text-sm bg-primary/10 border border-primary text-primary hover:bg-primary hover:text-primary-foreground neon-border"
-                  asChild
+                {/* View Resume button - inline with other buttons */}
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9 }}
                 >
-                  <a href="https://docs.google.com/document/d/1fp1y3_md6mULuGKLQdQv23x4-dqRgSNx/edit?usp=sharing&ouid=113981398423696160466&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">
-                    <Download className="h-4 w-4" />
+                  <a 
+                    href="https://docs.google.com/document/d/1fp1y3_md6mULuGKLQdQv23x4-dqRgSNx/edit?usp=sharing&ouid=113981398423696160466&rtpof=true&sd=true" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-card/80 border border-primary/30 rounded font-mono text-xs text-primary hover:border-primary hover:neon-border transition-all duration-300"
+                  >
+                    <Download className="w-4 h-4" />
                     VIEW_RESUME
                   </a>
-                </Button>
+                </motion.div>
               </motion.div>
             </div>
           </div>
