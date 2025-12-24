@@ -7,25 +7,55 @@ const COMMANDS: Record<string, string> = {
   help     - Show this help message
   about    - Learn more about me
   skills   - List my technical skills
+  certs    - View my certifications
   contact  - Get my contact information
   projects - View my projects
   clear    - Clear the terminal`,
   about: `Muhammad Abdullah
+  Data Analyst | ML & Generative AI (LLMs) | MLOps | AWS
   7th-semester Data Science student
   Specializing in ML pipelines & intelligent systems
   Status: Available for opportunities`,
   skills: `Technical Skills:
+  ─────────────────────────────────
   Languages: Python, SQL, R
-  ML/AI: TensorFlow, PyTorch, Scikit-learn
-  Tools: Docker, Git, Streamlit
-  Cloud: AWS, Azure`,
+  
+  Data Analysis & Visualization:
+  > Data Cleaning & Wrangling
+  > Tableau, Spreadsheets
+  > Statistical Analysis
+  
+  ML/AI Frameworks:
+  > TensorFlow, PyTorch, Scikit-learn
+  > Pandas, NumPy
+  
+  Cloud & DevOps:
+  > AWS, Azure
+  > Docker, Git, Streamlit
+  
+  API Development:
+  > FastAPI, REST APIs
+  > WebSocket Integration`,
+  certs: `Certifications:
+  ─────────────────────────────────
+  [Google] Data Analytics Professional
+  > Data Analysis, SQL, R, Tableau
+  > Data Visualization & Spreadsheets
+  
+  [WorldQuant University] Applied Data Science Lab
+  > API Design, Python, Machine Learning
+  > Data Visualization`,
   contact: `Contact Information:
+  ─────────────────────────────────
   Email: muhammad.abdullahds1@gmail.com
   GitHub: github.com/abdulah-x
-  LinkedIn: linkedin.com/in/muhammad-abdullah-53b843248`,
+  LinkedIn: linkedin.com/in/muhammad-abdullah`,
   projects: `Featured Projects:
-  > Hawk-Ear: Intelligent surveillance system
-  > ML Pipeline: End-to-end data processing
+  ─────────────────────────────────
+  > FoodHub - Full-stack food delivery platform
+  > Crypto Portfolio - FastAPI crypto management
+  > NeuraLens - AI traffic sign recognition
+  
   Type 'help' for more commands`,
 };
 
