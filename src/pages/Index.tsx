@@ -180,9 +180,9 @@ const Index = () => {
                   className="gap-2 font-mono text-sm bg-primary/10 border border-primary text-primary hover:bg-primary hover:text-primary-foreground neon-border"
                   asChild
                 >
-                  <a href="/resume.pdf" download>
+                  <a href="https://docs.google.com/document/d/1fp1y3_md6mULuGKLQdQv23x4-dqRgSNx/edit?usp=sharing&ouid=113981398423696160466&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">
                     <Download className="h-4 w-4" />
-                    DOWNLOAD_CV.PDF
+                    VIEW_RESUME
                   </a>
                 </Button>
               </motion.div>
@@ -318,7 +318,7 @@ const Index = () => {
                   className="w-full max-w-md mx-auto flex gap-3 h-16 font-mono text-sm bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] transition-all duration-300"
                   asChild
                 >
-                  <a href="/resume.pdf" download className="relative overflow-hidden group">
+                  <a href="https://docs.google.com/document/d/1fp1y3_md6mULuGKLQdQv23x4-dqRgSNx/edit?usp=sharing&ouid=113981398423696160466&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden group">
                     <motion.span
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent"
                       initial={{ x: "-100%" }}
@@ -326,7 +326,7 @@ const Index = () => {
                       transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
                     />
                     <Download className="h-5 w-5 relative z-10" />
-                    <span className="relative z-10">DOWNLOAD_RESUME.PDF</span>
+                    <span className="relative z-10">VIEW_RESUME</span>
                   </a>
                 </Button>
               </motion.div>
@@ -594,8 +594,9 @@ const Index = () => {
             {/* CV Download Card */}
             <AnimatedSection delay={0.5}>
               <motion.a
-                href="/resume.pdf"
-                download
+                href="https://docs.google.com/document/d/1fp1y3_md6mULuGKLQdQv23x4-dqRgSNx/edit?usp=sharing&ouid=113981398423696160466&rtpof=true&sd=true"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -4 }}
                 className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
               >
@@ -605,9 +606,9 @@ const Index = () => {
                   </div>
                   <div>
                     <h4 className="font-mono text-sm text-foreground mb-1">RESUME</h4>
-                    <p className="font-mono text-xs text-muted-foreground">Download my CV</p>
+                    <p className="font-mono text-xs text-muted-foreground">View my CV</p>
                   </div>
-                  <span className="font-mono text-xs text-primary">DOWNLOAD →</span>
+                  <span className="font-mono text-xs text-primary">VIEW →</span>
                 </div>
               </motion.a>
             </AnimatedSection>
