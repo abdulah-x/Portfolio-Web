@@ -1,33 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --foreground: 220 20% 10%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 10%;
+    --card: 0 0% 99%;
+    --card-foreground: 220 20% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 220 20% 10%;
 
     /* Electric Blue accent */
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 10%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 45%;
 
     --accent: 217 91% 60%;
     --accent-foreground: 0 0% 100%;
@@ -35,12 +31,16 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
     --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
+    /* Custom gradient colors */
+    --gradient-start: 217 91% 60%;
+    --gradient-end: 280 85% 65%;
+    
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 10%;
     --sidebar-primary: 217 91% 60%;
@@ -52,24 +52,24 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 0 0% 7%;
+    --background: 220 20% 7%;
     --foreground: 0 0% 95%;
 
-    --card: 0 0% 10%;
+    --card: 220 20% 10%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 10%;
+    --popover: 220 20% 10%;
     --popover-foreground: 0 0% 95%;
 
     /* Electric Blue accent */
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 15%;
+    --secondary: 220 20% 14%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 220 20% 14%;
+    --muted-foreground: 220 10% 55%;
 
     --accent: 217 91% 60%;
     --accent-foreground: 0 0% 100%;
@@ -77,17 +77,21 @@ All colors MUST be HSL.
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 95%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
     --ring: 217 91% 60%;
 
-    --sidebar-background: 0 0% 10%;
+    /* Custom gradient colors */
+    --gradient-start: 217 91% 60%;
+    --gradient-end: 280 85% 65%;
+
+    --sidebar-background: 220 20% 10%;
     --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent: 220 20% 14%;
     --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 0 0% 20%;
+    --sidebar-border: 220 20% 18%;
     --sidebar-ring: 217 91% 60%;
   }
 }
@@ -103,5 +107,110 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-primary;
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-background/60 backdrop-blur-xl border border-border/50;
+  }
+
+  /* Glow effects */
+  .glow {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.15);
+  }
+
+  .glow-sm {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.1);
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 20px 40px hsl(var(--foreground) / 0.1);
+  }
+
+  /* Animated border gradient */
+  .border-gradient {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+  }
+
+  .border-gradient::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: calc(var(--radius) + 1px);
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--gradient-end)), hsl(var(--primary)));
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .border-gradient:hover::before {
+    opacity: 1;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -30px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(30px, 10px) scale(1.05);
   }
 }
