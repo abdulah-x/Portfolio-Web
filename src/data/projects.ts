@@ -1,0 +1,66 @@
+import { Project } from "@/components/ProjectCard";
+
+export const projects: Project[] = [
+  {
+    id: "1",
+    title: "Real-Time Crypto Sentiment Analyzer",
+    summary: "NLP-powered dashboard analyzing social media sentiment for cryptocurrency trading signals.",
+    description: "Built an end-to-end pipeline that scrapes Twitter and Reddit data, applies BERT-based sentiment analysis, and visualizes real-time market sentiment trends. Achieved 78% accuracy in predicting short-term price movements.",
+    thumbnail: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
+    tags: ["Python", "NLP", "BERT", "Streamlit", "PostgreSQL", "Docker"],
+    demoUrl: "https://example.com",
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "2",
+    title: "Customer Churn Prediction Model",
+    summary: "ML model predicting customer churn with 92% accuracy, saving $2M annually in retention costs.",
+    description: "Developed a gradient boosting model to identify at-risk customers for a telecom company. Implemented feature engineering pipeline processing 50+ variables and deployed via REST API for real-time predictions.",
+    thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    tags: ["Python", "Scikit-learn", "XGBoost", "FastAPI", "AWS", "Tableau"],
+    demoUrl: "https://example.com",
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "3",
+    title: "Automated Financial Report Generator",
+    summary: "AI-powered tool that transforms raw financial data into executive-ready reports in minutes.",
+    description: "Created an automated reporting system using GPT-4 API integration to generate narrative insights from financial datasets. Reduced report generation time from 4 hours to 15 minutes while maintaining accuracy.",
+    thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    tags: ["Python", "OpenAI API", "Pandas", "ReportLab", "Azure"],
+    demoUrl: "https://example.com",
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "4",
+    title: "Supply Chain Optimization Dashboard",
+    summary: "Interactive analytics platform optimizing inventory levels across 200+ warehouses.",
+    description: "Built a comprehensive dashboard using demand forecasting models to optimize inventory allocation. Implemented time-series analysis with Prophet and created interactive visualizations reducing stockouts by 35%.",
+    thumbnail: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+    tags: ["Python", "Prophet", "Plotly", "SQL", "Docker", "GCP"],
+    demoUrl: "https://example.com",
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "5",
+    title: "Medical Image Classification System",
+    summary: "Deep learning model detecting pneumonia from chest X-rays with 96% sensitivity.",
+    description: "Developed a CNN-based classification system trained on 15,000+ medical images. Implemented data augmentation techniques and transfer learning with ResNet50 to achieve clinical-grade accuracy.",
+    thumbnail: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80",
+    tags: ["Python", "TensorFlow", "Keras", "OpenCV", "Flask", "Docker"],
+    demoUrl: "https://example.com",
+    githubUrl: "https://github.com",
+  },
+  {
+    id: "6",
+    title: "E-commerce Recommendation Engine",
+    summary: "Personalized product recommendations increasing average order value by 28%.",
+    description: "Designed and deployed a hybrid recommendation system combining collaborative filtering with content-based approaches. Processed 1M+ user interactions and integrated with existing e-commerce platform via API.",
+    thumbnail: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    tags: ["Python", "Spark", "Redis", "FastAPI", "PostgreSQL", "AWS"],
+    demoUrl: "https://example.com",
+    githubUrl: "https://github.com",
+  },
+];
+
+export const featuredProjects = projects.slice(0, 3);
