@@ -44,6 +44,8 @@ export function ProjectCard({ project, variant = "featured", index = 0 }: Projec
           src={project.thumbnail}
           alt={`Screenshot of ${project.title} project`}
           className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
         

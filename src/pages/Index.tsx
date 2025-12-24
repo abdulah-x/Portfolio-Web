@@ -78,8 +78,11 @@ const Index = () => {
                 <div className="w-full h-full rounded-full overflow-hidden border-2 border-primary/50 neon-border">
                   <img
                     src={profilePhoto}
-                    alt="Muhammad Abdullah"
+                    alt="Muhammad Abdullah - Data Scientist and AI Enthusiast"
                     className="w-full h-full object-cover"
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
                   />
                 </div>
                 
