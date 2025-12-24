@@ -19,9 +19,11 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
   const [displayText, setDisplayText] = useState("");
+  const [quoteText, setQuoteText] = useState("");
   const fullText = "DATA_SCIENTIST";
+  const fullQuote = "THE MAGIC YOU ARE LOOKING FOR IS IN THE WORK YOU ARE AVOIDING";
 
-  // Typewriter effect
+  // Typewriter effect for title
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
@@ -31,6 +33,19 @@ const Index = () => {
         clearInterval(timer);
       }
     }, 100);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Typewriter effect for quote
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      setQuoteText(fullQuote.slice(0, index + 1));
+      index++;
+      if (index >= fullQuote.length) {
+        clearInterval(timer);
+      }
+    }, 50);
     return () => clearInterval(timer);
   }, []);
 
@@ -55,12 +70,26 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-6xl mx-auto">
             
             {/* Left - Profile with cyber frame */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="relative shrink-0"
-            >
+            <div className="flex flex-col items-center">
+              {/* Quote above photo */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="mb-8 text-center max-w-xs md:max-w-sm"
+              >
+                <p className="font-serif italic text-lg md:text-xl text-muted-foreground leading-relaxed">
+                  "{quoteText}"
+                  <span className="animate-pulse text-primary">|</span>
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="relative shrink-0"
+              >
               {/* Outer glow ring */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-neon-pink blur-xl opacity-30 animate-pulse-neon" style={{ margin: '-20px' }} />
               
@@ -104,6 +133,7 @@ const Index = () => {
                 STATUS: AVAILABLE
               </motion.div>
             </motion.div>
+            </div>
 
             {/* Right - Content */}
             <div className="text-center lg:text-left flex-1">
