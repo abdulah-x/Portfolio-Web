@@ -160,6 +160,9 @@ const Index = () => {
                     className="h-12 md:h-16 lg:h-20 w-24 md:w-32 lg:w-40 bg-gradient-to-r from-neon-pink via-purple-500 to-accent origin-left"
                   />
                 </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight gradient-text-cyber mt-2">
+                  ABDULLAH
+                </h1>
               </motion.div>
 
               <motion.p
