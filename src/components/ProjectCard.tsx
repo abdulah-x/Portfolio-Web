@@ -1,6 +1,5 @@
-import { ExternalLink, Github, Terminal } from "lucide-react";
+import { ExternalLink, Github, FolderCode } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 
 export interface Project {
@@ -29,6 +28,7 @@ export function ProjectCard({ project, variant = "featured", index = 0 }: Projec
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -8 }}
       className="group relative bg-card/80 backdrop-blur-sm rounded-lg border border-primary/10 overflow-hidden hover:border-primary/40 hover:neon-border transition-all duration-500"
+      aria-label={`Project: ${project.title}`}
     >
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -42,7 +42,7 @@ export function ProjectCard({ project, variant = "featured", index = 0 }: Projec
       <div className="aspect-video bg-secondary/50 overflow-hidden relative">
         <img
           src={project.thumbnail}
-          alt={project.title}
+          alt={`Screenshot of ${project.title} project`}
           className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
@@ -54,8 +54,8 @@ export function ProjectCard({ project, variant = "featured", index = 0 }: Projec
       {/* Content */}
       <div className="p-6 relative">
         <div className="flex items-center gap-2 mb-2">
-          <Terminal className="w-4 h-4 text-primary" />
-          <span className="font-mono text-xs text-primary/70">PROJECT</span>
+          <FolderCode className="w-4 h-4 text-primary" />
+          <span className="font-mono text-xs text-primary/70">~/projects/</span>
         </div>
         
         <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
@@ -66,16 +66,15 @@ export function ProjectCard({ project, variant = "featured", index = 0 }: Projec
           {variant === "full" ? project.description : project.summary}
         </p>
 
-        {/* Tags */}
+        {/* Tags as Terminal Tags */}
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.slice(0, variant === "full" ? 5 : 3).map((tag) => (
-            <Badge
+            <span
               key={tag}
-              variant="outline"
-              className="font-mono text-[10px] border-primary/30 text-primary/70 bg-primary/5"
+              className="font-mono text-[10px] px-2 py-1 bg-primary/10 border border-primary/20 rounded text-primary/70"
             >
-              #{tag}
-            </Badge>
+              [{tag.toLowerCase()}]
+            </span>
           ))}
         </div>
 

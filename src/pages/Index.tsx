@@ -1,23 +1,10 @@
-import { Download, Github, Linkedin, Terminal, Code2, Cpu, Zap, Award, Mail, Briefcase } from "lucide-react";
+import { Download, Github, Linkedin, Terminal, Code2, Cpu, Zap, Award, Mail, Briefcase, FolderCode } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import {
-  TechCard,
-  PythonLogo,
-  SQLLogo,
-  RLogo,
-  ScikitLearnLogo,
-  TensorFlowLogo,
-  PyTorchLogo,
-  PandasLogo,
-  GitLogo,
-  DockerLogo,
-  StreamlitLogo,
-  AWSLogo,
-  AzureLogo,
-} from "@/components/TechLogos";
+import { TerminalTag } from "@/components/TerminalTag";
+import { InteractiveTerminal } from "@/components/InteractiveTerminal";
 import { projects } from "@/data/projects";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -159,7 +146,7 @@ const Index = () => {
                 <span className="text-accent"> data pipelines</span>, and 
                 <span className="text-neon-pink"> predictive analytics</span>.
                 <br />
-                <span className="text-primary">{`>`}</span> Transforming raw data into actionable insights.
+                <span className="text-primary">{`>`}</span> Building end-to-end ML pipelines and intelligent surveillance systems.
               </motion.p>
 
               {/* Quick action buttons */}
@@ -280,10 +267,10 @@ const Index = () => {
                     <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
-                <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
-                  <TechCard name="Python" logo={<PythonLogo className="w-10 h-10" />} index={0} />
-                  <TechCard name="SQL" logo={<SQLLogo className="w-10 h-10" />} index={1} />
-                  <TechCard name="R" logo={<RLogo className="w-10 h-10" />} index={2} />
+                <div className="flex flex-wrap justify-center gap-3">
+                  <TerminalTag name="python" index={0} />
+                  <TerminalTag name="sql" index={1} />
+                  <TerminalTag name="r" index={2} />
                 </div>
               </div>
 
@@ -296,11 +283,12 @@ const Index = () => {
                     <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-                  <TechCard name="Scikit-learn" logo={<ScikitLearnLogo className="w-10 h-10" />} index={0} />
-                  <TechCard name="TensorFlow" logo={<TensorFlowLogo className="w-10 h-10" />} index={1} />
-                  <TechCard name="PyTorch" logo={<PyTorchLogo className="w-10 h-10" />} index={2} />
-                  <TechCard name="Pandas" logo={<PandasLogo className="w-10 h-10" />} index={3} />
+                <div className="flex flex-wrap justify-center gap-3">
+                  <TerminalTag name="scikit-learn" index={0} />
+                  <TerminalTag name="tensorflow" index={1} />
+                  <TerminalTag name="pytorch" index={2} />
+                  <TerminalTag name="pandas" index={3} />
+                  <TerminalTag name="numpy" index={4} />
                 </div>
               </div>
 
@@ -313,12 +301,12 @@ const Index = () => {
                     <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
-                <div className="grid grid-cols-3 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
-                  <TechCard name="Git" logo={<GitLogo className="w-9 h-9" />} index={0} />
-                  <TechCard name="Docker" logo={<DockerLogo className="w-9 h-9" />} index={1} />
-                  <TechCard name="Streamlit" logo={<StreamlitLogo className="w-9 h-9" />} index={2} />
-                  <TechCard name="AWS" logo={<AWSLogo className="w-9 h-9" />} index={3} />
-                  <TechCard name="Azure" logo={<AzureLogo className="w-9 h-9" />} index={4} />
+                <div className="flex flex-wrap justify-center gap-3">
+                  <TerminalTag name="git" index={0} />
+                  <TerminalTag name="docker" index={1} />
+                  <TerminalTag name="streamlit" index={2} />
+                  <TerminalTag name="aws" index={3} />
+                  <TerminalTag name="azure" index={4} />
                 </div>
               </div>
             </div>
