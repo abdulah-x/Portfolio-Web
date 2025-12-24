@@ -458,7 +458,7 @@ const Index = () => {
             </h3>
           </AnimatedSection>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-6">
             <CredlyBadge 
               badgeId="d999a021-16a2-4430-bc47-86d4e8e41964" 
               badgeUrl="https://www.credly.com/badges/d999a021-16a2-4430-bc47-86d4e8e41964/public_url"
