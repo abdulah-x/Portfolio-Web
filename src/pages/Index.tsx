@@ -513,10 +513,10 @@ const Index = () => {
               <motion.a
                 href="mailto:muhammad.abdullahds1@gmail.com"
                 whileHover={{ scale: 1.02, y: -4 }}
-                className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300 h-full"
+                className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
               >
                 <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
                     <Mail className="h-7 w-7 text-primary" />
                   </div>
                   <div>
@@ -535,10 +535,10 @@ const Index = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -4 }}
-                className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300 h-full"
+                className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
               >
                 <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
                     <Linkedin className="h-7 w-7 text-primary" />
                   </div>
                   <div>
@@ -557,10 +557,10 @@ const Index = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -4 }}
-                className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300 h-full"
+                className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
               >
                 <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
                     <Github className="h-7 w-7 text-primary" />
                   </div>
                   <div>
@@ -578,10 +578,10 @@ const Index = () => {
                 href="/resume.pdf"
                 download
                 whileHover={{ scale: 1.02, y: -4 }}
-                className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300 h-full"
+                className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
               >
                 <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
                     <Download className="h-7 w-7 text-primary" />
                   </div>
                   <div>
