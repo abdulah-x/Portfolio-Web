@@ -1,4 +1,3 @@
-import { Link, useLocation } from "react-router-dom";
 import { Github, Linkedin, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
@@ -7,9 +6,9 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
+  { name: "Resume", href: "#about" },
   { name: "Projects", href: "#projects" },
-  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -42,54 +41,54 @@ export function Navbar() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
           ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm"
-          : "bg-transparent"
+          : "bg-background/50 backdrop-blur-sm"
       )}
     >
-      <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Logo */}
+      <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Logo with status dot */}
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => scrollToSection("#home")}
-          className="text-lg font-bold text-foreground hover:text-primary transition-colors"
+          className="flex items-center gap-3"
         >
-          Muhammad Abdullah
+          <span className="w-3 h-3 rounded-full bg-primary animate-pulse" />
+          <div className="flex items-center gap-2">
+            <span className="text-lg font-bold text-foreground">Muhammad Abdullah</span>
+            <span className="hidden sm:block text-sm text-muted-foreground">Data Science Student</span>
+          </div>
         </motion.button>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1">
+        {/* Desktop Navigation with dividers */}
+        <div className="hidden md:flex items-center">
           {navLinks.map((link, index) => (
-            <motion.button
-              key={link.href}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.4 }}
-              onClick={() => scrollToSection(link.href)}
-              className="relative px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground group"
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-1/2 rounded-full" />
-            </motion.button>
+            <div key={link.href} className="flex items-center">
+              {index > 0 && <span className="w-px h-4 bg-border mx-1" />}
+              <motion.button
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.4 }}
+                onClick={() => scrollToSection(link.href)}
+                className="px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.name}
+              </motion.button>
+            </div>
           ))}
-        </div>
-
-        {/* Right Side - Social Icons & Theme Toggle */}
-        <div className="hidden md:flex items-center gap-1">
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full hover:bg-primary/10" asChild>
+          <span className="w-px h-4 bg-border mx-1" />
+          <div className="flex items-center gap-1 ml-2">
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" asChild>
               <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <Github className="h-4 w-4" />
               </a>
             </Button>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full hover:bg-primary/10" asChild>
+            <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" asChild>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <Linkedin className="h-4 w-4" />
               </a>
             </Button>
-          </motion.div>
-          <ThemeToggle />
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
