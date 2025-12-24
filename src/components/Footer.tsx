@@ -39,7 +39,7 @@ export function Footer() {
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
-              href="https://www.linkedin.com/in/muhammad-abdullah-53b843248"
+              href="https://www.linkedin.com/in/muhammad-abdullah-53b843248/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 font-mono text-xs"
