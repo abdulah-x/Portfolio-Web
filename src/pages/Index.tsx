@@ -1,4 +1,4 @@
-import { Download, Send, Github, Linkedin, FileText, Briefcase, User, Mail } from "lucide-react";
+import { Download, Send, Github, Linkedin, Terminal, Code2, Cpu, Database, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { AboutBackground } from "@/components/AboutBackground";
 import {
   TechCard,
   PythonLogo,
@@ -23,12 +22,15 @@ import {
   AzureLogo,
 } from "@/components/TechLogos";
 import { projects } from "@/data/projects";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
 const Index = () => {
   const { toast } = useToast();
+  const [displayText, setDisplayText] = useState("");
+  const fullText = "DATA_SCIENTIST";
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,10 +38,23 @@ const Index = () => {
     message: "",
   });
 
+  // Typewriter effect
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      setDisplayText(fullText.slice(0, index + 1));
+      index++;
+      if (index >= fullText.length) {
+        clearInterval(timer);
+      }
+    }, 100);
+    return () => clearInterval(timer);
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Message Sent!",
+      title: ">> MESSAGE_SENT",
       description: "Thank you for reaching out. I'll get back to you soon.",
     });
     setFormData({ name: "", email: "", subject: "", message: "" });
@@ -53,105 +68,181 @@ const Index = () => {
   };
 
   const quickLinks = [
-    { name: "Resume", color: "bg-[#a3d977]", hoverColor: "hover:bg-[#8bc960]", href: "#skills" },
-    { name: "Projects", color: "bg-[#f5a623]", hoverColor: "hover:bg-[#e09515]", href: "#projects" },
-    { name: "Skills", color: "bg-[#7dd3d8]", hoverColor: "hover:bg-[#5bc5cb]", href: "#skills" },
-    { name: "Contact", color: "bg-[#b8b8b8]", hoverColor: "hover:bg-[#a0a0a0]", href: "#contact" },
+    { name: "PROJECTS", icon: Code2, href: "#projects" },
+    { name: "SKILLS", icon: Cpu, href: "#skills" },
+    { name: "CONTACT", icon: Zap, href: "#contact" },
   ];
 
   return (
     <Layout>
-      {/* Hero Section - Clean minimal style */}
-      <section id="home" className="min-h-screen flex items-center justify-center bg-secondary/30">
+      {/* Hero Section - Cyber/Futuristic style */}
+      <section id="home" className="min-h-screen flex items-center justify-center relative">
         <div className="container mx-auto px-6 py-20">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-6xl mx-auto">
             
-            {/* Left - Large Circular Photo */}
+            {/* Left - Profile with cyber frame */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="relative shrink-0"
             >
-              <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl shadow-primary/10">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
-                  alt="Muhammad Abdullah"
-                  className="w-full h-full object-cover"
-                />
+              {/* Outer glow ring */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-neon-pink blur-xl opacity-30 animate-pulse-neon" style={{ margin: '-20px' }} />
+              
+              {/* Rotating border */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full border-2 border-dashed border-primary/40"
+                style={{ margin: '-15px' }}
+              />
+              
+              {/* Main photo container */}
+              <div className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-accent/10 to-transparent" />
+                <div className="w-full h-full rounded-full overflow-hidden border-2 border-primary/50 neon-border">
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+                    alt="Muhammad Abdullah"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                {/* Corner brackets */}
+                <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-primary" />
+                <div className="absolute -top-4 -right-4 w-8 h-8 border-r-2 border-t-2 border-primary" />
+                <div className="absolute -bottom-4 -left-4 w-8 h-8 border-l-2 border-b-2 border-accent" />
+                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-accent" />
               </div>
-              {/* Decorative ring */}
-              <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/20 animate-[spin_30s_linear_infinite]" style={{ margin: '-8px' }} />
+
+              {/* Status indicator */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8 }}
+                className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-1 bg-card/90 border border-primary/30 rounded font-mono text-xs text-primary"
+              >
+                <span className="inline-block w-2 h-2 rounded-full bg-primary animate-pulse mr-2" />
+                STATUS: AVAILABLE
+              </motion.div>
             </motion.div>
 
             {/* Right - Content */}
             <div className="text-center lg:text-left flex-1">
+              {/* Terminal-style header */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs"
+              >
+                <Terminal className="w-4 h-4 text-primary" />
+                <span className="text-muted-foreground">~/portfolio $</span>
+                <span className="text-primary">{displayText}</span>
+                <span className="animate-pulse text-primary">_</span>
+              </motion.div>
+
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 tracking-tight"
-              >
-                Muhammad Abdullah
-              </motion.h1>
-
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-xl md:text-2xl font-semibold text-foreground mb-6"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight"
               >
-                A Bit About Me
-              </motion.h2>
+                <span className="text-foreground">MUHAMMAD</span>
+                <br />
+                <span className="gradient-text-cyber">ABDULLAH</span>
+              </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-muted-foreground text-lg leading-relaxed max-w-xl mb-10"
+                className="font-mono text-sm text-muted-foreground leading-relaxed max-w-xl mb-8"
               >
-                I am a 7th-semester Data Science student passionate about machine learning and analytics. 
-                I specialize in building end-to-end data pipelines, predictive modeling, and transforming 
-                complex datasets into actionable business insights.
+                <span className="text-primary">{`>`}</span> 7th-semester Data Science student specializing in 
+                <span className="text-primary"> machine learning</span>, 
+                <span className="text-accent"> data pipelines</span>, and 
+                <span className="text-neon-pink"> predictive analytics</span>.
+                <br />
+                <span className="text-primary">{`>`}</span> Transforming raw data into actionable insights.
               </motion.p>
 
-              {/* Colorful Navigation Buttons */}
+              {/* Quick action buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="flex flex-wrap justify-center lg:justify-start gap-4"
+                className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8"
               >
                 {quickLinks.map((link, index) => (
                   <motion.button
                     key={link.name}
-                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 + index * 0.1 }}
                     onClick={() => scrollToSection(link.href)}
-                    className={`w-24 h-24 md:w-28 md:h-28 rounded-full ${link.color} ${link.hoverColor} flex items-center justify-center text-foreground font-semibold text-sm md:text-base shadow-lg transition-all duration-300`}
+                    className="group flex items-center gap-2 px-6 py-3 bg-card/80 border border-primary/30 rounded font-mono text-xs text-primary hover:border-primary hover:neon-border transition-all duration-300"
                   >
+                    <link.icon className="w-4 h-4" />
                     {link.name}
                   </motion.button>
                 ))}
               </motion.div>
+
+              {/* Download CV button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                <Button 
+                  size="lg" 
+                  className="gap-2 font-mono text-sm bg-primary/10 border border-primary text-primary hover:bg-primary hover:text-primary-foreground neon-border"
+                  asChild
+                >
+                  <a href="/resume.pdf" download>
+                    <Download className="h-4 w-4" />
+                    DOWNLOAD_CV.PDF
+                  </a>
+                </Button>
+              </motion.div>
             </div>
           </div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          >
+            <span className="font-mono text-xs text-muted-foreground">SCROLL</span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-px h-8 bg-gradient-to-b from-primary to-transparent"
+            />
+          </motion.div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 bg-gradient-to-b from-secondary/50 to-background">
+      <section id="projects" className="py-24 relative">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
+              <Code2 className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground">SECTION:</span>
+              <span className="text-primary">PROJECTS</span>
+            </div>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Selected Works
+              SELECTED <span className="gradient-text-cyber">WORKS</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              A comprehensive look at my data science projects, from concept to
-              deployment.
+            <p className="font-mono text-sm text-muted-foreground max-w-2xl mx-auto">
+              <span className="text-primary">{`>`}</span> A comprehensive look at my data science projects, from concept to deployment.
             </p>
           </AnimatedSection>
 
@@ -165,29 +256,34 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 relative overflow-hidden">
-        <AboutBackground />
+      <section id="skills" className="py-24 relative">
         <div className="container mx-auto px-4 relative z-10">
           {/* Section Header */}
           <AnimatedSection className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
+              <Cpu className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground">SECTION:</span>
+              <span className="text-primary">SKILLS</span>
+            </div>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Technical Skills
+              TECHNICAL <span className="gradient-text-cyber">ARSENAL</span>
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              The tools and technologies I use to bring data projects to life.
+            <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
+              <span className="text-primary">{`>`}</span> The tools and technologies I use to bring data projects to life.
             </p>
           </AnimatedSection>
 
           {/* Main Content */}
           <div className="max-w-5xl mx-auto">
-
             {/* Skills Grid */}
-            <div className="space-y-10">
+            <div className="space-y-12">
               {/* Languages */}
               <div>
-                <AnimatedSection delay={0.25}>
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-5 text-center">
-                    Languages
+                <AnimatedSection delay={0.1}>
+                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
+                    <span className="w-8 h-px bg-primary/50" />
+                    LANGUAGES
+                    <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
                 <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
@@ -199,9 +295,11 @@ const Index = () => {
 
               {/* Machine Learning */}
               <div>
-                <AnimatedSection delay={0.3}>
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-5 text-center">
-                    Machine Learning
+                <AnimatedSection delay={0.2}>
+                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
+                    <span className="w-8 h-px bg-primary/50" />
+                    MACHINE LEARNING
+                    <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
@@ -214,9 +312,11 @@ const Index = () => {
 
               {/* Deployment & Tools */}
               <div>
-                <AnimatedSection delay={0.35}>
-                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-5 text-center">
-                    Deployment & Tools
+                <AnimatedSection delay={0.3}>
+                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
+                    <span className="w-8 h-px bg-primary/50" />
+                    DEPLOYMENT & TOOLS
+                    <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
                 <div className="grid grid-cols-3 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
@@ -230,11 +330,15 @@ const Index = () => {
             </div>
 
             {/* Download Resume */}
-            <AnimatedSection delay={0.4} className="mt-12">
-              <Button size="lg" className="w-full max-w-md mx-auto flex gap-2 h-14 text-base shadow-lg shadow-primary/25" asChild>
+            <AnimatedSection delay={0.4} className="mt-16">
+              <Button 
+                size="lg" 
+                className="w-full max-w-md mx-auto flex gap-2 h-14 font-mono text-sm bg-primary/10 border border-primary text-primary hover:bg-primary hover:text-primary-foreground neon-border"
+                asChild
+              >
                 <a href="/resume.pdf" download>
                   <Download className="h-5 w-5" />
-                  Download Full Resume (PDF)
+                  DOWNLOAD_RESUME.PDF
                 </a>
               </Button>
             </AnimatedSection>
@@ -243,40 +347,45 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-gradient-to-b from-secondary/50 to-background">
+      <section id="contact" className="py-24 relative">
         <div className="container mx-auto px-4">
           {/* Header */}
           <AnimatedSection className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground">SECTION:</span>
+              <span className="text-primary">CONTACT</span>
+            </div>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Let's Connect
+              LET'S <span className="gradient-text-cyber">CONNECT</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              Currently open for internship opportunities or collaborative data
-              projects.
+            <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
+              <span className="text-primary">{`>`}</span> Currently open for internship opportunities or collaborative data projects.
             </p>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Left - Contact Form */}
             <AnimatedSection delay={0.1}>
-              <div className="bg-card rounded-3xl border border-border p-8 shadow-xl shadow-primary/5">
-                <h3 className="text-xl font-semibold text-foreground mb-6">
-                  Send a Message
-                </h3>
+              <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-8">
+                <div className="flex items-center gap-2 mb-6 font-mono text-xs text-primary">
+                  <Terminal className="w-4 h-4" />
+                  <span>SEND_MESSAGE</span>
+                </div>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-sm font-medium">Name</Label>
+                    <Label htmlFor="name" className="font-mono text-xs text-muted-foreground">NAME:</Label>
                     <Input
                       id="name"
-                      placeholder="Your name"
+                      placeholder="Enter your name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
-                      className="h-12 rounded-xl bg-secondary/50 border-0 focus:ring-2 focus:ring-primary/20"
+                      className="bg-secondary/50 border-primary/20 font-mono text-sm focus:border-primary focus:neon-border"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-medium">Email</Label>
+                    <Label htmlFor="email" className="font-mono text-xs text-muted-foreground">EMAIL:</Label>
                     <Input
                       id="email"
                       type="email"
@@ -284,22 +393,22 @@ const Index = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
-                      className="h-12 rounded-xl bg-secondary/50 border-0 focus:ring-2 focus:ring-primary/20"
+                      className="bg-secondary/50 border-primary/20 font-mono text-sm focus:border-primary focus:neon-border"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="subject" className="text-sm font-medium">Subject</Label>
+                    <Label htmlFor="subject" className="font-mono text-xs text-muted-foreground">SUBJECT:</Label>
                     <Input
                       id="subject"
                       placeholder="What's this about?"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       required
-                      className="h-12 rounded-xl bg-secondary/50 border-0 focus:ring-2 focus:ring-primary/20"
+                      className="bg-secondary/50 border-primary/20 font-mono text-sm focus:border-primary focus:neon-border"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message" className="text-sm font-medium">Message</Label>
+                    <Label htmlFor="message" className="font-mono text-xs text-muted-foreground">MESSAGE:</Label>
                     <Textarea
                       id="message"
                       placeholder="Your message..."
@@ -307,12 +416,16 @@ const Index = () => {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
-                      className="rounded-xl bg-secondary/50 border-0 focus:ring-2 focus:ring-primary/20 resize-none"
+                      className="bg-secondary/50 border-primary/20 font-mono text-sm focus:border-primary focus:neon-border resize-none"
                     />
                   </div>
-                  <Button type="submit" size="lg" className="w-full gap-2 h-12 shadow-lg shadow-primary/25">
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full gap-2 font-mono text-sm bg-primary/10 border border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  >
                     <Send className="h-4 w-4" />
-                    Send Message
+                    SEND_MESSAGE
                   </Button>
                 </form>
               </div>
@@ -322,79 +435,80 @@ const Index = () => {
             <div className="space-y-4">
               {/* LinkedIn Card */}
               <AnimatedSection delay={0.2}>
-                <motion.div
+                <motion.a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.02, y: -4 }}
-                  className="bg-card rounded-2xl border border-border p-6 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+                  className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
                       <Linkedin className="h-7 w-7 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-foreground">LinkedIn</h4>
-                      <p className="text-sm text-muted-foreground">Muhammad Abdullah</p>
+                      <h4 className="font-mono text-sm text-foreground">LINKEDIN</h4>
+                      <p className="font-mono text-xs text-muted-foreground">/in/muhammad-abdullah</p>
                     </div>
-                    <Button variant="outline" className="rounded-xl" asChild>
-                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                        Connect
-                      </a>
-                    </Button>
+                    <span className="font-mono text-xs text-primary">CONNECT →</span>
                   </div>
-                </motion.div>
+                </motion.a>
               </AnimatedSection>
 
               {/* GitHub Card */}
               <AnimatedSection delay={0.3}>
-                <motion.div
+                <motion.a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.02, y: -4 }}
-                  className="bg-card rounded-2xl border border-border p-6 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+                  className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+                    <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
                       <Github className="h-7 w-7 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-foreground">GitHub</h4>
-                      <p className="text-sm text-muted-foreground">@muhammadabdullah</p>
+                      <h4 className="font-mono text-sm text-foreground">GITHUB</h4>
+                      <p className="font-mono text-xs text-muted-foreground">@muhammadabdullah</p>
                     </div>
-                    <Button variant="outline" className="rounded-xl" asChild>
-                      <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                        View Repos
-                      </a>
-                    </Button>
+                    <span className="font-mono text-xs text-primary">VIEW →</span>
                   </div>
-                </motion.div>
+                </motion.a>
               </AnimatedSection>
 
               {/* CV Download Card */}
               <AnimatedSection delay={0.4}>
-                <motion.div
+                <motion.a
+                  href="/resume.pdf"
+                  download
                   whileHover={{ scale: 1.02, y: -4 }}
-                  className="bg-gradient-to-br from-primary/10 via-purple-500/5 to-primary/10 rounded-2xl border border-primary/20 p-6 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+                  className="block bg-gradient-to-br from-primary/10 to-accent/5 rounded-lg border border-primary/30 p-6 hover:neon-border transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center shadow-lg shadow-primary/30">
-                      <Download className="h-7 w-7 text-primary-foreground" />
+                    <div className="w-14 h-14 rounded bg-primary/20 border border-primary/50 flex items-center justify-center neon-glow">
+                      <Download className="h-7 w-7 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-foreground">Resume</h4>
-                      <p className="text-sm text-muted-foreground">Download my full CV</p>
+                      <h4 className="font-mono text-sm text-foreground">RESUME</h4>
+                      <p className="font-mono text-xs text-muted-foreground">Download my full CV</p>
                     </div>
-                    <Button className="rounded-xl shadow-lg shadow-primary/25" asChild>
-                      <a href="/resume.pdf" download>
-                        Download
-                      </a>
-                    </Button>
+                    <span className="font-mono text-xs text-primary">DOWNLOAD →</span>
                   </div>
-                </motion.div>
+                </motion.a>
               </AnimatedSection>
 
-              {/* Additional Info */}
+              {/* Status Card */}
               <AnimatedSection delay={0.5}>
-                <div className="bg-card rounded-2xl border border-border p-6">
-                  <h4 className="font-semibold text-foreground mb-2">Response Time</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    I typically respond within 24-48 hours. For urgent matters, please reach out via LinkedIn.
+                <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6">
+                  <div className="flex items-center gap-2 mb-3 font-mono text-xs text-primary">
+                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    RESPONSE_TIME
+                  </div>
+                  <p className="font-mono text-xs text-muted-foreground leading-relaxed">
+                    {`>`} I typically respond within 24-48 hours.
+                    <br />
+                    {`>`} For urgent matters, reach out via LinkedIn.
                   </p>
                 </div>
               </AnimatedSection>

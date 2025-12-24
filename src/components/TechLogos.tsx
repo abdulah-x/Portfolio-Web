@@ -1,10 +1,37 @@
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
-interface TechLogoProps {
+interface TechCardProps {
   name: string;
-  className?: string;
+  logo: ReactNode;
+  index?: number;
 }
 
+export function TechCard({ name, logo, index = 0 }: TechCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      whileHover={{ y: -8, scale: 1.02 }}
+      className="group relative bg-card/80 backdrop-blur-sm rounded-lg border border-primary/10 p-5 flex flex-col items-center justify-center gap-3 hover:border-primary/40 hover:neon-border transition-all duration-300 cursor-default overflow-hidden"
+    >
+      {/* Corner accents */}
+      <div className="absolute top-0 left-0 w-3 h-3 border-l border-t border-primary/30 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute top-0 right-0 w-3 h-3 border-r border-t border-primary/30 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute bottom-0 left-0 w-3 h-3 border-l border-b border-accent/30 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute bottom-0 right-0 w-3 h-3 border-r border-b border-accent/30 opacity-0 group-hover:opacity-100 transition-opacity" />
+      
+      <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
+        {logo}
+      </div>
+      <span className="relative z-10 font-mono text-xs text-foreground">{name}</span>
+    </motion.div>
+  );
+}
+
+// Keep all the existing logo components
 export function PythonLogo({ className = "w-8 h-8" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 256 255" xmlns="http://www.w3.org/2000/svg">
@@ -27,9 +54,9 @@ export function PythonLogo({ className = "w-8 h-8" }: { className?: string }) {
 export function SQLLogo({ className = "w-8 h-8" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="12" cy="6" rx="8" ry="3" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
-      <path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
-      <path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+      <ellipse cx="12" cy="6" rx="8" ry="3" stroke="hsl(175, 100%, 50%)" strokeWidth="1.5"/>
+      <path d="M4 6v6c0 1.657 3.582 3 8 3s8-1.343 8-3V6" stroke="hsl(175, 100%, 50%)" strokeWidth="1.5"/>
+      <path d="M4 12v6c0 1.657 3.582 3 8 3s8-1.343 8-3v-6" stroke="hsl(175, 100%, 50%)" strokeWidth="1.5"/>
     </svg>
   );
 }
@@ -122,32 +149,5 @@ export function AzureLogo({ className = "w-8 h-8" }: { className?: string }) {
       <path fill="#0089D6" d="M85.343 0L0 85.343v156.314h85.343V85.343h85.314L85.343 0z"/>
       <path fill="#0089D6" d="M170.657 0v156.314H85.343V241.657L256 156.314V0H170.657z"/>
     </svg>
-  );
-}
-
-interface TechCardProps {
-  name: string;
-  logo: React.ReactNode;
-  index?: number;
-}
-
-export function TechCard({ name, logo, index = 0 }: TechCardProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      whileHover={{ y: -8, scale: 1.02 }}
-      className="group relative bg-card rounded-2xl border border-border p-5 flex flex-col items-center justify-center gap-3 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 cursor-default overflow-hidden"
-    >
-      {/* Subtle gradient background on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
-      <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
-        {logo}
-      </div>
-      <span className="relative z-10 text-sm font-semibold text-foreground">{name}</span>
-    </motion.div>
   );
 }
