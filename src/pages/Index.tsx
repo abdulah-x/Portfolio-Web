@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { HeroBackground } from "@/components/HeroBackground";
+import { AboutBackground } from "@/components/AboutBackground";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import {
   TechCard,
@@ -144,8 +145,9 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24">
-        <div className="container mx-auto px-4">
+      <section id="about" className="py-24 relative overflow-hidden">
+        <AboutBackground />
+        <div className="container mx-auto px-4 relative z-10">
           {/* Section Header */}
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
