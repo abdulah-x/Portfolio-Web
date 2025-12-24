@@ -28,6 +28,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
   const [userData, setUserData] = useState<GitHubUser | null>(null);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [totalCommits, setTotalCommits] = useState<number>(0);
+  const [languageBytes, setLanguageBytes] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -49,13 +50,25 @@ export function GitHubStats({ username }: GitHubStatsProps) {
         setUserData(user);
         setRepos(repoData);
 
-        // Fetch commit counts for each repo (limited to first 10 repos to avoid rate limiting)
+        // Fetch detailed language stats from each repo
+        const languagePromises = repoData.slice(0, 15).map(async (repo) => {
+          try {
+            const langRes = await fetch(`https://api.github.com/repos/${repo.full_name}/languages`);
+            if (langRes.ok) {
+              return await langRes.json();
+            }
+            return {};
+          } catch {
+            return {};
+          }
+        });
+
+        // Fetch commit counts for each repo
         const commitPromises = repoData.slice(0, 10).map(async (repo) => {
           try {
             const commitsRes = await fetch(
               `https://api.github.com/repos/${repo.full_name}/commits?per_page=1&author=${username}`
             );
-            // Get total count from Link header
             const linkHeader = commitsRes.headers.get('Link');
             if (linkHeader) {
               const match = linkHeader.match(/page=(\d+)>; rel="last"/);
@@ -63,7 +76,6 @@ export function GitHubStats({ username }: GitHubStatsProps) {
                 return parseInt(match[1], 10);
               }
             }
-            // If no Link header, count the commits (means 1 or fewer)
             const commits = await commitsRes.json();
             return Array.isArray(commits) ? commits.length : 0;
           } catch {
@@ -71,7 +83,20 @@ export function GitHubStats({ username }: GitHubStatsProps) {
           }
         });
 
-        const commitCounts = await Promise.all(commitPromises);
+        const [languageResults, commitCounts] = await Promise.all([
+          Promise.all(languagePromises),
+          Promise.all(commitPromises)
+        ]);
+
+        // Aggregate language bytes across all repos
+        const aggregatedLanguages: Record<string, number> = {};
+        languageResults.forEach((repoLangs) => {
+          Object.entries(repoLangs).forEach(([lang, bytes]) => {
+            aggregatedLanguages[lang] = (aggregatedLanguages[lang] || 0) + (bytes as number);
+          });
+        });
+
+        setLanguageBytes(aggregatedLanguages);
         setTotalCommits(commitCounts.reduce((acc, count) => acc + count, 0));
         setLoading(false);
       } catch (err) {
@@ -87,19 +112,12 @@ export function GitHubStats({ username }: GitHubStatsProps) {
   const totalStars = repos.reduce((acc, repo) => acc + repo.stargazers_count, 0);
   const totalForks = repos.reduce((acc, repo) => acc + repo.forks_count, 0);
   
-  // Calculate language distribution
-  const languageCount: Record<string, number> = {};
-  repos.forEach(repo => {
-    if (repo.language) {
-      languageCount[repo.language] = (languageCount[repo.language] || 0) + 1;
-    }
-  });
-  
-  const topLanguages = Object.entries(languageCount)
+  // Get top 5 languages by bytes
+  const topLanguages = Object.entries(languageBytes)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5);
 
-  const totalLangRepos = topLanguages.reduce((acc, [, count]) => acc + count, 0);
+  const totalBytes = topLanguages.reduce((acc, [, bytes]) => acc + bytes, 0);
 
   const languageColors: Record<string, string> = {
     JavaScript: "#f7df1e",
@@ -217,8 +235,8 @@ export function GitHubStats({ username }: GitHubStatsProps) {
             </div>
             
             <div className="space-y-4">
-              {topLanguages.map(([language, count], index) => {
-                const percentage = Math.round((count / totalLangRepos) * 100);
+              {topLanguages.map(([language, bytes], index) => {
+                const percentage = Math.round((bytes / totalBytes) * 100);
                 const color = languageColors[language] || "#8b5cf6";
                 
                 return (
