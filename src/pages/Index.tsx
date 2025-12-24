@@ -411,7 +411,7 @@ const Index = () => {
             {/* LinkedIn Card */}
             <AnimatedSection delay={0.2}>
               <motion.a
-                href="https://www.linkedin.com/in/muhammad-abdullah-53b843248"
+                href="https://www.linkedin.com/in/muhammad-abdullah-53b843248/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -4 }}

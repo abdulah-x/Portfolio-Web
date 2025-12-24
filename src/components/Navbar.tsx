@@ -89,7 +89,7 @@ export function Navbar() {
           </motion.div>
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <Button variant="ghost" size="icon" className="h-8 w-8 rounded border border-primary/20 hover:border-primary/50 hover:neon-border" asChild>
-              <a href="https://www.linkedin.com/in/muhammad-abdullah-53b843248" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/muhammad-abdullah-53b843248/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <Linkedin className="h-4 w-4 text-primary" />
               </a>
             </Button>
