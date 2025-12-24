@@ -1,4 +1,4 @@
-import { Download, Github, Linkedin, Terminal, Code2, Cpu, Zap, Award, Mail, Briefcase, FolderCode } from "lucide-react";
+import { Download, Github, Linkedin, Terminal, Code2, Cpu, Zap, Award, Mail, Briefcase, FolderCode, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { CredlyBadge } from "@/components/CredlyBadge";
 import { CertificationCard } from "@/components/CertificationCard";
 import { ExperienceCard } from "@/components/ExperienceCard";
+import { EducationCard } from "@/components/EducationCard";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
@@ -324,6 +325,55 @@ const Index = () => {
                 </a>
               </Button>
             </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="py-24 relative">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
+              <GraduationCap className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground">SECTION:</span>
+              <span className="text-primary">EDUCATION</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              ACADEMIC <span className="text-primary">BACKGROUND</span>
+            </h2>
+            <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
+              <span className="text-primary">{`>`}</span> My educational journey in science and data.
+            </p>
+          </AnimatedSection>
+
+          <div className="max-w-2xl mx-auto">
+            <EducationCard
+              degree="BS (Data Science)"
+              institution="COMSATS University Islamabad"
+              location="Islamabad, Pakistan"
+              period="2021 - Present"
+              description="7th semester student specializing in machine learning, data pipelines, and predictive analytics. Building end-to-end ML solutions and intelligent systems."
+              isCurrent={true}
+              index={0}
+            />
+            <EducationCard
+              degree="F.Sc Pre-Engineering (HSSC)"
+              institution="Punjab College for Boys Phalia Campus"
+              location="Mandi Bahauddin, Pakistan"
+              period="2018 - 2020"
+              grade="A+ (973/1100)"
+              description="Higher Secondary School Certificate with focus on Physics, Chemistry, and Mathematics."
+              index={1}
+            />
+            <EducationCard
+              degree="Matriculation - Science (SSC)"
+              institution="Ghazali Model High School"
+              location="Mandi Bahauddin, Pakistan"
+              period="2016 - 2018"
+              grade="A+ (999/1100)"
+              description="Secondary School Certificate with Science subjects including Physics, Chemistry, Biology, and Mathematics."
+              index={2}
+            />
           </div>
         </div>
       </section>
