@@ -66,24 +66,24 @@ const Index = () => {
     <Layout>
       {/* Hero Section - Cyber/Futuristic style */}
       <section id="home" className="min-h-screen flex items-center justify-center relative">
-        <div className="container mx-auto px-6 py-20">
+        {/* Quote at the top */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="absolute top-24 left-0 right-0 text-center px-4"
+        >
+          <p className="font-serif italic text-lg md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            "{quoteText}"
+            <span className="animate-pulse text-primary">|</span>
+          </p>
+        </motion.div>
+
+        <div className="container mx-auto px-6 py-20 mt-16">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-6xl mx-auto">
             
             {/* Left - Profile with cyber frame */}
             <div className="flex flex-col items-center">
-              {/* Quote above photo */}
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="mb-8 text-center max-w-xs md:max-w-sm"
-              >
-                <p className="font-serif italic text-lg md:text-xl text-muted-foreground leading-relaxed">
-                  "{quoteText}"
-                  <span className="animate-pulse text-primary">|</span>
-                </p>
-              </motion.div>
-
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
