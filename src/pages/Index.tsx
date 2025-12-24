@@ -142,12 +142,12 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="font-mono text-sm text-muted-foreground leading-relaxed max-w-xl mb-8"
               >
-                <span className="text-primary">{`>`}</span> 7th-semester Data Science student specializing in 
-                <span className="text-primary"> machine learning</span>, 
-                <span className="text-accent"> data pipelines</span>, and 
-                <span className="text-neon-pink"> predictive analytics</span>.
+                <span className="text-primary">{`>`}</span> Data & AI enthusiast building impactful solutions with 
+                <span className="text-primary"> LLMs</span>, 
+                <span className="text-accent"> MLOps</span>, and 
+                <span className="text-neon-pink"> Cloud Computing</span>.
                 <br />
-                <span className="text-primary">{`>`}</span> Building end-to-end ML pipelines and intelligent surveillance systems.
+                <span className="text-primary">{`>`}</span> Open to collaborations. Ask me about Python, R, Power BI. Also a photographer 📸
               </motion.p>
 
               {/* Quick action buttons */}
