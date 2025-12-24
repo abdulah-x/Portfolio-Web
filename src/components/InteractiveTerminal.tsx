@@ -27,17 +27,7 @@ const COMMANDS: Record<string, string> = {
   
   Current status: CAFFEINATED
   Productivity: MAXIMUM`,
-  quote: `💡 Random Dev Wisdom:
-  ─────────────────────────────────
-  "${[
-    "It works on my machine. Ship it!",
-    "There are only 2 hard problems: cache invalidation, naming things, and off-by-one errors.",
-    "99 bugs in the code, take one down, patch it around... 127 bugs in the code.",
-    "The best code is no code at all.",
-    "First, solve the problem. Then, write the code.",
-    "Code is like humor. When you have to explain it, it's bad.",
-    "Talk is cheap. Show me the code. - Linus Torvalds",
-  ][Math.floor(Math.random() * 7)]}"`,
+  quote: "RANDOM_QUOTE",
   easter: `🥚 You found the Easter Egg!
   ─────────────────────────────────
      ╭──────────────────────╮
@@ -113,6 +103,22 @@ const COMMANDS: Record<string, string> = {
   Type 'help' for more commands`,
 };
 
+const DEV_QUOTES = [
+  "It works on my machine. Ship it!",
+  "There are only 2 hard problems: cache invalidation, naming things, and off-by-one errors.",
+  "99 bugs in the code, take one down, patch it around... 127 bugs in the code.",
+  "The best code is no code at all.",
+  "First, solve the problem. Then, write the code.",
+  "Code is like humor. When you have to explain it, it's bad.",
+  "Talk is cheap. Show me the code. - Linus Torvalds",
+  "Debugging is like being the detective in a crime movie where you're also the murderer.",
+  "A good programmer is someone who always looks both ways before crossing a one-way street.",
+];
+
+const getRandomQuote = () => `💡 Random Dev Wisdom:
+  ─────────────────────────────────
+  "${DEV_QUOTES[Math.floor(Math.random() * DEV_QUOTES.length)]}"`;
+
 export function InteractiveTerminal() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<{ command: string; output: string }[]>([]);
@@ -142,8 +148,14 @@ export function InteractiveTerminal() {
       return;
     }
 
-    const output = COMMANDS[cmd] || `Command not found: ${cmd}. Type 'help' for available commands.`;
+    let output: string;
+    if (cmd === "quote") {
+      output = getRandomQuote();
+    } else {
+      output = COMMANDS[cmd] || `Command not found: ${cmd}. Type 'help' for available commands.`;
+    }
     setHistory([...history, { command: input, output }]);
+    setInput("");
     setInput("");
   };
 
