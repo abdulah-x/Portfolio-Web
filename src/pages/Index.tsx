@@ -361,7 +361,7 @@ const Index = () => {
               institution="Punjab College for Boys Phalia Campus"
               location="Mandi Bahauddin, Pakistan"
               period="2018 - 2020"
-              grade="A+ (973/1100)"
+              grade="A+"
               description="Higher Secondary School Certificate with focus on Physics, Chemistry, and Mathematics."
               index={1}
             />
@@ -370,7 +370,7 @@ const Index = () => {
               institution="Ghazali Model High School"
               location="Mandi Bahauddin, Pakistan"
               period="2016 - 2018"
-              grade="A+ (999/1100)"
+              grade="A+"
               description="Secondary School Certificate with Science subjects including Physics, Chemistry, Biology, and Mathematics."
               index={2}
             />
