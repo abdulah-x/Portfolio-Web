@@ -4,13 +4,67 @@ import { Terminal } from "lucide-react";
 
 const COMMANDS: Record<string, string> = {
   help: `Available commands:
+  ─────────────────────────────────
   help     - Show this help message
   about    - Learn more about me
   skills   - List my technical skills
   certs    - View my certifications
   contact  - Get my contact information
   projects - View my projects
-  clear    - Clear the terminal`,
+  clear    - Clear the terminal
+  
+  Fun commands:
+  coffee   - Check my coffee consumption ☕
+  quote    - Get an inspiring quote
+  easter   - Find a hidden surprise 🥚
+  matrix   - Enter the matrix
+  sudo     - Try admin access`,
+  coffee: `☕ Coffee Status:
+  ─────────────────────────────────
+  Today:     ████████░░ 4 cups
+  This week: ███████████████ 23 cups
+  Lifetime:  ∞ (stopped counting)
+  
+  Current status: CAFFEINATED
+  Productivity: MAXIMUM`,
+  quote: `💡 Random Dev Wisdom:
+  ─────────────────────────────────
+  "${[
+    "It works on my machine. Ship it!",
+    "There are only 2 hard problems: cache invalidation, naming things, and off-by-one errors.",
+    "99 bugs in the code, take one down, patch it around... 127 bugs in the code.",
+    "The best code is no code at all.",
+    "First, solve the problem. Then, write the code.",
+    "Code is like humor. When you have to explain it, it's bad.",
+    "Talk is cheap. Show me the code. - Linus Torvalds",
+  ][Math.floor(Math.random() * 7)]}"`,
+  easter: `🥚 You found the Easter Egg!
+  ─────────────────────────────────
+     ╭──────────────────────╮
+     │  CONGRATULATIONS!    │
+     │  You're curious.     │
+     │  That's a good sign. │
+     │  Keep exploring!     │
+     ╰──────────────────────╯
+         \\ (•◡•) /
+          \\     /
+           ─────`,
+  matrix: `Wake up, Neo...
+  ─────────────────────────────────
+  01001000 01100101 01101100
+  01101100 01101111 00100000
+  01010111 01101111 01110010
+  01101100 01100100
+  
+  Translation: "Hello World"
+  The Matrix has you... 🐇`,
+  sudo: `Permission denied.
+  ─────────────────────────────────
+  Nice try! But this terminal 
+  doesn't grant root access.
+  
+  ⚠️ This incident will be reported.
+  (Just kidding... or am I? 👀)`,
   about: `Muhammad Abdullah
   Data Analyst | ML & Generative AI (LLMs) | MLOps | AWS
   7th-semester Data Science student
