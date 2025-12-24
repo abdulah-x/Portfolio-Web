@@ -140,7 +140,7 @@ const Index = () => {
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="hidden md:block h-12 md:h-16 lg:h-20 w-24 md:w-32 lg:w-40 bg-gradient-to-r from-neon-pink via-purple-500 to-accent origin-left"
+                    className="hidden sm:block h-8 md:h-10 lg:h-12 w-16 md:w-24 lg:w-32 bg-gradient-to-r from-neon-pink via-purple-500 to-accent origin-left rounded"
                   />
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight gradient-text-cyber mt-2">
