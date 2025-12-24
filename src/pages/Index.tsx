@@ -4,6 +4,7 @@ import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { TerminalTag } from "@/components/TerminalTag";
+import { SkillCard } from "@/components/SkillCard";
 import { InteractiveTerminal } from "@/components/InteractiveTerminal";
 import { GitHubStats } from "@/components/GitHubStats";
 import { projects } from "@/data/projects";
@@ -251,72 +252,92 @@ const Index = () => {
           {/* Main Content */}
           <div className="max-w-5xl mx-auto">
             {/* Skills Grid */}
-            <div className="space-y-12">
+            <div className="space-y-16">
               {/* Languages */}
               <div>
                 <AnimatedSection delay={0.1}>
-                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
-                    <span className="w-8 h-px bg-primary/50" />
-                    LANGUAGES
-                    <span className="w-8 h-px bg-primary/50" />
+                  <h4 className="font-mono text-xs uppercase tracking-widest mb-8 text-center flex items-center justify-center gap-3">
+                    <span className="w-12 h-px bg-gradient-to-r from-transparent to-cyan-500" />
+                    <span className="text-cyan-400 flex items-center gap-2">
+                      <span className="text-lg">💻</span>
+                      LANGUAGES
+                    </span>
+                    <span className="w-12 h-px bg-gradient-to-l from-transparent to-cyan-500" />
                   </h4>
                 </AnimatedSection>
-                <div className="flex flex-wrap justify-center gap-3">
-                  <TerminalTag name="python" index={0} />
-                  <TerminalTag name="sql" index={1} />
-                  <TerminalTag name="r" index={2} />
+                <div className="grid grid-cols-3 md:grid-cols-3 gap-4 max-w-md mx-auto">
+                  <SkillCard name="Python" icon="🐍" category="language" proficiency={95} index={0} />
+                  <SkillCard name="SQL" icon="🗃️" category="language" proficiency={90} index={1} />
+                  <SkillCard name="R" icon="📊" category="language" proficiency={75} index={2} />
                 </div>
               </div>
 
               {/* Machine Learning */}
               <div>
                 <AnimatedSection delay={0.2}>
-                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
-                    <span className="w-8 h-px bg-primary/50" />
-                    MACHINE LEARNING
-                    <span className="w-8 h-px bg-primary/50" />
+                  <h4 className="font-mono text-xs uppercase tracking-widest mb-8 text-center flex items-center justify-center gap-3">
+                    <span className="w-12 h-px bg-gradient-to-r from-transparent to-purple-500" />
+                    <span className="text-purple-400 flex items-center gap-2">
+                      <span className="text-lg">🧠</span>
+                      MACHINE LEARNING
+                    </span>
+                    <span className="w-12 h-px bg-gradient-to-l from-transparent to-purple-500" />
                   </h4>
                 </AnimatedSection>
-                <div className="flex flex-wrap justify-center gap-3">
-                  <TerminalTag name="scikit-learn" index={0} />
-                  <TerminalTag name="tensorflow" index={1} />
-                  <TerminalTag name="pytorch" index={2} />
-                  <TerminalTag name="pandas" index={3} />
-                  <TerminalTag name="numpy" index={4} />
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
+                  <SkillCard name="Scikit-Learn" icon="⚙️" category="ml" proficiency={90} index={0} />
+                  <SkillCard name="TensorFlow" icon="🔥" category="ml" proficiency={85} index={1} />
+                  <SkillCard name="PyTorch" icon="🔦" category="ml" proficiency={80} index={2} />
+                  <SkillCard name="Pandas" icon="🐼" category="ml" proficiency={95} index={3} />
+                  <SkillCard name="NumPy" icon="🔢" category="ml" proficiency={90} index={4} />
                 </div>
               </div>
 
               {/* Deployment & Tools */}
               <div>
                 <AnimatedSection delay={0.3}>
-                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
-                    <span className="w-8 h-px bg-primary/50" />
-                    DEPLOYMENT & TOOLS
-                    <span className="w-8 h-px bg-primary/50" />
+                  <h4 className="font-mono text-xs uppercase tracking-widest mb-8 text-center flex items-center justify-center gap-3">
+                    <span className="w-12 h-px bg-gradient-to-r from-transparent to-green-500" />
+                    <span className="text-green-400 flex items-center gap-2">
+                      <span className="text-lg">🚀</span>
+                      DEPLOYMENT & TOOLS
+                    </span>
+                    <span className="w-12 h-px bg-gradient-to-l from-transparent to-green-500" />
                   </h4>
                 </AnimatedSection>
-                <div className="flex flex-wrap justify-center gap-3">
-                  <TerminalTag name="git" index={0} />
-                  <TerminalTag name="docker" index={1} />
-                  <TerminalTag name="streamlit" index={2} />
-                  <TerminalTag name="aws" index={3} />
-                  <TerminalTag name="azure" index={4} />
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
+                  <SkillCard name="Git" icon="📝" category="tool" proficiency={90} index={0} />
+                  <SkillCard name="Docker" icon="🐳" category="tool" proficiency={85} index={1} />
+                  <SkillCard name="Streamlit" icon="🎈" category="tool" proficiency={88} index={2} />
+                  <SkillCard name="AWS" icon="☁️" category="tool" proficiency={80} index={3} />
+                  <SkillCard name="Azure" icon="🔷" category="tool" proficiency={75} index={4} />
                 </div>
               </div>
             </div>
 
             {/* Download Resume */}
             <AnimatedSection delay={0.4} className="mt-16">
-              <Button 
-                size="lg" 
-                className="w-full max-w-md mx-auto flex gap-2 h-14 font-mono text-sm bg-primary/10 border border-primary text-primary hover:bg-primary hover:text-primary-foreground neon-border"
-                asChild
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <a href="/resume.pdf" download>
-                  <Download className="h-5 w-5" />
-                  DOWNLOAD_RESUME.PDF
-                </a>
-              </Button>
+                <Button 
+                  size="lg" 
+                  className="w-full max-w-md mx-auto flex gap-3 h-16 font-mono text-sm bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] transition-all duration-300"
+                  asChild
+                >
+                  <a href="/resume.pdf" download className="relative overflow-hidden group">
+                    <motion.span
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+                      initial={{ x: "-100%" }}
+                      animate={{ x: "100%" }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+                    />
+                    <Download className="h-5 w-5 relative z-10" />
+                    <span className="relative z-10">DOWNLOAD_RESUME.PDF</span>
+                  </a>
+                </Button>
+              </motion.div>
             </AnimatedSection>
           </div>
         </div>
