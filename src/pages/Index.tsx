@@ -5,6 +5,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { TerminalTag } from "@/components/TerminalTag";
 import { InteractiveTerminal } from "@/components/InteractiveTerminal";
+import { GitHubStats } from "@/components/GitHubStats";
 import { projects } from "@/data/projects";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -461,6 +462,29 @@ const Index = () => {
               badgeUrl="https://www.credly.com/badges/2e82b343-d2cd-453a-bfca-898726be0d3f/public_url"
               index={1}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* GitHub Stats Section */}
+      <section id="github" className="py-24 relative">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
+              <Github className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground">SECTION:</span>
+              <span className="text-primary">GITHUB_STATS</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              MY <span className="text-primary">GITHUB</span>
+            </h2>
+            <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
+              <span className="text-primary">{`>`}</span> Contributions, streaks, and coding activity.
+            </p>
+          </AnimatedSection>
+
+          <div className="max-w-4xl mx-auto">
+            <GitHubStats username="abdulah-x" />
           </div>
         </div>
       </section>
