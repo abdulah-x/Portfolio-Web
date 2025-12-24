@@ -288,7 +288,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center overflow-hidden">
                   {userData.avatar_url ? (
-                    <img src={userData.avatar_url} alt={username} className="w-full h-full object-cover" />
+                    <img src={userData.avatar_url} alt={username} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                   ) : (
                     <Github className="w-6 h-6 text-primary" />
                   )}
