@@ -6,52 +6,52 @@
 
 @layer base {
   :root {
-    /* Light cyber theme - clean with teal accents */
-    --background: 200 20% 97%;
-    --foreground: 220 25% 12%;
+    /* Light cyber theme - high contrast for readability */
+    --background: 180 10% 98%;
+    --foreground: 220 30% 8%;
 
-    --card: 200 25% 99%;
-    --card-foreground: 220 25% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 8%;
 
-    --popover: 200 25% 99%;
-    --popover-foreground: 220 25% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 8%;
 
-    /* Deeper teal for light mode readability */
-    --primary: 175 85% 32%;
-    --primary-foreground: 200 20% 97%;
+    /* Deep teal for excellent readability */
+    --primary: 175 80% 28%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 200 20% 93%;
-    --secondary-foreground: 220 25% 15%;
+    --secondary: 180 15% 92%;
+    --secondary-foreground: 220 30% 12%;
 
-    --muted: 200 15% 90%;
-    --muted-foreground: 220 15% 40%;
+    --muted: 180 10% 88%;
+    --muted-foreground: 220 20% 35%;
 
-    --accent: 280 70% 50%;
+    --accent: 280 65% 45%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 72% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 20% 85%;
-    --input: 200 20% 85%;
-    --ring: 175 85% 32%;
+    --border: 180 15% 80%;
+    --input: 180 15% 80%;
+    --ring: 175 80% 28%;
 
     --radius: 0.75rem;
 
     /* Toned down neon for light mode */
-    --neon-cyan: 175 85% 32%;
-    --neon-purple: 280 70% 50%;
-    --neon-pink: 320 70% 50%;
-    --neon-green: 150 70% 35%;
+    --neon-cyan: 175 80% 28%;
+    --neon-purple: 280 65% 45%;
+    --neon-pink: 320 65% 45%;
+    --neon-green: 150 65% 30%;
 
-    --sidebar-background: 200 25% 99%;
-    --sidebar-foreground: 220 25% 12%;
-    --sidebar-primary: 175 85% 32%;
-    --sidebar-primary-foreground: 200 20% 97%;
-    --sidebar-accent: 200 20% 93%;
-    --sidebar-accent-foreground: 220 25% 15%;
-    --sidebar-border: 200 20% 85%;
-    --sidebar-ring: 175 85% 32%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 30% 8%;
+    --sidebar-primary: 175 80% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 180 15% 92%;
+    --sidebar-accent-foreground: 220 30% 12%;
+    --sidebar-border: 180 15% 80%;
+    --sidebar-ring: 175 80% 28%;
   }
 
   .dark {
@@ -110,12 +110,12 @@
     scroll-behavior: smooth;
   }
 
-  /* Theme transition */
+  /* Theme transition - fast and smooth */
   html,
   html *,
   html *::before,
   html *::after {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
   }
 
   body {
