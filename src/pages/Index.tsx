@@ -6,32 +6,26 @@ import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { HeroBackground } from "@/components/HeroBackground";
-import { AnimatedSection, AnimatedCard, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import {
+  TechCard,
+  PythonLogo,
+  SQLLogo,
+  RLogo,
+  ScikitLearnLogo,
+  TensorFlowLogo,
+  PyTorchLogo,
+  PandasLogo,
+  GitLogo,
+  DockerLogo,
+  StreamlitLogo,
+  AWSLogo,
+  AzureLogo,
+} from "@/components/TechLogos";
 import { projects } from "@/data/projects";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
-
-const skills = {
-  languages: [
-    { name: "Python", icon: "🐍" },
-    { name: "SQL", icon: "🗄️" },
-    { name: "R", icon: "📊" },
-  ],
-  ml: [
-    { name: "Scikit-learn", icon: "🔬" },
-    { name: "TensorFlow", icon: "🧠" },
-    { name: "PyTorch", icon: "🔥" },
-    { name: "Pandas", icon: "🐼" },
-  ],
-  tools: [
-    { name: "Git", icon: "📝" },
-    { name: "Docker", icon: "🐳" },
-    { name: "Streamlit", icon: "⚡" },
-    { name: "AWS", icon: "☁️" },
-    { name: "Azure", icon: "🌐" },
-  ],
-};
 
 const Index = () => {
   const { toast } = useToast();
@@ -152,135 +146,128 @@ const Index = () => {
       {/* About Section */}
       <section id="about" className="py-24">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Left Column - Narrative (40%) */}
-            <AnimatedSection className="lg:col-span-2 space-y-8">
-              {/* Headshot */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="relative w-56 h-56 mx-auto lg:mx-0"
-              >
-                <div className="w-full h-full rounded-3xl bg-gradient-to-br from-primary/20 to-purple-500/20 p-1">
-                  <div className="w-full h-full rounded-3xl overflow-hidden bg-card">
-                    <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
-                      alt="Muhammad Abdullah"
-                      className="w-full h-full object-cover"
-                    />
+          {/* Section Header */}
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              About Me
+            </h2>
+          </AnimatedSection>
+
+          {/* Main Content */}
+          <div className="max-w-5xl mx-auto">
+            {/* Profile Card */}
+            <AnimatedSection delay={0.1}>
+              <div className="bg-gradient-to-br from-card via-card to-primary/5 rounded-3xl border border-border p-8 md:p-10 mb-16 relative overflow-hidden">
+                {/* Background decoration */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                
+                <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                  {/* Avatar */}
+                  <motion.div
+                    whileHover={{ scale: 1.05, rotate: 2 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative shrink-0"
+                  >
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br from-primary to-purple-500 p-1 shadow-xl shadow-primary/20">
+                      <div className="w-full h-full rounded-2xl overflow-hidden bg-card">
+                        <img
+                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
+                          alt="Muhammad Abdullah"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-br from-primary to-purple-500 rounded-xl flex items-center justify-center text-lg shadow-lg">
+                      📊
+                    </div>
+                  </motion.div>
+
+                  {/* Bio Text */}
+                  <div className="text-center md:text-left flex-1">
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                      Muhammad Abdullah
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-lg max-w-xl">
+                      7th-semester Data Science student passionate about transforming complex datasets into actionable insights. I build end-to-end ML pipelines and love solving real-world problems with data.
+                    </p>
+                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-5">
+                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                        Open to Internships
+                      </span>
+                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-muted-foreground text-sm font-medium">
+                        📍 Pakistan
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <motion.div
-                  animate={{ rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-3 -right-3 w-16 h-16 bg-gradient-to-br from-primary to-purple-500 rounded-2xl flex items-center justify-center text-primary-foreground text-2xl shadow-lg"
-                >
-                  📊
-                </motion.div>
-              </motion.div>
-
-              {/* Bio */}
-              <div className="space-y-4 text-center lg:text-left">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                  About Me
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  I'm a 7th-semester Data Science student passionate about
-                  transforming complex datasets into actionable business
-                  insights. My journey began with a curiosity about patterns in
-                  data, which evolved into a deep expertise in machine learning
-                  and analytics.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  I specialize in building end-to-end data pipelines, from raw
-                  data ingestion to model deployment. Whether it's predicting
-                  customer behavior, optimizing operations, or uncovering hidden
-                  trends, I thrive on solving real-world problems with data.
-                </p>
               </div>
             </AnimatedSection>
 
-            {/* Right Column - Technical Toolkit (60%) */}
-            <div className="lg:col-span-3 space-y-8">
-              <AnimatedSection delay={0.1}>
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-8">
-                  My Technical Toolkit
-                </h3>
-              </AnimatedSection>
+            {/* Technical Toolkit */}
+            <AnimatedSection delay={0.2}>
+              <h3 className="text-2xl font-bold text-foreground text-center mb-10">
+                Technical Toolkit
+              </h3>
+            </AnimatedSection>
 
+            {/* Skills Grid */}
+            <div className="space-y-10">
               {/* Languages */}
-              <AnimatedSection delay={0.2}>
-                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                  Languages
-                </h4>
-                <div className="grid grid-cols-3 gap-4">
-                  {skills.languages.map((skill, i) => (
-                    <motion.div
-                      key={skill.name}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="bg-card rounded-2xl border border-border p-5 text-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-default"
-                    >
-                      <span className="text-3xl mb-3 block">{skill.icon}</span>
-                      <span className="text-sm font-semibold text-foreground">
-                        {skill.name}
-                      </span>
-                    </motion.div>
-                  ))}
+              <div>
+                <AnimatedSection delay={0.25}>
+                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-5 text-center">
+                    Languages
+                  </h4>
+                </AnimatedSection>
+                <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
+                  <TechCard name="Python" logo={<PythonLogo className="w-10 h-10" />} index={0} />
+                  <TechCard name="SQL" logo={<SQLLogo className="w-10 h-10" />} index={1} />
+                  <TechCard name="R" logo={<RLogo className="w-10 h-10" />} index={2} />
                 </div>
-              </AnimatedSection>
+              </div>
 
               {/* Machine Learning */}
-              <AnimatedSection delay={0.3}>
-                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                  Machine Learning
-                </h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {skills.ml.map((skill) => (
-                    <motion.div
-                      key={skill.name}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="bg-card rounded-2xl border border-border p-5 text-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-default"
-                    >
-                      <span className="text-3xl mb-3 block">{skill.icon}</span>
-                      <span className="text-sm font-semibold text-foreground">
-                        {skill.name}
-                      </span>
-                    </motion.div>
-                  ))}
+              <div>
+                <AnimatedSection delay={0.3}>
+                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-5 text-center">
+                    Machine Learning
+                  </h4>
+                </AnimatedSection>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+                  <TechCard name="Scikit-learn" logo={<ScikitLearnLogo className="w-10 h-10" />} index={0} />
+                  <TechCard name="TensorFlow" logo={<TensorFlowLogo className="w-10 h-10" />} index={1} />
+                  <TechCard name="PyTorch" logo={<PyTorchLogo className="w-10 h-10" />} index={2} />
+                  <TechCard name="Pandas" logo={<PandasLogo className="w-10 h-10" />} index={3} />
                 </div>
-              </AnimatedSection>
+              </div>
 
               {/* Deployment & Tools */}
-              <AnimatedSection delay={0.4}>
-                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                  Deployment & Tools
-                </h4>
-                <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
-                  {skills.tools.map((skill) => (
-                    <motion.div
-                      key={skill.name}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="bg-card rounded-2xl border border-border p-4 text-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-default"
-                    >
-                      <span className="text-2xl mb-2 block">{skill.icon}</span>
-                      <span className="text-xs font-semibold text-foreground">
-                        {skill.name}
-                      </span>
-                    </motion.div>
-                  ))}
+              <div>
+                <AnimatedSection delay={0.35}>
+                  <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-5 text-center">
+                    Deployment & Tools
+                  </h4>
+                </AnimatedSection>
+                <div className="grid grid-cols-3 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
+                  <TechCard name="Git" logo={<GitLogo className="w-9 h-9" />} index={0} />
+                  <TechCard name="Docker" logo={<DockerLogo className="w-9 h-9" />} index={1} />
+                  <TechCard name="Streamlit" logo={<StreamlitLogo className="w-9 h-9" />} index={2} />
+                  <TechCard name="AWS" logo={<AWSLogo className="w-9 h-9" />} index={3} />
+                  <TechCard name="Azure" logo={<AzureLogo className="w-9 h-9" />} index={4} />
                 </div>
-              </AnimatedSection>
-
-              {/* Download Resume Button */}
-              <AnimatedSection delay={0.5}>
-                <Button size="lg" className="w-full gap-2 h-14 text-base shadow-lg shadow-primary/25" asChild>
-                  <a href="/resume.pdf" download>
-                    <Download className="h-5 w-5" />
-                    Download Full Resume (PDF)
-                  </a>
-                </Button>
-              </AnimatedSection>
+              </div>
             </div>
+
+            {/* Download Resume */}
+            <AnimatedSection delay={0.4} className="mt-12">
+              <Button size="lg" className="w-full max-w-md mx-auto flex gap-2 h-14 text-base shadow-lg shadow-primary/25" asChild>
+                <a href="/resume.pdf" download>
+                  <Download className="h-5 w-5" />
+                  Download Full Resume (PDF)
+                </a>
+              </Button>
+            </AnimatedSection>
           </div>
         </div>
       </section>
