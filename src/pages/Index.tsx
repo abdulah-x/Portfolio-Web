@@ -73,10 +73,10 @@ const Index = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="absolute top-24 left-0 right-0 text-center px-4"
         >
-          <p className="font-serif italic text-lg md:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            "{quoteText}"
-            <span className="animate-pulse text-primary">|</span>
-          </p>
+        <p className="font-mono text-lg md:text-2xl leading-relaxed max-w-2xl mx-auto gradient-text-cyber">
+          "{quoteText}"
+          <span className="animate-pulse text-primary">|</span>
+        </p>
         </motion.div>
 
         <div className="container mx-auto px-6 py-20 mt-16">
