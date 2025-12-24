@@ -1,13 +1,12 @@
-import { ArrowRight, Download, Send, Github, Linkedin, Sparkles } from "lucide-react";
+import { Download, Send, Github, Linkedin, FileText, Briefcase, User, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
-import { HeroBackground } from "@/components/HeroBackground";
-import { AboutBackground } from "@/components/AboutBackground";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { AboutBackground } from "@/components/AboutBackground";
 import {
   TechCard,
   PythonLogo,
@@ -46,79 +45,100 @@ const Index = () => {
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const quickLinks = [
+    { name: "Resume", color: "bg-[#a3d977]", hoverColor: "hover:bg-[#8bc960]", href: "#skills" },
+    { name: "Projects", color: "bg-[#f5a623]", hoverColor: "hover:bg-[#e09515]", href: "#projects" },
+    { name: "Skills", color: "bg-[#7dd3d8]", hoverColor: "hover:bg-[#5bc5cb]", href: "#skills" },
+    { name: "Contact", color: "bg-[#b8b8b8]", hoverColor: "hover:bg-[#a0a0a0]", href: "#contact" },
+  ];
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <HeroBackground />
-        
-        <div className="container mx-auto px-4 py-20 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8"
-          >
-            <Sparkles className="h-4 w-4" />
-            Open to Opportunities
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground mb-6 leading-[1.1] tracking-tight"
-          >
-            Turning Raw Data into
-            <br />
-            <span className="gradient-text">Actionable Insights</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
-          >
-            Hi, I'm <span className="text-foreground font-semibold">Muhammad Abdullah</span>. A 7th-Semester Data Science Student
-            specializing in Machine Learning, Data Analysis, and end-to-end pipelines.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Button size="lg" className="gap-2 px-8 h-12 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all" asChild>
-              <a href="#projects">
-                View My Projects
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" className="gap-2 px-8 h-12 text-base hover:bg-secondary" asChild>
-              <a href="/resume.pdf" download>
-                <Download className="h-4 w-4" />
-                Download CV
-              </a>
-            </Button>
-          </motion.div>
-
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          >
+      {/* Hero Section - Clean minimal style */}
+      <section id="home" className="min-h-screen flex items-center justify-center bg-secondary/30">
+        <div className="container mx-auto px-6 py-20">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-6xl mx-auto">
+            
+            {/* Left - Large Circular Photo */}
             <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="relative shrink-0"
             >
-              <motion.div className="w-1 h-2 rounded-full bg-muted-foreground/50" />
+              <div className="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl shadow-primary/10">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+                  alt="Muhammad Abdullah"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Decorative ring */}
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/20 animate-[spin_30s_linear_infinite]" style={{ margin: '-8px' }} />
             </motion.div>
-          </motion.div>
+
+            {/* Right - Content */}
+            <div className="text-center lg:text-left flex-1">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 tracking-tight"
+              >
+                Muhammad Abdullah
+              </motion.h1>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-xl md:text-2xl font-semibold text-foreground mb-6"
+              >
+                A Bit About Me
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-muted-foreground text-lg leading-relaxed max-w-xl mb-10"
+              >
+                I am a 7th-semester Data Science student passionate about machine learning and analytics. 
+                I specialize in building end-to-end data pipelines, predictive modeling, and transforming 
+                complex datasets into actionable business insights.
+              </motion.p>
+
+              {/* Colorful Navigation Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="flex flex-wrap justify-center lg:justify-start gap-4"
+              >
+                {quickLinks.map((link, index) => (
+                  <motion.button
+                    key={link.name}
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 + index * 0.1 }}
+                    onClick={() => scrollToSection(link.href)}
+                    className={`w-24 h-24 md:w-28 md:h-28 rounded-full ${link.color} ${link.hoverColor} flex items-center justify-center text-foreground font-semibold text-sm md:text-base shadow-lg transition-all duration-300`}
+                  >
+                    {link.name}
+                  </motion.button>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -144,74 +164,22 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 relative overflow-hidden">
+      {/* Skills Section */}
+      <section id="skills" className="py-24 relative overflow-hidden">
         <AboutBackground />
         <div className="container mx-auto px-4 relative z-10">
           {/* Section Header */}
           <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              About Me
+              Technical Skills
             </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              The tools and technologies I use to bring data projects to life.
+            </p>
           </AnimatedSection>
 
           {/* Main Content */}
           <div className="max-w-5xl mx-auto">
-            {/* Profile Card */}
-            <AnimatedSection delay={0.1}>
-              <div className="bg-gradient-to-br from-card via-card to-primary/5 rounded-3xl border border-border p-8 md:p-10 mb-16 relative overflow-hidden">
-                {/* Background decoration */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                
-                <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
-                  {/* Avatar */}
-                  <motion.div
-                    whileHover={{ scale: 1.05, rotate: 2 }}
-                    transition={{ duration: 0.3 }}
-                    className="relative shrink-0"
-                  >
-                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br from-primary to-purple-500 p-1 shadow-xl shadow-primary/20">
-                      <div className="w-full h-full rounded-2xl overflow-hidden bg-card">
-                        <img
-                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
-                          alt="Muhammad Abdullah"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-br from-primary to-purple-500 rounded-xl flex items-center justify-center text-lg shadow-lg">
-                      📊
-                    </div>
-                  </motion.div>
-
-                  {/* Bio Text */}
-                  <div className="text-center md:text-left flex-1">
-                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                      Muhammad Abdullah
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed text-lg max-w-xl">
-                      7th-semester Data Science student passionate about transforming complex datasets into actionable insights. I build end-to-end ML pipelines and love solving real-world problems with data.
-                    </p>
-                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mt-5">
-                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                        Open to Internships
-                      </span>
-                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-muted-foreground text-sm font-medium">
-                        📍 Pakistan
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
-
-            {/* Technical Toolkit */}
-            <AnimatedSection delay={0.2}>
-              <h3 className="text-2xl font-bold text-foreground text-center mb-10">
-                Technical Toolkit
-              </h3>
-            </AnimatedSection>
 
             {/* Skills Grid */}
             <div className="space-y-10">
