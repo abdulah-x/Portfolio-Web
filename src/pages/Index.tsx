@@ -250,7 +250,7 @@ const Index = () => {
               <span className="text-primary">PROJECTS</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              SELECTED <span className="gradient-text-cyber">WORKS</span>
+              SELECTED <span className="text-primary">WORKS</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-2xl mx-auto">
               <span className="text-primary">{`>`}</span> A comprehensive look at my data science projects, from concept to deployment.
@@ -277,7 +277,7 @@ const Index = () => {
               <span className="text-primary">SKILLS</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              TECHNICAL <span className="gradient-text-cyber">ARSENAL</span>
+              TECHNICAL <span className="text-primary">ARSENAL</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
               <span className="text-primary">{`>`}</span> The tools and technologies I use to bring data projects to life.
@@ -368,7 +368,7 @@ const Index = () => {
               <span className="text-primary">CONTACT</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              LET'S <span className="gradient-text-cyber">CONNECT</span>
+              LET'S <span className="text-primary">CONNECT</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
               <span className="text-primary">{`>`}</span> Currently open for internship opportunities or collaborative data projects.
