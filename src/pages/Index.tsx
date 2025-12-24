@@ -14,7 +14,7 @@ import { CredlyBadge } from "@/components/CredlyBadge";
 import { CertificationCard } from "@/components/CertificationCard";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { EducationCard } from "@/components/EducationCard";
-import { ContactForm } from "@/components/ContactForm";
+
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
@@ -518,11 +518,6 @@ const Index = () => {
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
               <span className="text-primary">{`>`}</span> Currently open for internship opportunities or collaborative data projects.
             </p>
-          </AnimatedSection>
-
-          {/* Contact Form */}
-          <AnimatedSection delay={0.1} className="mb-16">
-            <ContactForm />
           </AnimatedSection>
 
           {/* Social Cards */}
