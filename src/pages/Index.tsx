@@ -74,7 +74,12 @@ const Index = () => {
           className="absolute top-24 left-0 right-0 text-center px-4"
         >
         <p className="font-mono text-lg md:text-2xl leading-relaxed max-w-2xl mx-auto font-bold">
-          <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent drop-shadow-[0_0_10px_hsl(var(--primary)/0.8)]">
+          <span 
+            className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
+            style={{ 
+              filter: 'drop-shadow(0 0 8px hsl(175 100% 50% / 0.9)) drop-shadow(0 0 20px hsl(175 100% 50% / 0.6)) drop-shadow(0 0 40px hsl(280 100% 65% / 0.4))' 
+            }}
+          >
             "{quoteText}"
           </span>
           <span className="animate-pulse text-primary neon-text">|</span>
