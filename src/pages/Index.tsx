@@ -513,10 +513,10 @@ const Index = () => {
               <motion.a
                 href="mailto:muhammad.abdullahds1@gmail.com"
                 whileHover={{ scale: 1.02, y: -4 }}
-                className="block bg-gradient-to-br from-primary/10 to-accent/5 rounded-lg border border-primary/30 p-6 hover:neon-border transition-all duration-300 h-full"
+                className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary/50 hover:neon-border transition-all duration-300 h-full"
               >
                 <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-14 h-14 rounded bg-primary/20 border border-primary/50 flex items-center justify-center neon-glow">
+                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center">
                     <Mail className="h-7 w-7 text-primary" />
                   </div>
                   <div>
