@@ -1,4 +1,4 @@
-import { Download, Github, Linkedin, Terminal, Code2, Cpu, Zap, Award, Mail } from "lucide-react";
+import { Download, Github, Linkedin, Terminal, Code2, Cpu, Zap, Award, Mail, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -22,6 +22,8 @@ import { projects } from "@/data/projects";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { CredlyBadge } from "@/components/CredlyBadge";
+import { CertificationCard } from "@/components/CertificationCard";
+import { ExperienceCard } from "@/components/ExperienceCard";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
@@ -338,6 +340,39 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Work Experience Section */}
+      <section id="experience" className="py-24 relative">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
+              <Briefcase className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground">SECTION:</span>
+              <span className="text-primary">EXPERIENCE</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              WORK <span className="text-primary">EXPERIENCE</span>
+            </h2>
+            <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
+              <span className="text-primary">{`>`}</span> Professional experience in data science and analytics.
+            </p>
+          </AnimatedSection>
+
+          <div className="max-w-2xl mx-auto">
+            <ExperienceCard
+              title="Intern"
+              company="Dice Analytics"
+              type="Internship"
+              location="Islamabad, Pakistan · On-site"
+              period="Jul 2023 - Sep 2023"
+              duration="3 mos"
+              description="Dynamic intern at Dice Analytics, a leading data science company, where I gained valuable hands-on experience in various aspects of data analysis and visualization. Contributed to projects involving data mining, interpretation, and presentation. Developed proficiency in tools and techniques essential for data-driven decision-making."
+              skills={["Microsoft Excel", "Research Skills", "Data Analysis", "Data Visualization"]}
+              index={0}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Certifications Section */}
       <section id="certifications" className="py-24 relative">
         <div className="container mx-auto px-4">
@@ -355,6 +390,36 @@ const Index = () => {
             </p>
           </AnimatedSection>
 
+          {/* Professional Certificates */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+            <CertificationCard
+              title="Google Data Analytics"
+              issuer="Google"
+              date="Issued Aug 2025"
+              credentialId="VJNB2EDRDR8F"
+              description="Completed a rigorous 9-course program covering data cleaning, analysis, visualization, and R programming. Gained hands-on experience with spreadsheets, SQL, Tableau, and real-world case studies."
+              skills={["Data Analysis", "Data Visualization", "SQL", "R", "Tableau"]}
+              index={0}
+            />
+            <CertificationCard
+              title="Applied Data Science Lab"
+              issuer="WorldQuant University"
+              date="Issued Mar 2025"
+              description="Comprehensive data science program covering API design, data visualization, and practical applications of machine learning."
+              skills={["API Design", "Data Visualization", "Python", "Machine Learning"]}
+              index={1}
+            />
+          </div>
+
+          {/* Credly Badges */}
+          <AnimatedSection className="text-center mb-8">
+            <h3 className="font-mono text-sm text-primary uppercase tracking-widest flex items-center justify-center gap-2">
+              <span className="w-8 h-px bg-primary/50" />
+              VERIFIED BADGES
+              <span className="w-8 h-px bg-primary/50" />
+            </h3>
+          </AnimatedSection>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <CredlyBadge 
               badgeId="d999a021-16a2-4430-bc47-86d4e8e41964" 
