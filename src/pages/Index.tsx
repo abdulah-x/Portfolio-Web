@@ -22,6 +22,7 @@ import { projects } from "@/data/projects";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { CredlyBadge } from "@/components/CredlyBadge";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
   const [displayText, setDisplayText] = useState("");
@@ -83,7 +84,7 @@ const Index = () => {
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-accent/10 to-transparent" />
                 <div className="w-full h-full rounded-full overflow-hidden border-2 border-primary/50 neon-border">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+                    src={profilePhoto}
                     alt="Muhammad Abdullah"
                     className="w-full h-full object-cover"
                   />
