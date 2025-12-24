@@ -73,7 +73,7 @@ const Index = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="absolute top-24 left-0 right-0 text-center px-4"
         >
-        <p className="font-mono text-lg md:text-2xl leading-relaxed max-w-2xl mx-auto font-bold">
+        <p className="font-display text-xl md:text-3xl lg:text-4xl leading-relaxed max-w-3xl mx-auto font-semibold tracking-wide">
           <span 
             className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
             style={{ 
