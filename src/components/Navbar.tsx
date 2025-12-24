@@ -1,9 +1,10 @@
-import { Github, Linkedin, Menu, X, Terminal } from "lucide-react";
+import { Github, Linkedin, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import warriorLogo from "@/assets/warrior-logo.png";
 
 const navLinks = [
   { name: "HOME", href: "#home" },
@@ -52,11 +53,12 @@ export function Navbar() {
           onClick={() => scrollToSection("#home")}
           className="flex items-center gap-3 group"
         >
-          <div className="w-8 h-8 rounded border border-primary/50 flex items-center justify-center group-hover:neon-border transition-all">
-            <Terminal className="w-4 h-4 text-primary" />
+          <div className="w-10 h-10 rounded-lg overflow-hidden border border-primary/30 group-hover:border-primary/60 group-hover:neon-border transition-all">
+            <img src={warriorLogo} alt="MA Logo" className="w-full h-full object-cover" />
           </div>
-          <span className="font-mono text-sm text-primary tracking-wider">
-            ABDULLAH<span className="animate-pulse">_</span>
+          <span className="font-mono text-sm tracking-wider">
+            <span className="text-primary">MUHAMMAD</span>
+            <span className="text-foreground"> ABDULLAH</span>
           </span>
         </motion.button>
 
