@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Github, ExternalLink, Star, GitFork, Code2, Users, BookOpen, Activity } from "lucide-react";
+import { Github, ExternalLink, Star, GitFork, Code2, Users, BookOpen, Activity, GitCommit } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface GitHubStatsProps {
@@ -21,11 +21,13 @@ interface GitHubRepo {
   stargazers_count: number;
   forks_count: number;
   language: string;
+  full_name: string;
 }
 
 export function GitHubStats({ username }: GitHubStatsProps) {
   const [userData, setUserData] = useState<GitHubUser | null>(null);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [totalCommits, setTotalCommits] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -42,10 +44,35 @@ export function GitHubStats({ username }: GitHubStatsProps) {
         }
 
         const user = await userRes.json();
-        const repoData = await reposRes.json();
+        const repoData: GitHubRepo[] = await reposRes.json();
 
         setUserData(user);
         setRepos(repoData);
+
+        // Fetch commit counts for each repo (limited to first 10 repos to avoid rate limiting)
+        const commitPromises = repoData.slice(0, 10).map(async (repo) => {
+          try {
+            const commitsRes = await fetch(
+              `https://api.github.com/repos/${repo.full_name}/commits?per_page=1&author=${username}`
+            );
+            // Get total count from Link header
+            const linkHeader = commitsRes.headers.get('Link');
+            if (linkHeader) {
+              const match = linkHeader.match(/page=(\d+)>; rel="last"/);
+              if (match) {
+                return parseInt(match[1], 10);
+              }
+            }
+            // If no Link header, count the commits (means 1 or fewer)
+            const commits = await commitsRes.json();
+            return Array.isArray(commits) ? commits.length : 0;
+          } catch {
+            return 0;
+          }
+        });
+
+        const commitCounts = await Promise.all(commitPromises);
+        setTotalCommits(commitCounts.reduce((acc, count) => acc + count, 0));
         setLoading(false);
       } catch (err) {
         setError(true);
@@ -124,7 +151,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
 
   const stats = [
     { label: "Repositories", value: userData.public_repos, icon: BookOpen },
-    { label: "Total Stars", value: totalStars, icon: Star },
+    { label: "Total Commits", value: totalCommits, icon: GitCommit },
     { label: "Total Forks", value: totalForks, icon: GitFork },
     { label: "Followers", value: userData.followers, icon: Users },
   ];
@@ -137,6 +164,12 @@ export function GitHubStats({ username }: GitHubStatsProps) {
       transition={{ duration: 0.6 }}
       className="w-full"
     >
+      {/* Live data indicator */}
+      <div className="flex items-center justify-center gap-2 mb-6">
+        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+        <span className="font-mono text-xs text-muted-foreground">LIVE DATA FROM GITHUB API</span>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* GitHub Stats Card */}
         <motion.div
@@ -163,7 +196,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
                 >
                   <stat.icon className="w-5 h-5 text-primary mb-2" />
                   <span className="text-2xl font-bold text-foreground">{stat.value}</span>
-                  <span className="text-xs font-mono text-muted-foreground">{stat.label}</span>
+                  <span className="text-xs font-mono text-muted-foreground text-center">{stat.label}</span>
                 </motion.div>
               ))}
             </div>
@@ -244,7 +277,7 @@ export function GitHubStats({ username }: GitHubStatsProps) {
                 </div>
                 <div>
                   <h3 className="font-mono text-lg text-foreground">@{username}</h3>
-                  <p className="font-mono text-xs text-muted-foreground">View full profile and repositories</p>
+                  <p className="font-mono text-xs text-muted-foreground">{userData.bio || "View full profile and repositories"}</p>
                 </div>
               </div>
               <Button
