@@ -132,7 +132,7 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="mb-4"
               >
-                <div className="flex items-center gap-4 flex-wrap">
+                <div className="flex items-center gap-4">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
                     MUHAMMAD
                   </h1>
@@ -140,7 +140,7 @@ const Index = () => {
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="h-12 md:h-16 lg:h-20 w-24 md:w-32 lg:w-40 bg-gradient-to-r from-neon-pink via-purple-500 to-accent origin-left"
+                    className="hidden md:block h-12 md:h-16 lg:h-20 w-24 md:w-32 lg:w-40 bg-gradient-to-r from-neon-pink via-purple-500 to-accent origin-left"
                   />
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight gradient-text-cyber mt-2">
