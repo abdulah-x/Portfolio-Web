@@ -42,7 +42,7 @@ export function CredlyBadge({ badgeId, badgeUrl, index = 0 }: CredlyBadgeProps) 
         data-iframe-height="270"
         data-share-badge-id={badgeId}
         data-share-badge-host="https://www.credly.com"
-        className="flex items-center justify-center"
+        className="flex items-center justify-center min-h-[270px]"
       />
     </motion.a>
   );
