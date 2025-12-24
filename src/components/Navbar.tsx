@@ -6,42 +6,44 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "Projects", path: "/projects" },
-  { name: "About Me", path: "/about" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", href: "#home" },
+  { name: "Projects", href: "#projects" },
+  { name: "About Me", href: "#about" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
-  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link
-          to="/"
+        <button
+          onClick={() => scrollToSection("#home")}
           className="text-lg font-bold text-foreground hover:text-primary transition-colors"
         >
           Muhammad Abdullah
-        </Link>
+        </button>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                location.pathname === link.path
-                  ? "text-primary"
-                  : "text-muted-foreground"
-              )}
+            <button
+              key={link.href}
+              onClick={() => scrollToSection(link.href)}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               {link.name}
-            </Link>
+            </button>
           ))}
         </div>
 
@@ -89,19 +91,13 @@ export function Navbar() {
         <div className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary py-2",
-                  location.pathname === link.path
-                    ? "text-primary"
-                    : "text-muted-foreground"
-                )}
+              <button
+                key={link.href}
+                onClick={() => scrollToSection(link.href)}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary py-2 text-left"
               >
                 {link.name}
-              </Link>
+              </button>
             ))}
             <div className="flex items-center gap-4 pt-2 border-t border-border">
               <a
