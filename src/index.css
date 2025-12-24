@@ -6,52 +6,52 @@
 
 @layer base {
   :root {
-    /* Light cyber theme */
-    --background: 210 40% 98%;
-    --foreground: 230 25% 10%;
+    /* Light cyber theme - clean with teal accents */
+    --background: 200 20% 97%;
+    --foreground: 220 25% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 230 25% 10%;
+    --card: 200 25% 99%;
+    --card-foreground: 220 25% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 230 25% 10%;
+    --popover: 200 25% 99%;
+    --popover-foreground: 220 25% 12%;
 
-    /* Cyan/Teal accent */
-    --primary: 175 100% 35%;
-    --primary-foreground: 210 40% 98%;
+    /* Deeper teal for light mode readability */
+    --primary: 175 85% 32%;
+    --primary-foreground: 200 20% 97%;
 
-    --secondary: 210 25% 95%;
-    --secondary-foreground: 230 25% 15%;
+    --secondary: 200 20% 93%;
+    --secondary-foreground: 220 25% 15%;
 
-    --muted: 210 25% 93%;
-    --muted-foreground: 230 10% 40%;
+    --muted: 200 15% 90%;
+    --muted-foreground: 220 15% 40%;
 
-    --accent: 280 90% 45%;
+    --accent: 280 70% 50%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 88%;
-    --input: 210 20% 88%;
-    --ring: 175 100% 35%;
+    --border: 200 20% 85%;
+    --input: 200 20% 85%;
+    --ring: 175 85% 32%;
 
     --radius: 0.75rem;
 
-    /* Custom neon colors */
-    --neon-cyan: 175 100% 35%;
-    --neon-purple: 280 90% 55%;
-    --neon-pink: 320 85% 55%;
-    --neon-green: 150 80% 35%;
+    /* Toned down neon for light mode */
+    --neon-cyan: 175 85% 32%;
+    --neon-purple: 280 70% 50%;
+    --neon-pink: 320 70% 50%;
+    --neon-green: 150 70% 35%;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 230 25% 10%;
-    --sidebar-primary: 175 100% 35%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 210 25% 95%;
-    --sidebar-accent-foreground: 230 25% 15%;
-    --sidebar-border: 210 20% 88%;
-    --sidebar-ring: 175 100% 35%;
+    --sidebar-background: 200 25% 99%;
+    --sidebar-foreground: 220 25% 12%;
+    --sidebar-primary: 175 85% 32%;
+    --sidebar-primary-foreground: 200 20% 97%;
+    --sidebar-accent: 200 20% 93%;
+    --sidebar-accent-foreground: 220 25% 15%;
+    --sidebar-border: 200 20% 85%;
+    --sidebar-ring: 175 85% 32%;
   }
 
   .dark {
@@ -117,8 +117,14 @@
 }
 
 @layer utilities {
-  /* Neon glow effects */
   .neon-text {
+    text-shadow: 
+      0 0 7px hsl(var(--primary) / 0.6),
+      0 0 10px hsl(var(--primary) / 0.4),
+      0 0 21px hsl(var(--primary) / 0.3);
+  }
+
+  .dark .neon-text {
     text-shadow: 
       0 0 7px hsl(var(--primary)),
       0 0 10px hsl(var(--primary)),
@@ -128,12 +134,24 @@
 
   .neon-text-purple {
     text-shadow: 
+      0 0 7px hsl(var(--accent) / 0.5),
+      0 0 10px hsl(var(--accent) / 0.3);
+  }
+
+  .dark .neon-text-purple {
+    text-shadow: 
       0 0 7px hsl(var(--accent)),
       0 0 10px hsl(var(--accent)),
       0 0 21px hsl(var(--accent));
   }
 
   .neon-border {
+    box-shadow: 
+      0 0 5px hsl(var(--primary) / 0.3),
+      0 0 15px hsl(var(--primary) / 0.15);
+  }
+
+  .dark .neon-border {
     box-shadow: 
       0 0 5px hsl(var(--primary) / 0.5),
       0 0 20px hsl(var(--primary) / 0.3),
@@ -142,12 +160,25 @@
 
   .neon-glow {
     box-shadow: 
+      0 0 15px hsl(var(--primary) / 0.25),
+      0 0 30px hsl(var(--primary) / 0.1);
+  }
+
+  .dark .neon-glow {
+    box-shadow: 
       0 0 20px hsl(var(--primary) / 0.4),
       0 0 40px hsl(var(--primary) / 0.2),
       0 0 60px hsl(var(--primary) / 0.1);
   }
 
   .cyber-grid {
+    background-image: 
+      linear-gradient(hsl(var(--primary) / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.06) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .dark .cyber-grid {
     background-image: 
       linear-gradient(hsl(var(--primary) / 0.03) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--primary) / 0.03) 1px, transparent 1px);
@@ -192,8 +223,13 @@
   }
 
   .glass-dark {
-    background: hsl(var(--card) / 0.6);
+    background: hsl(var(--card) / 0.8);
     backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .dark .glass-dark {
+    background: hsl(var(--card) / 0.6);
     border: 1px solid hsl(var(--primary) / 0.1);
   }
 }
