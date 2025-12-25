@@ -1,73 +1,171 @@
-# Welcome to your Lovable project
+# Muhammad Abdullah - Portfolio Website
 
-## Project info
+A modern, interactive portfolio website showcasing my work as a Data Scientist and AI enthusiast. Built with cutting-edge web technologies and featuring a cyberpunk-inspired design with smooth animations and interactive elements.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🌟 Description
 
-## How can I edit this code?
+This portfolio website serves as a comprehensive showcase of my professional journey, projects, and skills in Data Science, Machine Learning, and AI. The site features:
 
-There are several ways of editing your application.
+- **Interactive Hero Section**: Dynamic typewriter effects and animated profile display
+- **Project Showcase**: Detailed cards for featured projects including FoodHub, Crypto Portfolio App, and NeuraLens
+- **Skills Display**: Comprehensive overview of technical skills and expertise
+- **Experience Timeline**: Professional experience and certifications
+- **Contact Section**: Easy ways to connect and collaborate
+- **GitHub Stats Integration**: Live statistics from GitHub profile
+- **Responsive Design**: Optimized for all device sizes
 
-**Use Lovable**
+The website emphasizes my expertise in Python, R, Machine Learning Operations (MLOps), Large Language Models (LLMs), and Cloud Computing, while also highlighting my passion for photography.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🚀 Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- ⚡ **Lightning Fast**: Built with Vite for optimal performance
+- 🎨 **Modern UI**: Styled with Tailwind CSS and shadcn-ui components
+- ✨ **Smooth Animations**: Powered by Framer Motion
+- 📱 **Fully Responsive**: Works seamlessly on desktop, tablet, and mobile
+- 🎯 **Type-Safe**: Written in TypeScript for robust code
+- 🌐 **SPA Architecture**: Client-side routing with React Router
+- 🎭 **Interactive Elements**: Terminal simulations and interactive components
+- 🔥 **Cyberpunk Theme**: Futuristic neon-inspired design system
 
-**Use your preferred IDE**
+## 🛠️ Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Frontend
+- **React 18.3.1** - UI library
+- **TypeScript 5.8.3** - Type safety
+- **Vite 5.4.19** - Build tool
+- **React Router DOM 6.30.1** - Client-side routing
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Styling & UI
+- **Tailwind CSS 3.4.17** - Utility-first CSS framework
+- **shadcn-ui** - Re-usable component library
+- **Radix UI** - Accessible component primitives
+- **Framer Motion 12.23.26** - Animation library
+- **Lucide React** - Icon library
 
-Follow these steps:
+### State Management & Data
+- **TanStack React Query 5.83.0** - Server state management
+- **React Hook Form 7.61.1** - Form handling
+- **Zod 3.25.76** - Schema validation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Development Tools
+- **ESLint** - Code linting
+- **PostCSS & Autoprefixer** - CSS processing
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 📦 Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm or yarn package manager
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Setup
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/abdulah-x/Portfolio-Web.git
+cd Portfolio-Web
+```
+
+2. **Install dependencies**
+```bash
+npm install
+```
+
+3. **Start the development server**
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🎯 Usage
 
-**Use GitHub Codespaces**
+### Development Commands
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+# Start development server with hot reload
+npm run dev
 
-## What technologies are used for this project?
+# Build for production
+npm run build
 
-This project is built with:
+# Build for development mode
+npm run build:dev
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Preview production build
+npm run preview
 
-## How can I deploy this project?
+# Run linter
+npm run lint
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### Building for Production
 
-## Can I connect a custom domain to my Lovable project?
+```bash
+npm run build
+```
 
-Yes, you can!
+The optimized production build will be generated in the `dist/` directory.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📁 Project Structure
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```
+Portfolio-Web/
+├── public/              # Static assets
+├── src/
+│   ├── assets/         # Images and media files
+│   ├── components/     # Reusable React components
+│   │   ├── ui/        # shadcn-ui components
+│   │   ├── Layout.tsx
+│   │   ├── ProjectCard.tsx
+│   │   ├── SkillCard.tsx
+│   │   └── ...
+│   ├── data/          # Static data (projects, etc.)
+│   ├── hooks/         # Custom React hooks
+│   ├── lib/           # Utility functions
+│   ├── pages/         # Page components
+│   │   ├── Index.tsx
+│   │   └── NotFound.tsx
+│   ├── App.tsx        # Main app component
+│   ├── main.tsx       # Entry point
+│   └── index.css      # Global styles
+├── index.html
+├── package.json
+├── tailwind.config.ts
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
+```
+
+## 🌐 Deployment
+
+This project can be deployed to any static hosting service:
+
+- **Vercel** (Recommended)
+- **Netlify**
+- **GitHub Pages**
+- **Cloudflare Pages**
+
+Simply connect your repository and the platform will automatically build and deploy your site.
+
+## 📫 Contact
+
+**Muhammad Abdullah**
+- 💼 Data Scientist & AI Enthusiast
+- 🔗 LinkedIn: [Connect with me](https://www.linkedin.com/in/abdulah-x/)
+- 💻 GitHub: [@abdulah-x](https://github.com/abdulah-x)
+- 📧 Email: Available on the website
+
+## 📝 License
+
+This project is open source and available for personal and educational use.
+
+## 🙏 Acknowledgments
+
+- Built with [Vite](https://vitejs.dev/)
+- UI components from [shadcn-ui](https://ui.shadcn.com/)
+- Icons from [Lucide](https://lucide.dev/)
+- Animations powered by [Framer Motion](https://www.framer.com/motion/)
+
+---
+
+**Made with ❤️ by Muhammad Abdullah**
