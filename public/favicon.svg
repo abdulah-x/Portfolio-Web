@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="cyberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#a855f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100" height="100" fill="#0a0f1e" rx="15"/>
+  
+  <!-- Terminal bracket left -->
+  <path d="M 20 25 L 15 25 L 15 75 L 20 75" stroke="url(#cyberGrad)" stroke-width="3" fill="none" filter="url(#glow)"/>
+  
+  <!-- Terminal bracket right -->
+  <path d="M 80 25 L 85 25 L 85 75 L 80 75" stroke="url(#cyberGrad)" stroke-width="3" fill="none" filter="url(#glow)"/>
+  
+  <!-- Code brackets/chevrons -->
+  <path d="M 35 40 L 25 50 L 35 60" stroke="#22d3ee" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <path d="M 65 40 L 75 50 L 65 60" stroke="#ec4899" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  
+  <!-- Center data dot -->
+  <circle cx="50" cy="50" r="6" fill="url(#cyberGrad)" filter="url(#glow)"/>
+  
+  <!-- Corner accents -->
+  <path d="M 18 20 L 12 20 L 12 26" stroke="#a855f7" stroke-width="2" fill="none"/>
+  <path d="M 82 20 L 88 20 L 88 26" stroke="#a855f7" stroke-width="2" fill="none"/>
+  <path d="M 18 80 L 12 80 L 12 74" stroke="#22d3ee" stroke-width="2" fill="none"/>
+  <path d="M 82 80 L 88 80 L 88 74" stroke="#22d3ee" stroke-width="2" fill="none"/>
+</svg>
