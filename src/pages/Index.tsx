@@ -398,7 +398,7 @@ const Index = () => {
               degree="BS (Data Science)"
               institution="COMSATS University Islamabad"
               location="Islamabad, Pakistan"
-              period="2021 - Present"
+              period="2022 - Present"
               description="7th semester student specializing in machine learning, data pipelines, and predictive analytics. Building end-to-end ML solutions and intelligent systems."
               isCurrent={true}
               index={0}
