@@ -1,4 +1,4 @@
-import { Heart, Terminal } from "lucide-react";
+import { Terminal } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Footer() {
@@ -22,8 +22,7 @@ export function Footer() {
               <Terminal className="w-3 h-3 text-primary" />
             </div>
             <p className="font-mono text-xs text-muted-foreground">
-              © {currentYear} <span className="text-primary">ABDULLAH</span> //{" "}
-              <Heart className="inline h-3 w-3 text-accent fill-accent" /> AND DATA
+              © {currentYear} <span className="text-primary">ABDULLAH</span>
             </p>
           </div>
         </motion.div>
