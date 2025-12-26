@@ -15,14 +15,14 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row items-center justify-between gap-4"
+          className="flex flex-col items-center justify-center gap-4"
         >
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 rounded border border-primary/50 flex items-center justify-center">
               <Terminal className="w-3 h-3 text-primary" />
             </div>
             <p className="font-mono text-xs text-muted-foreground">
-              © {currentYear} <span className="text-primary">ABDULLAH</span> // BUILT WITH{" "}
+              © {currentYear} <span className="text-primary">ABDULLAH</span> //{" "}
               <Heart className="inline h-3 w-3 text-accent fill-accent" /> AND DATA
             </p>
           </div>
