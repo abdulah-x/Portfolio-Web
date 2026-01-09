@@ -1,0 +1,96 @@
+📘 DevOps Master Revision Guide☁️ Section 1: Cloud Computing & Architecture1.1 Deployment Models (Public, Private, Hybrid)Q: A healthcare organization needs compliance and control over sensitive patient data. Which deployment model?Recommendation: Private Cloud (or Hybrid).Reason: Private cloud offers dedicated infrastructure, ensuring strict access control and compliance (like HIPAA) without "noisy neighbors" or public exposure.Q: A financial services company needs strict privacy for data but wants to leverage cloud scalability for promotional campaigns.Recommendation: Hybrid Cloud.Reason: Keep sensitive financial data on the Private Cloud (Security). Use the Public Cloud for the web frontend to handle traffic spikes during promotions (Scalability).Q: A startup wants to avoid upfront costs but needs a platform for courses. Identify models.IaaS: They manage OS/App. High effort, high control. (e.g., AWS EC2).PaaS: They manage Code only. Medium effort/control. (e.g., AWS Elastic Beanstalk).SaaS: They manage nothing. Low effort/control. (e.g., Teachable).Q: Compare On-Premises Data Center vs. Public Cloud.On-Premises:Pros: Total Control, Data Sovereignty.Cons: High CapEx (buy hardware upfront), slow scaling, maintenance burden.Public Cloud:Pros: Low OpEx (pay-as-you-go), instant agility/scaling, global reach.Cons: Variable costs, less hardware customization.1.2 Service Models (IaaS, PaaS, SaaS)Q: A company wants to migrate servers to cloud but needs complete control over OS and Network configuration.Model: IaaS (Infrastructure as a Service).Reason: IaaS (like EC2) provides raw virtualization, allowing installation of custom OS, firewalls, and software libraries, unlike PaaS.Q: Company hosting a sensitive database. Which model suits better?Model: IaaS.Reason: Allows custom encryption, patching schedules, and strict access rules.Drawback: High management overhead (must manually patch OS/DB).Q: Benefits of PaaS (Elastic Beanstalk) vs IaaS (EC2) for a MEAN stack app?PaaS: No server management (OS patching handled by provider), automated auto-scaling, faster time-to-market (focus on code only).Q: Benefits of AWS RDS (Managed) vs Database on EC2 (Unmanaged)?RDS: Automated backups (point-in-time recovery), automated patching, built-in High Availability (Multi-AZ), easy vertical scaling.Q: Advantage of using Amazon S3?Hosting static websites (HTML/JS) cheaply, storing build artifacts (CI/CD output), and high durability for backups/logs.🐳 Section 2: Virtualization & Containerization2.1 Concepts & ComparisonQ: Hardware Virtualization (VMs) vs. OS Virtualization (Containers).VMs: Use a Hypervisor. Each VM has a full Guest OS. Heavy (GBs), slow boot. Strong isolation.Containers: Use a Container Engine (Docker). Share the Host OS Kernel. Lightweight (MBs), fast boot. Process-level isolation.Q: Testing desktop apps on Windows, Ubuntu, and CentOS. Which tech?Tech: Virtualization.Reason: You need different Kernels (Windows vs Linux) and full GUI support. Containers share the host kernel and are poor at GUIs.Tool: Oracle VirtualBox.Q: Scenario demonstrating advantage of Containers?Scenario: E-commerce Flash Sale.Advantage: Containers spin up in seconds to handle sudden traffic spikes. VMs take minutes to boot, by which time customers are lost.Q: Hypervisors (Type 1 vs Type 2).Type 1 (Bare Metal): Runs on hardware (ESXi, Hyper-V). Best for Data Centers (Efficiency).Type 2 (Hosted): Runs on OS (VirtualBox). Good for personal testing.2.2 Dockerfiles & ImagesQ: Dockerfile for Java Assignment (Custom Input File).DockerfileFROM openjdk:latest
+WORKDIR /app
+COPY Main.java .
+COPY 001.csv .  # Student specific file
+RUN javac Main.java
+CMD ["java", "Main"]
+Instructor runs: docker run <image_name>Q: Dockerfile for Python Data Science Model (pandas, scikit-learn).DockerfileFROM python:latest
+WORKDIR /app
+COPY model.pkl .
+COPY predict.py .
+RUN pip install pandas scikit-learn
+CMD ["python", "predict.py"]
+Non-tech user runs: docker run -it <image_name> (Interactive mode for input).Q: Dockerfile for Node.js (package.json, npm install).DockerfileFROM node:current-alpine3.19
+WORKDIR /usr/src/app
+COPY package.json .
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["npm", "start"]
+2.3 Docker Compose & Multi-ContainerQ: Run Apache (httpd) and Nginx on the same host using Docker?Why: Isolation (prevents file conflicts).How: Port Mapping. Map Host 8080 $\to$ Apache 80. Map Host 8081 $\to$ Nginx 80.Commands: docker run -d -p 8080:80 httpdQ: Docker Compose for LAMP (PHP + MySQL).YAMLversion: '3.8'
+services:
+  web-app:
+    build: .
+    ports: ["8080:80"]
+    depends_on: ["db-server"]
+  db-server:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: my_lamp_db
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
+Q: Docker Compose for Node.js + MongoDB (Checkout/Build Pipeline Scenario).YAMLversion: '3.8'
+services:
+  mongo:
+    image: mongo:latest
+    ports: ["27017:27017"]
+    volumes: ["./mongo-data:/data/db"]
+  web-app:
+    image: node:current-alpine3.19
+    ports: ["3000:80"]
+    volumes: ["./web-app:/usr/src/app"] # Live code mount
+    command: npm start
+    depends_on: ["mongo"]
+☸️ Section 3: Kubernetes (K8s)3.1 Deployment Manifests (YAML)Q: Nginx Deployment (8 Replicas, HostPath Volume).YAMLapiVersion: apps/v1
+kind: Deployment
+metadata: { name: nginx-deployment }
+spec:
+  replicas: 8
+  selector: { matchLabels: { app: nginx-web } }
+  template:
+    metadata: { labels: { app: nginx-web } }
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        volumeMounts: [{ name: code, mountPath: /usr/share/nginx/html }]
+      volumes:
+      - name: code
+        hostPath: { path: /data/web-app-code, type: Directory }
+Q: PostgreSQL Deployment (PVC, Env Variable).YAMLapiVersion: apps/v1
+kind: Deployment
+metadata: { name: postgres-deployment }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: pg-db } }
+  template:
+    metadata: { labels: { app: pg-db } }
+    spec:
+      containers:
+      - name: pg
+        image: postgres:latest
+        env: [{ name: POSTGRES_PASSWORD, value: "secret" }]
+        volumeMounts: [{ name: storage, mountPath: /var/lib/postgresql/data }]
+      volumes:
+      - name: storage
+        persistentVolumeClaim: { claimName: postgres-pv-claim }
+3.2 Services & HPAQ: Services for Web (LoadBalancer) and DB (ClusterIP).Web: type: LoadBalancer (Expose to world).DB: type: ClusterIP (Internal only).Q: Horizontal Pod Autoscaler (HPA) for Node.js (Target CPU 60%).YAMLapiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+spec:
+  scaleTargetRef: { kind: Deployment, name: node-server-deployment }
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
+3.3 Prometheus MonitoringQ: Scrape Config for Node Exporter (Interval 15s).YAMLglobal: { scrape_interval: 15s }
+scrape_configs:
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['18.236.99.42:9100', '18.236.99.43:9100']
+Q: Bonus Math (HPA Calculation).Current Pods: 4. Util: 95%, 87%, 94%, 90%. Target: 60%.Avg Util = 91.5%.Formula: $\lceil 4 \times (91.5 / 60) \rceil = \lceil 6.1 \rceil = 7$.Result: Need to launch 3 more pods.🚀 Section 4: CI/CD & Automation4.1 Jenkins & PipelinesQ: Why not apt or snap for Jenkins?apt: Official repos don't have Jenkins by default (need to add keys).snap: Sandbox issues cause permission errors with Docker.Q: Docker Socket Error (permission denied).Fix: sudo usermod -aG docker jenkinsQ: Jenkins Pipeline Scripts (Declarative).Checkout Stage:Groovystage('Checkout') { steps { dir('web-app') { git 'https://github.com/repo.git' } } }
+Build Stage (Docker Compose):Groovystage('Build') { steps { sh 'docker-compose up -d --build' } }
+Test Stage (Docker Agent + Selenium):Groovyagent { docker { image 'maven-chrome' args '-v /var/run/docker.sock:/var/run/docker.sock' } }
+steps { git 'test-repo'; sh 'mvn clean install' }
+Q: Trigger Pipeline on GitHub Push.Method: Webhook.Steps: GitHub Settings > Webhooks > Add Jenkins URL. In Jenkins: Check "GitHub hook trigger for GITScm polling".4.2 Testing (Selenium)Usage: Automating web browsers to test functionality.Stage: "Test" or "Acceptance Testing" stage.Components: WebDriver (Scripts), IDE (Record/Play), Grid (Parallel).🔀 Section 5: Source Control (Git)5.1 ConceptsQ: Centralized (SVN) vs Distributed (Git).Distributed Wins: Offline capability (full local history), cheap/fast branching, better merging.Centralized Cons: Single point of failure, needs network for everything.Q: Managing Merge Conflicts.Pull -> Manual Resolve in Editor -> git add -> git commit.5.2 CommandsView History: git logList Branches: git branchCreate & Switch Branch: git checkout -b <name>Revert (Safe Undo): git revert <commit_id> (Creates new commit, preserves history).Reset (Unsafe Undo): git reset (Alters history).Hotfix Workflow: git checkout -b hotfix -> Fix -> Commit -> checkout main -> git merge hotfix.Q: GitFlow Diagram.git init -> git commit (Master)git branch your-workgit commit x2 (Master)git checkout -b someone-else -> git commitgit checkout your-work -> git commit x3git checkout master -> git merge your-work
