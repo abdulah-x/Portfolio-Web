@@ -248,7 +248,7 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 relative">
+      <section id="projects" className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
@@ -274,7 +274,7 @@ const Index = () => {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 relative">
+      <section id="skills" className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4 relative z-10">
           {/* Section Header */}
           <AnimatedSection className="text-center mb-16">
@@ -355,7 +355,7 @@ const Index = () => {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-24 relative">
+      <section id="education" className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
@@ -403,7 +403,7 @@ const Index = () => {
       </section>
 
       {/* Work Experience Section */}
-      <section id="experience" className="py-24 relative">
+      <section id="experience" className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
@@ -447,7 +447,7 @@ const Index = () => {
       </section>
 
       {/* Certifications Section */}
-      <section id="certifications" className="py-24 relative">
+      <section id="certifications" className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
@@ -509,7 +509,7 @@ const Index = () => {
       </section>
 
       {/* GitHub Stats Section */}
-      <section id="github" className="py-24 relative">
+      <section id="github" className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           <AnimatedSection className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
@@ -532,7 +532,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 relative">
+      <section id="contact" className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           {/* Header */}
           <AnimatedSection className="text-center mb-16">
