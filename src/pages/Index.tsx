@@ -4,18 +4,26 @@ import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { TerminalTag } from "@/components/TerminalTag";
+import { LazyMount } from "@/components/LazyMount";
 
-import { InteractiveTerminal } from "@/components/InteractiveTerminal";
-import { GitHubStats } from "@/components/GitHubStats";
 import { projects } from "@/data/projects";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import { motion } from "framer-motion";
-import { CredlyBadge } from "@/components/CredlyBadge";
-import { CertificationCard } from "@/components/CertificationCard";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { EducationCard } from "@/components/EducationCard";
 
 import profilePhoto from "@/assets/profile-photo.jpg";
+
+// Heavy sections — code-split and mounted on scroll via LazyMount
+const GitHubStats = lazy(() =>
+  import("@/components/GitHubStats").then((m) => ({ default: m.GitHubStats }))
+);
+const CredlyBadge = lazy(() =>
+  import("@/components/CredlyBadge").then((m) => ({ default: m.CredlyBadge }))
+);
+const CertificationCard = lazy(() =>
+  import("@/components/CertificationCard").then((m) => ({ default: m.CertificationCard }))
+);
 
 const Index = () => {
   const [displayText, setDisplayText] = useState("");
