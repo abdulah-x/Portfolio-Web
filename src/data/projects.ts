@@ -2,6 +2,7 @@ import { Project } from "@/components/ProjectCard";
 import hawkEarThumb from "@/assets/hawk-ear-thumb.jpg";
 import vaultxThumb from "@/assets/vaultx-thumb.jpg";
 import neuralensThumb from "@/assets/neuralens-thumb.jpg";
+import foodhubThumb from "@/assets/foodhub-thumb.jpg";
 
 export const projects: Project[] = [
   {
@@ -37,7 +38,7 @@ export const projects: Project[] = [
     title: "FoodHub",
     summary: "Containerized MERN food delivery platform with real-time order tracking under 100ms.",
     description: "Complete MERN stack food delivery platform with Docker containerization, role-based access control (customers, restaurant owners, admins), and a low-latency order tracking system delivering live updates under 100ms via Socket.io.",
-    thumbnail: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80",
+    thumbnail: foodhubThumb,
     tags: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "Docker"],
     githubUrl: "https://github.com/abdulah-x/FoodHub",
   },
