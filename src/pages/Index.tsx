@@ -639,15 +639,16 @@ const Index = () => {
                 href="https://www.linkedin.com/in/m-abdullahds"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 hover:border-primary/60 p-6 transition-all duration-300 hover:neon-border group"
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
               >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg border border-primary/30 group-hover:bg-primary/20 transition-colors">
+                <div className="flex flex-col items-center text-center gap-4">
+                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
                     <Linkedin className="h-7 w-7 text-primary" />
                   </div>
-                  <div className="flex-1">
+                  <div>
                     <h4 className="font-mono text-sm text-foreground mb-1">LINKEDIN</h4>
-                    <p className="font-mono text-xs text-muted-foreground">/in/m-abdullahds</p>
+                    <p className="font-mono text-xs text-muted-foreground break-all">/in/m-abdullahds</p>
                   </div>
                   <span className="font-mono text-xs text-primary">CONNECT →</span>
                 </div>

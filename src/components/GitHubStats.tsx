@@ -63,21 +63,31 @@ export function GitHubStats({ username }: GitHubStatsProps) {
           }
         });
 
-        // Fetch commit counts for each repo
-        const commitPromises = repoData.slice(0, 10).map(async (repo) => {
+        // Fetch commit counts for each repo (all repos, not just the first 10)
+        const commitPromises = repoData.map(async (repo) => {
           try {
-            const commitsRes = await fetch(
+            // Try with author filter first (commits authored by this user)
+            let commitsRes = await fetch(
               `https://api.github.com/repos/${repo.full_name}/commits?per_page=1&author=${username}`
             );
-            const linkHeader = commitsRes.headers.get('Link');
-            if (linkHeader) {
-              const match = linkHeader.match(/page=(\d+)>; rel="last"/);
-              if (match) {
-                return parseInt(match[1], 10);
-              }
+            let linkHeader = commitsRes.headers.get('Link');
+            let match = linkHeader?.match(/page=(\d+)>;\s*rel="last"/);
+            if (match) return parseInt(match[1], 10);
+
+            let commits = await commitsRes.json();
+            let authored = Array.isArray(commits) ? commits.length : 0;
+
+            // Fallback: if author filter returned nothing, count total repo commits
+            // (covers repos where the commit author email isn't linked to the GitHub login)
+            if (authored === 0) {
+              commitsRes = await fetch(`https://api.github.com/repos/${repo.full_name}/commits?per_page=1`);
+              linkHeader = commitsRes.headers.get('Link');
+              match = linkHeader?.match(/page=(\d+)>;\s*rel="last"/);
+              if (match) return parseInt(match[1], 10);
+              commits = await commitsRes.json();
+              return Array.isArray(commits) ? commits.length : 0;
             }
-            const commits = await commitsRes.json();
-            return Array.isArray(commits) ? commits.length : 0;
+            return authored;
           } catch {
             return 0;
           }
