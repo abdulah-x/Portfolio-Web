@@ -4,7 +4,7 @@ import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { TerminalTag } from "@/components/TerminalTag";
-import { SkillCard } from "@/components/SkillCard";
+
 import { InteractiveTerminal } from "@/components/InteractiveTerminal";
 import { GitHubStats } from "@/components/GitHubStats";
 import { projects } from "@/data/projects";
