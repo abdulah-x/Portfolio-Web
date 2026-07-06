@@ -4,18 +4,26 @@ import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { TerminalTag } from "@/components/TerminalTag";
+import { LazyMount } from "@/components/LazyMount";
 
-import { InteractiveTerminal } from "@/components/InteractiveTerminal";
-import { GitHubStats } from "@/components/GitHubStats";
 import { projects } from "@/data/projects";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import { motion } from "framer-motion";
-import { CredlyBadge } from "@/components/CredlyBadge";
-import { CertificationCard } from "@/components/CertificationCard";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { EducationCard } from "@/components/EducationCard";
 
 import profilePhoto from "@/assets/profile-photo.jpg";
+
+// Heavy sections — code-split and mounted on scroll via LazyMount
+const GitHubStats = lazy(() =>
+  import("@/components/GitHubStats").then((m) => ({ default: m.GitHubStats }))
+);
+const CredlyBadge = lazy(() =>
+  import("@/components/CredlyBadge").then((m) => ({ default: m.CredlyBadge }))
+);
+const CertificationCard = lazy(() =>
+  import("@/components/CertificationCard").then((m) => ({ default: m.CertificationCard }))
+);
 
 const Index = () => {
   const [displayText, setDisplayText] = useState("");
@@ -463,26 +471,36 @@ const Index = () => {
             </p>
           </AnimatedSection>
 
-          {/* Professional Certificates */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
-            <CertificationCard
-              title="Google Data Analytics"
-              issuer="Google"
-              date="Issued Aug 2025"
-              credentialId="VJNB2EDRDR8F"
-              description="Completed a rigorous 9-course program covering data cleaning, analysis, visualization, and R programming. Gained hands-on experience with spreadsheets, SQL, Tableau, and real-world case studies."
-              skills={["Data Analysis", "Data Visualization", "SQL", "R", "Tableau"]}
-              index={0}
-            />
-            <CertificationCard
-              title="Applied Data Science Lab"
-              issuer="WorldQuant University"
-              date="Issued Mar 2025"
-              description="Comprehensive data science program covering API design, data visualization, and practical applications of machine learning."
-              skills={["API Design", "Data Visualization", "Python", "Machine Learning"]}
-              index={1}
-            />
-          </div>
+          {/* Professional Certificates — lazy mounted */}
+          <LazyMount
+            minHeight={320}
+            fallback={
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+                <div className="h-64 rounded-lg border border-primary/10 bg-card/40 animate-pulse" />
+                <div className="h-64 rounded-lg border border-primary/10 bg-card/40 animate-pulse" />
+              </div>
+            }
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+              <CertificationCard
+                title="Google Data Analytics"
+                issuer="Google"
+                date="Issued Aug 2025"
+                credentialId="VJNB2EDRDR8F"
+                description="Completed a rigorous 9-course program covering data cleaning, analysis, visualization, and R programming. Gained hands-on experience with spreadsheets, SQL, Tableau, and real-world case studies."
+                skills={["Data Analysis", "Data Visualization", "SQL", "R", "Tableau"]}
+                index={0}
+              />
+              <CertificationCard
+                title="Applied Data Science Lab"
+                issuer="WorldQuant University"
+                date="Issued Mar 2025"
+                description="Comprehensive data science program covering API design, data visualization, and practical applications of machine learning."
+                skills={["API Design", "Data Visualization", "Python", "Machine Learning"]}
+                index={1}
+              />
+            </div>
+          </LazyMount>
 
           {/* Credly Badges */}
           <AnimatedSection className="text-center mb-8">
@@ -492,19 +510,29 @@ const Index = () => {
               <span className="w-8 h-px bg-primary/50" />
             </h3>
           </AnimatedSection>
-          
-          <div className="flex flex-wrap justify-center gap-6">
-            <CredlyBadge 
-              badgeId="d999a021-16a2-4430-bc47-86d4e8e41964" 
-              badgeUrl="https://www.credly.com/badges/d999a021-16a2-4430-bc47-86d4e8e41964/public_url"
-              index={0}
-            />
-            <CredlyBadge 
-              badgeId="2e82b343-d2cd-453a-bfca-898726be0d3f" 
-              badgeUrl="https://www.credly.com/badges/2e82b343-d2cd-453a-bfca-898726be0d3f/public_url"
-              index={1}
-            />
-          </div>
+
+          <LazyMount
+            minHeight={280}
+            fallback={
+              <div className="flex flex-wrap justify-center gap-6">
+                <div className="w-48 h-56 rounded-lg border border-primary/10 bg-card/40 animate-pulse" />
+                <div className="w-48 h-56 rounded-lg border border-primary/10 bg-card/40 animate-pulse" />
+              </div>
+            }
+          >
+            <div className="flex flex-wrap justify-center gap-6">
+              <CredlyBadge
+                badgeId="d999a021-16a2-4430-bc47-86d4e8e41964"
+                badgeUrl="https://www.credly.com/badges/d999a021-16a2-4430-bc47-86d4e8e41964/public_url"
+                index={0}
+              />
+              <CredlyBadge
+                badgeId="2e82b343-d2cd-453a-bfca-898726be0d3f"
+                badgeUrl="https://www.credly.com/badges/2e82b343-d2cd-453a-bfca-898726be0d3f/public_url"
+                index={1}
+              />
+            </div>
+          </LazyMount>
         </div>
       </section>
 
@@ -526,7 +554,17 @@ const Index = () => {
           </AnimatedSection>
 
           <div className="max-w-4xl mx-auto">
-            <GitHubStats username="abdulah-x" />
+            <LazyMount
+              minHeight={500}
+              fallback={
+                <div className="space-y-4">
+                  <div className="h-32 rounded-lg border border-primary/10 bg-card/40 animate-pulse" />
+                  <div className="h-64 rounded-lg border border-primary/10 bg-card/40 animate-pulse" />
+                </div>
+              }
+            >
+              <GitHubStats username="abdulah-x" />
+            </LazyMount>
           </div>
         </div>
       </section>

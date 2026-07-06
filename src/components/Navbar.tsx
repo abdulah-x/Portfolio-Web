@@ -54,7 +54,7 @@ export function Navbar() {
           className="flex items-center gap-3 group"
         >
           <div className="w-10 h-10 rounded-lg overflow-hidden border border-primary/30 group-hover:border-primary/60 group-hover:neon-border transition-all">
-            <img src={warriorLogo} alt="MA Logo" className="w-full h-full object-cover" />
+            <img src={warriorLogo} alt="MA Logo" className="w-full h-full object-cover" loading="eager" decoding="async" width={40} height={40} />
           </div>
           <span className="font-mono text-sm tracking-wider">
             <span className="text-primary">MUHAMMAD</span>
