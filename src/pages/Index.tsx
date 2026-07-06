@@ -65,13 +65,13 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section - Cyber/Futuristic style */}
-      <section id="home" className="min-h-screen flex flex-col items-center justify-start lg:justify-center relative pt-8 lg:pt-0">
+      <section id="home" className="min-h-screen flex items-center justify-center relative">
         {/* Quote at the top */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="lg:absolute lg:top-24 left-0 right-0 text-center px-4 mb-6 lg:mb-0"
+          className="absolute top-20 md:top-24 left-0 right-0 text-center px-4"
         >
         <p className="font-display text-base sm:text-xl md:text-3xl lg:text-4xl leading-relaxed max-w-3xl mx-auto font-semibold tracking-wide">
           <span 
@@ -86,7 +86,7 @@ const Index = () => {
         </p>
         </motion.div>
 
-        <div className="container mx-auto px-4 sm:px-6 py-10 lg:py-20 lg:mt-16 w-full">
+        <div className="container mx-auto px-4 sm:px-6 py-20 mt-24 md:mt-16">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-6xl mx-auto">
             
             {/* Left - Profile with cyber frame */}
@@ -235,7 +235,7 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5 }}
-            className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
+            className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           >
             <span className="font-mono text-xs text-muted-foreground">SCROLL</span>
             <motion.div
