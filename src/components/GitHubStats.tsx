@@ -63,39 +63,24 @@ export function GitHubStats({ username }: GitHubStatsProps) {
           }
         });
 
-        // Fetch commit counts for each repo (all repos, not just the first 10)
-        const commitPromises = repoData.map(async (repo) => {
-          try {
-            // Try with author filter first (commits authored by this user)
-            let commitsRes = await fetch(
-              `https://api.github.com/repos/${repo.full_name}/commits?per_page=1&author=${username}`
+        // Fetch total contributions from GitHub's public contribution graph
+        // (matches the number shown on the user's GitHub profile)
+        const contributionsPromise = fetch(
+          `https://github-contributions-api.jogruber.de/v4/${username}?y=all`
+        )
+          .then((res) => (res.ok ? res.json() : null))
+          .then((data) => {
+            if (!data?.total) return 0;
+            return Object.values(data.total as Record<string, number>).reduce(
+              (acc, n) => acc + (n || 0),
+              0
             );
-            let linkHeader = commitsRes.headers.get('Link');
-            let match = linkHeader?.match(/page=(\d+)>;\s*rel="last"/);
-            if (match) return parseInt(match[1], 10);
+          })
+          .catch(() => 0);
 
-            let commits = await commitsRes.json();
-            let authored = Array.isArray(commits) ? commits.length : 0;
-
-            // Fallback: if author filter returned nothing, count total repo commits
-            // (covers repos where the commit author email isn't linked to the GitHub login)
-            if (authored === 0) {
-              commitsRes = await fetch(`https://api.github.com/repos/${repo.full_name}/commits?per_page=1`);
-              linkHeader = commitsRes.headers.get('Link');
-              match = linkHeader?.match(/page=(\d+)>;\s*rel="last"/);
-              if (match) return parseInt(match[1], 10);
-              commits = await commitsRes.json();
-              return Array.isArray(commits) ? commits.length : 0;
-            }
-            return authored;
-          } catch {
-            return 0;
-          }
-        });
-
-        const [languageResults, commitCounts] = await Promise.all([
+        const [languageResults, totalContributions] = await Promise.all([
           Promise.all(languagePromises),
-          Promise.all(commitPromises)
+          contributionsPromise,
         ]);
 
         // Aggregate language bytes across all repos
@@ -107,8 +92,9 @@ export function GitHubStats({ username }: GitHubStatsProps) {
         });
 
         setLanguageBytes(aggregatedLanguages);
-        setTotalCommits(commitCounts.reduce((acc, count) => acc + count, 0));
+        setTotalCommits(totalContributions);
         setLoading(false);
+
       } catch (err) {
         setError(true);
         setLoading(false);
