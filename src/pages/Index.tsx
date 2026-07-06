@@ -65,15 +65,15 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section - Cyber/Futuristic style */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative">
+      <section id="home" className="min-h-screen flex flex-col items-center justify-start lg:justify-center relative pt-8 lg:pt-0">
         {/* Quote at the top */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="absolute top-24 left-0 right-0 text-center px-4"
+          className="lg:absolute lg:top-24 left-0 right-0 text-center px-4 mb-6 lg:mb-0"
         >
-        <p className="font-display text-xl md:text-3xl lg:text-4xl leading-relaxed max-w-3xl mx-auto font-semibold tracking-wide">
+        <p className="font-display text-base sm:text-xl md:text-3xl lg:text-4xl leading-relaxed max-w-3xl mx-auto font-semibold tracking-wide">
           <span 
             className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
             style={{ 
@@ -86,7 +86,7 @@ const Index = () => {
         </p>
         </motion.div>
 
-        <div className="container mx-auto px-6 py-20 mt-16">
+        <div className="container mx-auto px-4 sm:px-6 py-10 lg:py-20 lg:mt-16 w-full">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-6xl mx-auto">
             
             {/* Left - Profile with cyber frame */}
@@ -149,12 +149,12 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs"
+                className="inline-flex items-center gap-2 px-3 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-[10px] sm:text-xs max-w-full overflow-hidden"
               >
-                <Terminal className="w-4 h-4 text-primary" />
-                <span className="text-muted-foreground">~/portfolio $</span>
-                <span className="text-primary">{displayText}</span>
-                <span className="animate-pulse text-primary">_</span>
+                <Terminal className="w-4 h-4 text-primary shrink-0" />
+                <span className="text-muted-foreground shrink-0 hidden sm:inline">~/portfolio $</span>
+                <span className="text-primary truncate">{displayText}</span>
+                <span className="animate-pulse text-primary shrink-0">_</span>
               </motion.div>
 
               <motion.div
