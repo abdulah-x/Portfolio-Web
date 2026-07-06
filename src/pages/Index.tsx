@@ -255,6 +255,50 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Work Experience Section */}
+      <section id="experience" className="py-16 md:py-24 relative">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
+              <Briefcase className="w-4 h-4 text-primary" />
+              <span className="text-muted-foreground">SECTION:</span>
+              <span className="text-primary">EXPERIENCE</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              WORK <span className="text-primary">EXPERIENCE</span>
+            </h2>
+            <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
+              <span className="text-primary">{`>`}</span> Professional experience in data science and analytics.
+            </p>
+          </AnimatedSection>
+
+          <div className="max-w-2xl mx-auto">
+            <ExperienceCard
+              title="AI Automation Engineer"
+              company="Paramount Intelligence"
+              type="Onsite"
+              location="Islamabad, Pakistan"
+              period="Feb 2026 - Jun 2026"
+              duration="5 mos"
+              description="Engineered a Relevancy Evaluator using LangChain and Hugging Face with Pinecone vector store, filtering 27+ projects/week. Architected low-latency data workflows routing real-time internal APIs into Airtable to power organizational analytics. Automated 13 data series extraction via 6 specialized Python scrapers, converting raw data into structured assets."
+              skills={["LangChain", "Hugging Face", "Pinecone", "Python", "API Design", "Automation"]}
+              index={0}
+            />
+            <ExperienceCard
+              title="Data Analytics Intern"
+              company="Dice Analytics"
+              type="On-Site"
+              location="Islamabad, Pakistan"
+              period="Jun 2023 - Aug 2023"
+              duration="3 mos"
+              description="Delivered interactive dashboard on 12K+ records using advanced Excel, visualizing KPIs to identify sales trends. Automated web scraping using Selenium, structuring external data to reduce manual data entry by 70%. Cleaned, structured, and analyzed large raw datasets (10,000+ rows) using advanced spreadsheet models."
+              skills={["Microsoft Excel", "Selenium", "Data Analysis", "Data Visualization"]}
+              index={1}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section id="projects" className="py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
@@ -410,49 +454,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Work Experience Section */}
-      <section id="experience" className="py-16 md:py-24 relative">
-        <div className="container mx-auto px-4">
-          <AnimatedSection className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
-              <Briefcase className="w-4 h-4 text-primary" />
-              <span className="text-muted-foreground">SECTION:</span>
-              <span className="text-primary">EXPERIENCE</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              WORK <span className="text-primary">EXPERIENCE</span>
-            </h2>
-            <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
-              <span className="text-primary">{`>`}</span> Professional experience in data science and analytics.
-            </p>
-          </AnimatedSection>
 
-          <div className="max-w-2xl mx-auto">
-            <ExperienceCard
-              title="AI Automation Engineer"
-              company="Paramount Intelligence"
-              type="Onsite"
-              location="Islamabad, Pakistan"
-              period="Feb 2026 - Jun 2026"
-              duration="5 mos"
-              description="Engineered a Relevancy Evaluator using LangChain and Hugging Face with Pinecone vector store, filtering 27+ projects/week. Architected low-latency data workflows routing real-time internal APIs into Airtable to power organizational analytics. Automated 13 data series extraction via 6 specialized Python scrapers, converting raw data into structured assets."
-              skills={["LangChain", "Hugging Face", "Pinecone", "Python", "API Design", "Automation"]}
-              index={0}
-            />
-            <ExperienceCard
-              title="Data Analytics Intern"
-              company="Dice Analytics"
-              type="On-Site"
-              location="Islamabad, Pakistan"
-              period="Jun 2023 - Aug 2023"
-              duration="3 mos"
-              description="Delivered interactive dashboard on 12K+ records using advanced Excel, visualizing KPIs to identify sales trends. Automated web scraping using Selenium, structuring external data to reduce manual data entry by 70%. Cleaned, structured, and analyzed large raw datasets (10,000+ rows) using advanced spreadsheet models."
-              skills={["Microsoft Excel", "Selenium", "Data Analysis", "Data Visualization"]}
-              index={1}
-            />
-          </div>
-        </div>
-      </section>
 
       {/* Certifications Section */}
       <section id="certifications" className="py-16 md:py-24 relative">
