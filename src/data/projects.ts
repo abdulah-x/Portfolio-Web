@@ -1,4 +1,7 @@
 import { Project } from "@/components/ProjectCard";
+import hawkEarThumb from "@/assets/hawk-ear-thumb.jpg";
+import vaultxThumb from "@/assets/vaultx-thumb.jpg";
+import neuralensThumb from "@/assets/neuralens-thumb.jpg";
 
 export const projects: Project[] = [
   {
@@ -6,7 +9,7 @@ export const projects: Project[] = [
     title: "Hawk-Ear",
     summary: "FYP: Dockerized security surveillance platform for audio-video monitoring & real-time alerting.",
     description: "Architected a Dockerized microservices platform with 70+ REST APIs, real-time audio processing via FFmpeg (5+ formats, RTSP), JWT/bcrypt/Redis-rate-limited auth, and multi-channel alerts under 3s latency. Handles 1,000+ concurrent requests across PostgreSQL, MongoDB & Redis, deployed on AWS EC2 with 99.9% uptime.",
-    thumbnail: "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&q=80",
+    thumbnail: hawkEarThumb,
     tags: ["Python", "FastAPI", "TensorFlow", "Whisper", "PostgreSQL", "Redis", "Docker", "AWS"],
     githubUrl: "https://github.com/abdulah-x",
   },
@@ -15,7 +18,7 @@ export const projects: Project[] = [
     title: "VaultX",
     summary: "Enterprise-grade crypto portfolio system with real-time tracking & advanced P&L.",
     description: "Full-stack crypto portfolio platform supporting 50+ APIs at 137 RPS with 53ms latency. Advanced P&L engine across 438+ Binance Testnet assets, WebSocket price streaming, and 100% security compliance via JWT, bcrypt, and SQL-injection protection.",
-    thumbnail: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
+    thumbnail: vaultxThumb,
     tags: ["FastAPI", "Python", "React", "WebSocket", "JWT", "Docker", "Binance API"],
     githubUrl: "https://github.com/abdulah-x/crypto-portfolio-app",
   },
@@ -24,7 +27,7 @@ export const projects: Project[] = [
     title: "NeuraLens",
     summary: "AI-powered traffic sign recognition with 98% accuracy and <50ms latency.",
     description: "TensorFlow model classifying 43 traffic sign classes at 98% accuracy with <50ms real-time latency. Built with Next.js frontend and FastAPI backend, delivering responsive UI and instant inference from uploaded images.",
-    thumbnail: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    thumbnail: neuralensThumb,
     tags: ["TensorFlow", "FastAPI", "Python", "Next.js", "Pillow"],
     demoUrl: "https://y-ashy-phi.vercel.app",
     githubUrl: "https://github.com/abdulah-x/NeuraLens",
