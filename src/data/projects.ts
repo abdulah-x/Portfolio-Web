@@ -3,6 +3,8 @@ import hawkEarThumb from "@/assets/hawk-ear-thumb.jpg";
 import vaultxThumb from "@/assets/vaultx-thumb.jpg";
 import neuralensThumb from "@/assets/neuralens-thumb.jpg";
 import foodhubThumb from "@/assets/foodhub-thumb.jpg";
+import jobradarThumb from "@/assets/jobradar-thumb.jpg";
+
 
 export const projects: Project[] = [
   {
@@ -42,6 +44,16 @@ export const projects: Project[] = [
     tags: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "Docker"],
     githubUrl: "https://github.com/abdulah-x/FoodHub",
   },
+  {
+    id: "5",
+    title: "JobRadar",
+    summary: "Self-hosted RAG job-matching pipeline that scores listings against your resume and emails a daily digest.",
+    description: "Dockerized job monitoring pipeline scraping 6 boards (WeWorkRemotely, RemoteOK, Remotive, Remote.co, WorkAtAStartup, Indeed). Two-stage AI pipeline: ChromaDB cosine-similarity semantic filter on resume chunks, then Gemini 2.5 Flash structured scoring (0–100) with Groq fallback. Jobs scoring ≥80 that pass seniority, location, and salary gates get emailed via Gmail SMTP. APScheduler keeps the container running with SQLite deduplication.",
+    thumbnail: jobradarThumb,
+    tags: ["Python", "Gemini", "ChromaDB", "RAG", "Docker", "JobSpy", "SQLite", "APScheduler"],
+    githubUrl: "https://github.com/abdulah-x/JobRadar",
+  },
 ];
+
 
 export const featuredProjects = projects.slice(0, 3);
