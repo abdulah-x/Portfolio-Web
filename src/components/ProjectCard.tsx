@@ -27,7 +27,7 @@ export function ProjectCard({ project, variant = "featured", index = 0 }: Projec
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -8 }}
-      className="group relative bg-card/80 backdrop-blur-sm rounded-lg border border-primary/10 overflow-hidden hover:border-primary/40 hover:neon-border transition-all duration-500"
+      className="group relative h-full flex flex-col bg-card/80 backdrop-blur-sm rounded-lg border border-primary/10 overflow-hidden hover:border-primary/40 hover:neon-border transition-all duration-500"
       aria-label={`Project: ${project.title}`}
     >
       {/* Top accent line */}
@@ -54,7 +54,7 @@ export function ProjectCard({ project, variant = "featured", index = 0 }: Projec
       </div>
 
       {/* Content */}
-      <div className="p-6 relative">
+      <div className="p-6 relative flex-1 flex flex-col">
         <div className="flex items-center gap-2 mb-2">
           <FolderCode className="w-4 h-4 text-primary" />
           <span className="font-mono text-xs text-primary/70">~/projects/</span>
@@ -64,16 +64,16 @@ export function ProjectCard({ project, variant = "featured", index = 0 }: Projec
           {project.title}
         </h3>
 
-        <p className="font-mono text-xs text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
+        <p className="font-mono text-xs text-muted-foreground mb-4 line-clamp-3 leading-relaxed min-h-[3.75rem]">
           {variant === "full" ? project.description : project.summary}
         </p>
 
         {/* Tags as Terminal Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4 min-h-[3.5rem] content-start">
           {project.tags.slice(0, variant === "full" ? 5 : 3).map((tag) => (
             <span
               key={tag}
-              className="font-mono text-[10px] px-2 py-1 bg-primary/10 border border-primary/20 rounded text-primary/70"
+              className="font-mono text-[10px] px-2 py-1 bg-primary/10 border border-primary/20 rounded text-primary/70 h-fit"
             >
               [{tag.toLowerCase()}]
             </span>
@@ -82,7 +82,7 @@ export function ProjectCard({ project, variant = "featured", index = 0 }: Projec
 
         {/* Action Links */}
         {variant === "full" && (
-          <div className="flex items-center gap-3 pt-4 border-t border-primary/10">
+          <div className="flex items-center gap-3 pt-4 border-t border-primary/10 mt-auto">
             {project.demoUrl && (
               <Button variant="ghost" size="sm" className="gap-2 font-mono text-xs text-primary hover:bg-primary/10" asChild>
                 <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
@@ -102,6 +102,7 @@ export function ProjectCard({ project, variant = "featured", index = 0 }: Projec
           </div>
         )}
       </div>
+
     </motion.article>
   );
 }
