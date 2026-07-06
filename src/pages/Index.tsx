@@ -439,8 +439,7 @@ const Index = () => {
               institution="COMSATS University Islamabad"
               location="Islamabad, Pakistan"
               period="Sep 2022 - Jul 2026"
-              description="Final year student specializing in LLMOps, machine learning, and containerized microservices. Building end-to-end AI systems and high-concurrency data pipelines."
-              isCurrent={true}
+              description="Graduated with a specialization in LLMOps, machine learning, and containerized microservices. Built end-to-end AI systems and high-concurrency data pipelines."
               index={0}
             />
             <EducationCard
@@ -608,7 +607,7 @@ const Index = () => {
               LET'S <span className="text-primary">CONNECT</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
-              <span className="text-primary">{`>`}</span> Currently open for internship opportunities or collaborative data projects.
+              <span className="text-primary">{`>`}</span> Fresh graduate — currently open for full-time opportunities or collaborative data projects.
             </p>
           </AnimatedSection>
 
@@ -637,17 +636,16 @@ const Index = () => {
             {/* LinkedIn Card */}
             <AnimatedSection delay={0.3}>
               <motion.a
-                href="https://www.linkedin.com/in/m-abdullahds/"
+                href="https://www.linkedin.com/in/m-abdullahds"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
+                className="block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 hover:border-primary/60 p-6 transition-all duration-300 hover:neon-border group"
               >
-                <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-primary/10 rounded-lg border border-primary/30 group-hover:bg-primary/20 transition-colors">
                     <Linkedin className="h-7 w-7 text-primary" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h4 className="font-mono text-sm text-foreground mb-1">LINKEDIN</h4>
                     <p className="font-mono text-xs text-muted-foreground">/in/m-abdullahds</p>
                   </div>
