@@ -20,7 +20,7 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 const Index = () => {
   const [displayText, setDisplayText] = useState("");
   const [quoteText, setQuoteText] = useState("");
-  const fullText = "DATA_SCIENTIST";
+  const fullText = "AI_SYSTEMS_ENGINEER";
   const fullQuote = "THE MAGIC YOU ARE LOOKING FOR IS IN THE WORK YOU ARE AVOIDING";
 
   // Typewriter effect for title
@@ -177,12 +177,12 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="font-mono text-sm text-muted-foreground leading-relaxed max-w-xl mb-8"
               >
-                <span className="text-primary">{`>`}</span> Data & AI enthusiast building impactful solutions with 
-                <span className="text-primary"> LLMs</span>, 
-                <span className="text-accent"> MLOps</span>, and 
-                <span className="text-neon-pink"> Cloud Computing</span>.
+                <span className="text-primary">{`>`}</span> Data & AI Systems Engineer specializing in 
+                <span className="text-primary"> LLMOps</span>, 
+                <span className="text-accent"> containerized microservices</span>, and 
+                <span className="text-neon-pink"> automated workflows</span>.
                 <br />
-                <span className="text-primary">{`>`}</span> Open to collaborations. Ask me about Python, R, Power BI. Also a photographer 📸
+                <span className="text-primary">{`>`}</span> Architecting high-concurrency data pipelines & production-ready AI. Also a photographer 📸
               </motion.p>
 
               {/* Quick action buttons */}
@@ -295,55 +295,95 @@ const Index = () => {
           <div className="max-w-5xl mx-auto">
             {/* Skills Grid */}
             <div className="space-y-12">
-              {/* Languages */}
+              {/* Languages & Frameworks */}
               <div>
                 <AnimatedSection delay={0.1}>
                   <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
                     <span className="w-8 h-px bg-primary/50" />
-                    LANGUAGES
+                    LANGUAGES & FRAMEWORKS
                     <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
-                <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
                   <SkillCard name="Python" proficiency={95} index={0} />
-                  <SkillCard name="SQL" proficiency={90} index={1} />
-                  <SkillCard name="R" proficiency={75} index={2} />
+                  <SkillCard name="Node.js" proficiency={85} index={1} />
+                  <SkillCard name="TypeScript" proficiency={85} index={2} />
+                  <SkillCard name="SQL" proficiency={90} index={3} />
+                  <SkillCard name="FastAPI" proficiency={92} index={4} />
+                  <SkillCard name="Next.js" proficiency={85} index={5} />
+                  <SkillCard name="React.js" proficiency={88} index={6} />
+                  <SkillCard name="R" proficiency={70} index={7} />
+                </div>
+              </div>
+
+              {/* AI / LLMOps */}
+              <div>
+                <AnimatedSection delay={0.2}>
+                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
+                    <span className="w-8 h-px bg-primary/50" />
+                    AI / LLMOPS
+                    <span className="w-8 h-px bg-primary/50" />
+                  </h4>
+                </AnimatedSection>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                  <SkillCard name="LangChain" proficiency={90} index={0} />
+                  <SkillCard name="LangGraph" proficiency={82} index={1} />
+                  <SkillCard name="RAG Pipelines" proficiency={88} index={2} />
+                  <SkillCard name="Hugging Face" proficiency={85} index={3} />
                 </div>
               </div>
 
               {/* Machine Learning */}
               <div>
-                <AnimatedSection delay={0.2}>
+                <AnimatedSection delay={0.25}>
                   <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
                     <span className="w-8 h-px bg-primary/50" />
                     MACHINE LEARNING
                     <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
-                  <SkillCard name="Scikit-Learn" proficiency={90} index={0} />
-                  <SkillCard name="TensorFlow" proficiency={85} index={1} />
-                  <SkillCard name="PyTorch" proficiency={80} index={2} />
-                  <SkillCard name="Pandas" proficiency={95} index={3} />
-                  <SkillCard name="NumPy" proficiency={90} index={4} />
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                  <SkillCard name="TensorFlow" proficiency={88} index={0} />
+                  <SkillCard name="PyTorch" proficiency={80} index={1} />
+                  <SkillCard name="Scikit-Learn" proficiency={90} index={2} />
+                  <SkillCard name="NumPy" proficiency={92} index={3} />
                 </div>
               </div>
 
-              {/* Deployment & Tools */}
+              {/* Databases */}
               <div>
                 <AnimatedSection delay={0.3}>
                   <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
                     <span className="w-8 h-px bg-primary/50" />
-                    DEPLOYMENT & TOOLS
+                    DATABASES
                     <span className="w-8 h-px bg-primary/50" />
                   </h4>
                 </AnimatedSection>
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
-                  <SkillCard name="Git" proficiency={90} index={0} />
-                  <SkillCard name="Docker" proficiency={85} index={1} />
-                  <SkillCard name="Streamlit" proficiency={88} index={2} />
-                  <SkillCard name="AWS" proficiency={80} index={3} />
-                  <SkillCard name="Azure" proficiency={75} index={4} />
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                  <SkillCard name="PostgreSQL" proficiency={90} index={0} />
+                  <SkillCard name="MongoDB" proficiency={85} index={1} />
+                  <SkillCard name="Pinecone" proficiency={85} index={2} />
+                  <SkillCard name="Qdrant" proficiency={65} index={3} />
+                </div>
+              </div>
+
+              {/* Cloud & DevOps */}
+              <div>
+                <AnimatedSection delay={0.35}>
+                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
+                    <span className="w-8 h-px bg-primary/50" />
+                    CLOUD & DEVOPS
+                    <span className="w-8 h-px bg-primary/50" />
+                  </h4>
+                </AnimatedSection>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                  <SkillCard name="Docker" proficiency={90} index={0} />
+                  <SkillCard name="AWS (EC2)" proficiency={82} index={1} />
+                  <SkillCard name="GitHub Actions" proficiency={85} index={2} />
+                  <SkillCard name="Git" proficiency={92} index={3} />
+                  <SkillCard name="Linux CLI" proficiency={85} index={4} />
+                  <SkillCard name="SSH" proficiency={82} index={5} />
+                  <SkillCard name="Selenium" proficiency={80} index={6} />
                 </div>
               </div>
             </div>
@@ -395,11 +435,11 @@ const Index = () => {
 
           <div className="max-w-2xl mx-auto">
             <EducationCard
-              degree="BS (Data Science)"
+              degree="Bachelor's in Data Science"
               institution="COMSATS University Islamabad"
               location="Islamabad, Pakistan"
-              period="2022 - Present"
-              description="7th semester student specializing in machine learning, data pipelines, and predictive analytics. Building end-to-end ML solutions and intelligent systems."
+              period="Sep 2022 - Jul 2026"
+              description="Final year student specializing in LLMOps, machine learning, and containerized microservices. Building end-to-end AI systems and high-concurrency data pipelines."
               isCurrent={true}
               index={0}
             />
@@ -444,15 +484,26 @@ const Index = () => {
 
           <div className="max-w-2xl mx-auto">
             <ExperienceCard
-              title="Intern"
-              company="Dice Analytics"
-              type="Internship"
-              location="Islamabad, Pakistan · On-site"
-              period="Jul 2023 - Sep 2023"
-              duration="3 mos"
-              description="Dynamic intern at Dice Analytics, a leading data science company, where I gained valuable hands-on experience in various aspects of data analysis and visualization. Contributed to projects involving data mining, interpretation, and presentation. Developed proficiency in tools and techniques essential for data-driven decision-making."
-              skills={["Microsoft Excel", "Research Skills", "Data Analysis", "Data Visualization"]}
+              title="AI Automation Engineer"
+              company="Paramount Intelligence"
+              type="Onsite"
+              location="Islamabad, Pakistan"
+              period="Feb 2026 - Jun 2026"
+              duration="5 mos"
+              description="Engineered a Relevancy Evaluator using LangChain and Hugging Face with Pinecone vector store, filtering 27+ projects/week. Architected low-latency data workflows routing real-time internal APIs into Airtable to power organizational analytics. Automated 13 data series extraction via 6 specialized Python scrapers, converting raw data into structured assets."
+              skills={["LangChain", "Hugging Face", "Pinecone", "Python", "API Design", "Automation"]}
               index={0}
+            />
+            <ExperienceCard
+              title="Data Analytics Intern"
+              company="Dice Analytics"
+              type="On-Site"
+              location="Islamabad, Pakistan"
+              period="Jun 2023 - Aug 2023"
+              duration="3 mos"
+              description="Delivered interactive dashboard on 12K+ records using advanced Excel, visualizing KPIs to identify sales trends. Automated web scraping using Selenium, structuring external data to reduce manual data entry by 70%. Cleaned, structured, and analyzed large raw datasets (10,000+ rows) using advanced spreadsheet models."
+              skills={["Microsoft Excel", "Selenium", "Data Analysis", "Data Visualization"]}
+              index={1}
             />
           </div>
         </div>
@@ -586,7 +637,7 @@ const Index = () => {
             {/* LinkedIn Card */}
             <AnimatedSection delay={0.3}>
               <motion.a
-                href="https://www.linkedin.com/in/muhammad-abdullah-53b843248/"
+                href="https://www.linkedin.com/in/m-abdullahds/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -4 }}
@@ -598,7 +649,7 @@ const Index = () => {
                   </div>
                   <div>
                     <h4 className="font-mono text-sm text-foreground mb-1">LINKEDIN</h4>
-                    <p className="font-mono text-xs text-muted-foreground">/in/muhammad-abdullah</p>
+                    <p className="font-mono text-xs text-muted-foreground">/in/m-abdullahds</p>
                   </div>
                   <span className="font-mono text-xs text-primary">CONNECT →</span>
                 </div>
