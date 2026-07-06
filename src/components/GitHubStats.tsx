@@ -165,9 +165,10 @@ export function GitHubStats({ username }: GitHubStatsProps) {
 
   const stats = [
     { label: "Repositories", value: userData.public_repos, icon: BookOpen },
-    { label: "Total Commits", value: totalCommits, icon: GitCommit },
+    { label: "Contributions", value: totalCommits, icon: GitCommit },
     { label: "Total Forks", value: totalForks, icon: GitFork },
     { label: "Followers", value: userData.followers, icon: Users },
+
   ];
 
   return (
