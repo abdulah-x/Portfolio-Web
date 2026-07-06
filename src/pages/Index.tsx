@@ -4,6 +4,7 @@ import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { TerminalTag } from "@/components/TerminalTag";
+import { HeroScrollVideo } from "@/components/HeroScrollVideo";
 
 import { InteractiveTerminal } from "@/components/InteractiveTerminal";
 import { GitHubStats } from "@/components/GitHubStats";
@@ -66,6 +67,7 @@ const Index = () => {
     <Layout>
       {/* Hero Section - Cyber/Futuristic style */}
       <section id="home" className="min-h-screen flex items-center justify-center relative">
+        <HeroScrollVideo />
         {/* Quote at the top */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
