@@ -3,6 +3,8 @@ import hawkEarThumb from "@/assets/hawk-ear-thumb.jpg";
 import vaultxThumb from "@/assets/vaultx-thumb.jpg";
 import neuralensThumb from "@/assets/neuralens-thumb.jpg";
 import foodhubThumb from "@/assets/foodhub-thumb.jpg";
+import jobradarThumb from "@/assets/jobradar-thumb.jpg";
+
 
 export const projects: Project[] = [
   {
