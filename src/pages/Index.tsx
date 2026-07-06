@@ -4,7 +4,7 @@ import { Layout } from "@/components/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { TerminalTag } from "@/components/TerminalTag";
-import { SkillCard } from "@/components/SkillCard";
+
 import { InteractiveTerminal } from "@/components/InteractiveTerminal";
 import { GitHubStats } from "@/components/GitHubStats";
 import { projects } from "@/data/projects";
@@ -292,100 +292,38 @@ const Index = () => {
           </AnimatedSection>
 
           {/* Main Content */}
-          <div className="max-w-5xl mx-auto">
-            {/* Skills Grid */}
-            <div className="space-y-12">
-              {/* Languages & Frameworks */}
-              <div>
-                <AnimatedSection delay={0.1}>
-                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
-                    <span className="w-8 h-px bg-primary/50" />
-                    LANGUAGES & FRAMEWORKS
-                    <span className="w-8 h-px bg-primary/50" />
-                  </h4>
-                </AnimatedSection>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                  <SkillCard name="Python" proficiency={95} index={0} />
-                  <SkillCard name="Node.js" proficiency={85} index={1} />
-                  <SkillCard name="TypeScript" proficiency={85} index={2} />
-                  <SkillCard name="SQL" proficiency={90} index={3} />
-                  <SkillCard name="FastAPI" proficiency={92} index={4} />
-                  <SkillCard name="Next.js" proficiency={85} index={5} />
-                  <SkillCard name="React.js" proficiency={88} index={6} />
-                  <SkillCard name="R" proficiency={70} index={7} />
+          <div className="max-w-4xl mx-auto">
+            {/* Compact Skill Chips grouped by category */}
+            <div className="space-y-8">
+              {[
+                {
+                  label: "LANGUAGES & FRAMEWORKS",
+                  items: ["Python", "TypeScript", "SQL", "FastAPI", "Node.js", "Next.js", "React.js", "R"],
+                },
+                {
+                  label: "AI / LLMOPS & ML",
+                  items: ["LangChain", "LangGraph", "RAG Pipelines", "Hugging Face", "TensorFlow", "PyTorch", "Scikit-Learn", "NumPy"],
+                },
+                {
+                  label: "DATA · CLOUD · DEVOPS",
+                  items: ["PostgreSQL", "MongoDB", "Pinecone", "Qdrant", "Docker", "AWS (EC2)", "GitHub Actions", "Git", "Linux CLI", "Selenium"],
+                },
+              ].map((group, gi) => (
+                <div key={group.label}>
+                  <AnimatedSection delay={0.1 + gi * 0.08}>
+                    <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-4 text-center flex items-center justify-center gap-2">
+                      <span className="w-8 h-px bg-primary/50" />
+                      {group.label}
+                      <span className="w-8 h-px bg-primary/50" />
+                    </h4>
+                  </AnimatedSection>
+                  <div className="flex flex-wrap justify-center gap-2.5">
+                    {group.items.map((name, i) => (
+                      <TerminalTag key={name} name={name} index={i} />
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              {/* AI / LLMOps */}
-              <div>
-                <AnimatedSection delay={0.2}>
-                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
-                    <span className="w-8 h-px bg-primary/50" />
-                    AI / LLMOPS
-                    <span className="w-8 h-px bg-primary/50" />
-                  </h4>
-                </AnimatedSection>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                  <SkillCard name="LangChain" proficiency={90} index={0} />
-                  <SkillCard name="LangGraph" proficiency={82} index={1} />
-                  <SkillCard name="RAG Pipelines" proficiency={88} index={2} />
-                  <SkillCard name="Hugging Face" proficiency={85} index={3} />
-                </div>
-              </div>
-
-              {/* Machine Learning */}
-              <div>
-                <AnimatedSection delay={0.25}>
-                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
-                    <span className="w-8 h-px bg-primary/50" />
-                    MACHINE LEARNING
-                    <span className="w-8 h-px bg-primary/50" />
-                  </h4>
-                </AnimatedSection>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                  <SkillCard name="TensorFlow" proficiency={88} index={0} />
-                  <SkillCard name="PyTorch" proficiency={80} index={1} />
-                  <SkillCard name="Scikit-Learn" proficiency={90} index={2} />
-                  <SkillCard name="NumPy" proficiency={92} index={3} />
-                </div>
-              </div>
-
-              {/* Databases */}
-              <div>
-                <AnimatedSection delay={0.3}>
-                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
-                    <span className="w-8 h-px bg-primary/50" />
-                    DATABASES
-                    <span className="w-8 h-px bg-primary/50" />
-                  </h4>
-                </AnimatedSection>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                  <SkillCard name="PostgreSQL" proficiency={90} index={0} />
-                  <SkillCard name="MongoDB" proficiency={85} index={1} />
-                  <SkillCard name="Pinecone" proficiency={85} index={2} />
-                  <SkillCard name="Qdrant" proficiency={65} index={3} />
-                </div>
-              </div>
-
-              {/* Cloud & DevOps */}
-              <div>
-                <AnimatedSection delay={0.35}>
-                  <h4 className="font-mono text-xs text-primary uppercase tracking-widest mb-6 text-center flex items-center justify-center gap-2">
-                    <span className="w-8 h-px bg-primary/50" />
-                    CLOUD & DEVOPS
-                    <span className="w-8 h-px bg-primary/50" />
-                  </h4>
-                </AnimatedSection>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-                  <SkillCard name="Docker" proficiency={90} index={0} />
-                  <SkillCard name="AWS (EC2)" proficiency={82} index={1} />
-                  <SkillCard name="GitHub Actions" proficiency={85} index={2} />
-                  <SkillCard name="Git" proficiency={92} index={3} />
-                  <SkillCard name="Linux CLI" proficiency={85} index={4} />
-                  <SkillCard name="SSH" proficiency={82} index={5} />
-                  <SkillCard name="Selenium" proficiency={80} index={6} />
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Download Resume */}
