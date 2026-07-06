@@ -22,10 +22,10 @@ interface ProjectCardProps {
 export function ProjectCard({ project, variant = "featured", index = 0 }: ProjectCardProps) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: 60, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, delay: (index % 3) * 0.12, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -8 }}
       className="group relative h-full flex flex-col bg-card/80 backdrop-blur-sm rounded-lg border border-primary/10 overflow-hidden hover:border-primary/40 hover:neon-border transition-all duration-500"
       aria-label={`Project: ${project.title}`}
