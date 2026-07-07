@@ -1,9 +1,9 @@
 import { Project } from "@/components/ProjectCard";
-import hawkEarThumb from "@/assets/hawk-ear-thumb.jpg";
-import vaultxThumb from "@/assets/vaultx-thumb.jpg";
-import neuralensThumb from "@/assets/neuralens-thumb.jpg";
-import foodhubThumb from "@/assets/foodhub-thumb.jpg";
-import jobradarThumb from "@/assets/jobradar-thumb.jpg";
+import hawkEarThumb from "@/assets/hawk-ear-thumb.webp";
+import vaultxThumb from "@/assets/vaultx-thumb.webp";
+import neuralensThumb from "@/assets/neuralens-thumb.webp";
+import foodhubThumb from "@/assets/foodhub-thumb.webp";
+import jobradarThumb from "@/assets/jobradar-thumb.webp";
 
 
 export const projects: Project[] = [
