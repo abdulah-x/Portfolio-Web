@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { EducationCard } from "@/components/EducationCard";
 
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/profile-photo.webp";
 
 // Heavy sections — code-split and mounted on scroll via LazyMount
 const GitHubStats = lazy(() =>
