@@ -225,7 +225,7 @@ const Index = () => {
                   transition={{ delay: 0.9 }}
                 >
                   <a 
-                    href="https://docs.google.com/document/d/1fp1y3_md6mULuGKLQdQv23x4-dqRgSNx/edit?usp=sharing&ouid=113981398423696160466&rtpof=true&sd=true" 
+                    href="https://drive.google.com/file/d/1W9ClweN7PtJ-HMA7GjJFURAI72DeyvFW/view?usp=sharing" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-6 py-3 bg-card/80 border border-primary/30 rounded font-mono text-xs text-primary hover:border-primary hover:neon-border transition-all duration-300"
@@ -389,7 +389,7 @@ const Index = () => {
                   className="w-full max-w-md mx-auto flex gap-3 h-16 font-mono text-sm bg-gradient-to-r from-primary/20 via-primary/10 to-accent/20 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_40px_rgba(34,211,238,0.4)] transition-all duration-300"
                   asChild
                 >
-                  <a href="https://docs.google.com/document/d/1fp1y3_md6mULuGKLQdQv23x4-dqRgSNx/edit?usp=sharing&ouid=113981398423696160466&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden group">
+                  <a href="https://drive.google.com/file/d/1W9ClweN7PtJ-HMA7GjJFURAI72DeyvFW/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="relative overflow-hidden group">
                     <motion.span
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent"
                       initial={{ x: "-100%" }}
@@ -658,7 +658,7 @@ const Index = () => {
             {/* CV Download Card */}
             <AnimatedSection delay={0.5}>
               <motion.a
-                href="https://docs.google.com/document/d/1fp1y3_md6mULuGKLQdQv23x4-dqRgSNx/edit?usp=sharing&ouid=113981398423696160466&rtpof=true&sd=true"
+                href="https://drive.google.com/file/d/1W9ClweN7PtJ-HMA7GjJFURAI72DeyvFW/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -4 }}
