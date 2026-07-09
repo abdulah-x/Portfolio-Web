@@ -418,7 +418,7 @@ export function InteractiveTerminal() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="absolute bottom-16 right-0 w-80 md:w-96 bg-card/95 backdrop-blur-md border border-primary/30 rounded-lg overflow-hidden neon-border"
+            className="absolute bottom-16 right-0 w-[min(22rem,calc(100vw-2rem))] md:w-96 bg-card/95 backdrop-blur-md border border-primary/30 rounded-lg overflow-hidden neon-border"
           >
             {/* Terminal Header */}
             <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 border-b border-primary/20">
