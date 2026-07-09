@@ -572,111 +572,102 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 relative">
+      <section id="contact" aria-labelledby="contact-heading" className="py-12 sm:py-16 md:py-24 relative">
         <div className="container mx-auto px-4">
           {/* Header */}
-          <AnimatedSection className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-card/80 border border-primary/30 rounded mb-6 font-mono text-xs">
-              <Zap className="w-4 h-4 text-primary" />
+          <AnimatedSection className="text-center mb-10 sm:mb-14 md:mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-card/80 border border-primary/30 rounded mb-4 sm:mb-6 font-mono text-[10px] sm:text-xs">
+              <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">CONTACT</span>
             </div>
-            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 id="contact-heading" className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4">
               LET'S <span className="text-primary">CONNECT</span>
             </h2>
-            <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
+            <p className="font-mono text-xs sm:text-sm text-muted-foreground max-w-xl mx-auto px-2">
               <span className="text-primary">{`>`}</span> Fresh graduate — currently open for full-time opportunities or collaborative data projects.
             </p>
           </AnimatedSection>
 
-          {/* Social Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {/* Email Card */}
-            <AnimatedSection delay={0.2}>
-              <motion.a
-                href="mailto:muhammad.abdullahds1@gmail.com"
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
-              >
-                <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
-                    <Mail className="h-7 w-7 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-mono text-sm text-foreground mb-1">EMAIL</h4>
-                    <p className="font-mono text-xs text-muted-foreground break-all">muhammad.abdullahds1@gmail.com</p>
-                  </div>
-                  <span className="font-mono text-xs text-primary">SEND MAIL →</span>
-                </div>
-              </motion.a>
-            </AnimatedSection>
-
-            {/* LinkedIn Card */}
-            <AnimatedSection delay={0.3}>
-              <motion.a
-                href="https://www.linkedin.com/in/m-abdullahds"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
-              >
-                <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
-                    <Linkedin className="h-7 w-7 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-mono text-sm text-foreground mb-1">LINKEDIN</h4>
-                    <p className="font-mono text-xs text-muted-foreground break-all">/in/m-abdullahds</p>
-                  </div>
-                  <span className="font-mono text-xs text-primary">CONNECT →</span>
-                </div>
-              </motion.a>
-            </AnimatedSection>
-
-            {/* GitHub Card */}
-            <AnimatedSection delay={0.4}>
-              <motion.a
-                href="https://github.com/abdulah-x"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
-              >
-                <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
-                    <Github className="h-7 w-7 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-mono text-sm text-foreground mb-1">GITHUB</h4>
-                    <p className="font-mono text-xs text-muted-foreground">@abdulah-x</p>
-                  </div>
-                  <span className="font-mono text-xs text-primary">VIEW →</span>
-                </div>
-              </motion.a>
-            </AnimatedSection>
-
-            {/* CV Download Card */}
-            <AnimatedSection delay={0.5}>
-              <motion.a
-                href="https://drive.google.com/file/d/1W9ClweN7PtJ-HMA7GjJFURAI72DeyvFW/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="group block bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 h-full"
-              >
-                <div className="flex flex-col items-center text-center gap-4">
-                  <div className="w-14 h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
-                    <Download className="h-7 w-7 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-mono text-sm text-foreground mb-1">RESUME</h4>
-                    <p className="font-mono text-xs text-muted-foreground">View my CV</p>
-                  </div>
-                  <span className="font-mono text-xs text-primary">VIEW →</span>
-                </div>
-              </motion.a>
-            </AnimatedSection>
-          </div>
+          {/* Social Cards — vertical stack on mobile with row layout for scannability */}
+          <ul
+            aria-label="Contact and quick links"
+            className="flex flex-col gap-3 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 max-w-5xl mx-auto list-none p-0"
+          >
+            {[
+              {
+                href: "mailto:muhammad.abdullahds1@gmail.com",
+                icon: Mail,
+                label: "EMAIL",
+                value: "muhammad.abdullahds1@gmail.com",
+                cta: "SEND MAIL →",
+                ariaLabel: "Send an email to muhammad.abdullahds1@gmail.com",
+                external: false,
+                breakAll: true,
+                delay: 0.2,
+              },
+              {
+                href: "https://www.linkedin.com/in/m-abdullahds",
+                icon: Linkedin,
+                label: "LINKEDIN",
+                value: "/in/m-abdullahds",
+                cta: "CONNECT →",
+                ariaLabel: "Open LinkedIn profile in a new tab",
+                external: true,
+                breakAll: true,
+                delay: 0.3,
+              },
+              {
+                href: "https://github.com/abdulah-x",
+                icon: Github,
+                label: "GITHUB",
+                value: "@abdulah-x",
+                cta: "VIEW →",
+                ariaLabel: "Open GitHub profile in a new tab",
+                external: true,
+                breakAll: false,
+                delay: 0.4,
+              },
+              {
+                href: "https://drive.google.com/file/d/1W9ClweN7PtJ-HMA7GjJFURAI72DeyvFW/view?usp=sharing",
+                icon: Download,
+                label: "RESUME",
+                value: "View my CV",
+                cta: "VIEW →",
+                ariaLabel: "Open resume in a new tab",
+                external: true,
+                breakAll: false,
+                delay: 0.5,
+              },
+            ].map((card) => {
+              const Icon = card.icon;
+              return (
+                <li key={card.label}>
+                  <AnimatedSection delay={card.delay}>
+                    <motion.a
+                      href={card.href}
+                      {...(card.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      aria-label={card.ariaLabel}
+                      whileHover={{ scale: 1.02, y: -4 }}
+                      className="group flex sm:flex-col items-center sm:text-center gap-4 min-h-[76px] sm:min-h-0 bg-card/80 backdrop-blur-sm rounded-lg border border-primary/20 p-4 sm:p-6 hover:border-primary hover:shadow-[0_0_30px_rgba(34,211,238,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-all duration-300 h-full"
+                    >
+                      <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded border border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-300">
+                        <Icon className="h-6 w-6 sm:h-7 sm:w-7 text-primary" aria-hidden="true" />
+                      </div>
+                      <div className="flex-1 min-w-0 sm:flex-none">
+                        <h3 className="font-mono text-sm text-foreground mb-1">{card.label}</h3>
+                        <p className={`font-mono text-xs text-muted-foreground ${card.breakAll ? "break-all" : ""}`}>
+                          {card.value}
+                        </p>
+                      </div>
+                      <span className="hidden sm:inline font-mono text-xs text-primary sm:mt-2">{card.cta}</span>
+                      <span className="sm:hidden font-mono text-xs text-primary shrink-0" aria-hidden="true">→</span>
+                    </motion.a>
+                  </AnimatedSection>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
     </Layout>
