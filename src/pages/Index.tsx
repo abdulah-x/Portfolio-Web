@@ -73,7 +73,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section - Cyber/Futuristic style */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative">
+      <section id="home" className="min-h-dvh flex items-center justify-center relative">
         {/* Quote at the top */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -81,7 +81,7 @@ const Index = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="absolute top-20 md:top-24 left-0 right-0 text-center px-4"
         >
-        <p className="font-display text-base sm:text-xl md:text-3xl lg:text-4xl leading-relaxed max-w-3xl mx-auto font-semibold tracking-wide">
+        <p className="font-display text-sm xs:text-base sm:text-xl md:text-3xl lg:text-4xl leading-relaxed max-w-3xl mx-auto font-semibold tracking-wide">
           <span 
             className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
             style={{ 
@@ -94,8 +94,8 @@ const Index = () => {
         </p>
         </motion.div>
 
-        <div className="container mx-auto px-4 sm:px-6 py-20 mt-24 md:mt-16">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-6xl mx-auto">
+        <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 mt-28 sm:mt-24 md:mt-16">
+          <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-20 max-w-6xl mx-auto">
             
             {/* Left - Profile with cyber frame */}
             <div className="flex flex-col items-center">
@@ -117,7 +117,7 @@ const Index = () => {
               />
               
               {/* Main photo container */}
-              <div className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+              <div className="relative w-52 h-52 xs:w-60 xs:h-60 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-accent/10 to-transparent" />
                 <div className="w-full h-full rounded-full overflow-hidden border-2 border-primary/50 neon-border">
                   <img
@@ -171,10 +171,10 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="mb-4"
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-2">
+                <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-2 break-words">
                   MUHAMMAD
                 </h1>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary">
+                <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary break-words">
                   ABDULLAH
                 </h1>
               </motion.div>
@@ -264,7 +264,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">EXPERIENCE</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               WORK <span className="text-primary">EXPERIENCE</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
@@ -308,7 +308,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">PROJECTS</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               SELECTED <span className="text-primary">WORKS</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-2xl mx-auto">
@@ -335,7 +335,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">SKILLS</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               TECHNICAL <span className="text-primary">ARSENAL</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
@@ -415,7 +415,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">EDUCATION</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               ACADEMIC <span className="text-primary">BACKGROUND</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
@@ -465,7 +465,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">CERTIFICATIONS</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               MY <span className="text-primary">CREDENTIALS</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
@@ -547,7 +547,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">GITHUB_STATS</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               MY <span className="text-primary">GITHUB</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
@@ -581,7 +581,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">CONTACT</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               LET'S <span className="text-primary">CONNECT</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">

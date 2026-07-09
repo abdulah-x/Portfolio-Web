@@ -45,7 +45,7 @@ export function Navbar() {
           : "bg-transparent"
       )}
     >
-      <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
         {/* Logo */}
         <motion.button
           whileHover={{ scale: 1.02 }}
@@ -56,7 +56,7 @@ export function Navbar() {
           <div className="w-10 h-10 rounded-lg overflow-hidden border border-primary/30 group-hover:border-primary/60 group-hover:neon-border transition-all">
             <img src={warriorLogo} alt="MA Logo" className="w-full h-full object-cover" loading="eager" decoding="async" width={40} height={40} />
           </div>
-          <span className="font-mono text-sm tracking-wider">
+          <span className="font-mono text-xs sm:text-sm tracking-wider truncate">
             <span className="text-primary">MUHAMMAD</span>
             <span className="text-foreground"> ABDULLAH</span>
           </span>
