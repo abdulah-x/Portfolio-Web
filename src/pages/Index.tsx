@@ -171,10 +171,10 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="mb-4"
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-2">
+                <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-2 break-words">
                   MUHAMMAD
                 </h1>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary">
+                <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary break-words">
                   ABDULLAH
                 </h1>
               </motion.div>
