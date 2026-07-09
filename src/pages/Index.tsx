@@ -117,7 +117,7 @@ const Index = () => {
               />
               
               {/* Main photo container */}
-              <div className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+              <div className="relative w-52 h-52 xs:w-60 xs:h-60 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-accent/10 to-transparent" />
                 <div className="w-full h-full rounded-full overflow-hidden border-2 border-primary/50 neon-border">
                   <img
