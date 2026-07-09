@@ -45,7 +45,7 @@ export function Navbar() {
           : "bg-transparent"
       )}
     >
-      <nav className="container mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
         {/* Logo */}
         <motion.button
           whileHover={{ scale: 1.02 }}
