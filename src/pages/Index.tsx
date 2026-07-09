@@ -73,7 +73,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section - Cyber/Futuristic style */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative">
+      <section id="home" className="min-h-dvh flex items-center justify-center relative">
         {/* Quote at the top */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -81,7 +81,7 @@ const Index = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="absolute top-20 md:top-24 left-0 right-0 text-center px-4"
         >
-        <p className="font-display text-base sm:text-xl md:text-3xl lg:text-4xl leading-relaxed max-w-3xl mx-auto font-semibold tracking-wide">
+        <p className="font-display text-sm xs:text-base sm:text-xl md:text-3xl lg:text-4xl leading-relaxed max-w-3xl mx-auto font-semibold tracking-wide">
           <span 
             className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
             style={{ 
