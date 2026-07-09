@@ -264,7 +264,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">EXPERIENCE</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               WORK <span className="text-primary">EXPERIENCE</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
@@ -308,7 +308,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">PROJECTS</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               SELECTED <span className="text-primary">WORKS</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-2xl mx-auto">
@@ -335,7 +335,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">SKILLS</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               TECHNICAL <span className="text-primary">ARSENAL</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
@@ -415,7 +415,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">EDUCATION</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               ACADEMIC <span className="text-primary">BACKGROUND</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
@@ -465,7 +465,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">CERTIFICATIONS</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               MY <span className="text-primary">CREDENTIALS</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
@@ -547,7 +547,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">GITHUB_STATS</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               MY <span className="text-primary">GITHUB</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
@@ -581,7 +581,7 @@ const Index = () => {
               <span className="text-muted-foreground">SECTION:</span>
               <span className="text-primary">CONTACT</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-2xl xs:text-3xl md:text-5xl font-bold text-foreground mb-4">
               LET'S <span className="text-primary">CONNECT</span>
             </h2>
             <p className="font-mono text-sm text-muted-foreground max-w-xl mx-auto">
