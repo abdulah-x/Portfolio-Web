@@ -94,8 +94,8 @@ const Index = () => {
         </p>
         </motion.div>
 
-        <div className="container mx-auto px-4 sm:px-6 py-20 mt-24 md:mt-16">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 max-w-6xl mx-auto">
+        <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 mt-28 sm:mt-24 md:mt-16">
+          <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-12 lg:gap-20 max-w-6xl mx-auto">
             
             {/* Left - Profile with cyber frame */}
             <div className="flex flex-col items-center">
