@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useId } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal } from "lucide-react";
 
@@ -37,7 +37,13 @@ const COMMANDS: Record<string, string> = {
   hack       - Initiate "hack" sequence
   matrix     - Enter the matrix
   easter     - Hidden surprise 🥚
-  sudo       - Try admin access`,
+  sudo       - Try admin access
+
+  Keyboard:
+  ↑ / ↓      - Browse command history
+  Tab        - Autocomplete command
+  Esc        - Close terminal
+  Ctrl+L     - Clear the terminal`,
 
   about: `Muhammad Abdullah
   ─────────────────────────────────
@@ -215,6 +221,8 @@ const COMMANDS: Record<string, string> = {
   (Just kidding... or am I? 👀)`,
 };
 
+const COMMAND_NAMES = Object.keys(COMMANDS).concat(["clear"]).sort();
+
 const DEV_QUOTES = [
   "It works on my machine. Ship it!",
   "There are only 2 hard problems: cache invalidation, naming things, and off-by-one errors.",
@@ -267,13 +275,23 @@ const getDate = () => `📅 ${new Date().toString()}`;
 export function InteractiveTerminal() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<{ command: string; output: string }[]>([]);
+  const [commandHistory, setCommandHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [liveMessage, setLiveMessage] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
+  const panelId = useId();
+  const outputId = useId();
+  const hintId = useId();
 
   useEffect(() => {
     if (isExpanded && inputRef.current) {
       inputRef.current.focus();
+    } else if (!isExpanded && toggleButtonRef.current && document.activeElement !== document.body) {
+      // return focus to the toggle when the panel closes
+      toggleButtonRef.current.focus();
     }
   }, [isExpanded]);
 
@@ -283,14 +301,29 @@ export function InteractiveTerminal() {
     }
   }, [history]);
 
-  const handleCommand = (e: React.FormEvent) => {
-    e.preventDefault();
-    const cmd = input.trim().toLowerCase();
+  // Global shortcut: Ctrl/Cmd+K opens the terminal
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setIsExpanded((v) => !v);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  const runCommand = (raw: string) => {
+    const cmd = raw.trim().toLowerCase();
     if (!cmd) return;
+
+    setCommandHistory((prev) => [...prev, raw]);
+    setHistoryIndex(-1);
 
     if (cmd === "clear") {
       setHistory([]);
       setInput("");
+      setLiveMessage("Terminal cleared");
       return;
     }
 
@@ -309,20 +342,79 @@ export function InteractiveTerminal() {
         `Command not found: ${cmd}. Type 'help' for available commands.`;
     }
 
-    setHistory([...history, { command: input, output }]);
+    setHistory((h) => [...h, { command: raw, output }]);
     setInput("");
+    setLiveMessage(`Command ${cmd} executed.`);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    runCommand(input);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // Ctrl+L clears
+    if (e.ctrlKey && e.key.toLowerCase() === "l") {
+      e.preventDefault();
+      setHistory([]);
+      setLiveMessage("Terminal cleared");
+      return;
+    }
+    if (e.key === "Escape") {
+      e.preventDefault();
+      setIsExpanded(false);
+      return;
+    }
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (commandHistory.length === 0) return;
+      const nextIdx =
+        historyIndex === -1
+          ? commandHistory.length - 1
+          : Math.max(0, historyIndex - 1);
+      setHistoryIndex(nextIdx);
+      setInput(commandHistory[nextIdx]);
+      return;
+    }
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (historyIndex === -1) return;
+      const nextIdx = historyIndex + 1;
+      if (nextIdx >= commandHistory.length) {
+        setHistoryIndex(-1);
+        setInput("");
+      } else {
+        setHistoryIndex(nextIdx);
+        setInput(commandHistory[nextIdx]);
+      }
+      return;
+    }
+    if (e.key === "Tab") {
+      e.preventDefault();
+      const prefix = input.trim().toLowerCase();
+      if (!prefix) return;
+      const matches = COMMAND_NAMES.filter((c) => c.startsWith(prefix));
+      if (matches.length === 1) {
+        setInput(matches[0]);
+        setLiveMessage(`Autocompleted to ${matches[0]}`);
+      } else if (matches.length > 1) {
+        const msg = `Matches: ${matches.join(", ")}`;
+        setHistory((h) => [...h, { command: input, output: msg }]);
+        setLiveMessage(`${matches.length} matches available`);
+      }
+    }
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="fixed bottom-6 right-6 z-40"
-    >
+    <div className="fixed bottom-6 right-6 z-40">
       <AnimatePresence>
         {isExpanded && (
           <motion.div
+            key="panel"
+            id={panelId}
+            role="dialog"
+            aria-label="Interactive terminal"
+            aria-modal="false"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -330,31 +422,46 @@ export function InteractiveTerminal() {
           >
             {/* Terminal Header */}
             <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 border-b border-primary/20">
-              <div className="flex gap-1.5">
+              <div className="flex gap-1.5" aria-hidden="true">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                 <div className="w-3 h-3 rounded-full bg-green-500/80" />
               </div>
-              <span className="font-mono text-xs text-primary ml-2">visitor@abdullah-portfolio</span>
+              <span className="font-mono text-xs text-primary ml-2">
+                visitor@abdullah-portfolio
+              </span>
             </div>
 
             {/* Terminal Body */}
             <div
               ref={terminalRef}
+              id={outputId}
+              role="log"
+              aria-label="Terminal output"
+              aria-live="polite"
+              aria-atomic="false"
               className="h-64 overflow-y-auto p-4 font-mono text-xs space-y-2"
+              tabIndex={0}
             >
               <p className="text-muted-foreground">
                 Welcome to my interactive terminal!
                 <br />
                 Type <span className="text-primary">help</span> to see available commands.
+                <br />
+                <span className="text-muted-foreground">
+                  Use ↑/↓ for history, Tab to autocomplete, Esc to close.
+                </span>
               </p>
 
               {history.map((item, i) => (
                 <div key={i} className="space-y-1">
                   <p className="text-primary">
-                    <span className="text-accent">$</span> {item.command}
+                    <span className="text-accent" aria-hidden="true">$</span>{" "}
+                    <span className="sr-only">Command:</span>
+                    {item.command}
                   </p>
                   <p className="text-muted-foreground whitespace-pre-line pl-2">
+                    <span className="sr-only">Output:</span>
                     {item.output}
                   </p>
                 </div>
@@ -362,32 +469,67 @@ export function InteractiveTerminal() {
             </div>
 
             {/* Input */}
-            <form onSubmit={handleCommand} className="border-t border-primary/20 p-3 flex items-center gap-2">
-              <span className="text-accent font-mono text-xs">$</span>
+            <form
+              onSubmit={handleSubmit}
+              className="border-t border-primary/20 p-3 flex items-center gap-2"
+              role="search"
+            >
+              <label htmlFor={`${panelId}-input`} className="sr-only">
+                Terminal command
+              </label>
+              <span className="text-accent font-mono text-xs" aria-hidden="true">
+                $
+              </span>
               <input
+                id={`${panelId}-input`}
                 ref={inputRef}
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
                 placeholder="Type a command..."
-                className="flex-1 bg-transparent font-mono text-xs text-foreground placeholder:text-muted-foreground/50 focus:outline-none"
+                className="flex-1 bg-transparent font-mono text-xs text-foreground placeholder:text-muted-foreground focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
                 aria-label="Terminal command input"
+                aria-describedby={hintId}
+                aria-controls={outputId}
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="off"
+                spellCheck={false}
               />
+              <span id={hintId} className="sr-only">
+                Press Enter to run. Use Arrow Up and Arrow Down to browse history.
+                Press Tab to autocomplete. Press Escape to close the terminal.
+                Press Control L to clear.
+              </span>
             </form>
           </motion.div>
         )}
       </AnimatePresence>
 
+      {/* Screen-reader live region for status messages */}
+      <div role="status" aria-live="polite" className="sr-only">
+        {liveMessage}
+      </div>
+
       {/* Toggle Button */}
       <motion.button
+        ref={toggleButtonRef}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="w-14 h-14 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center neon-border hover:bg-primary/30 transition-colors"
-        aria-label={isExpanded ? "Close terminal" : "Open interactive terminal"}
+        onClick={() => setIsExpanded((v) => !v)}
+        className="w-14 h-14 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center neon-border hover:bg-primary/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        aria-label={
+          isExpanded
+            ? "Close interactive terminal"
+            : "Open interactive terminal (shortcut: Control K)"
+        }
+        aria-expanded={isExpanded}
+        aria-controls={panelId}
+        aria-keyshortcuts="Control+K"
       >
-        <Terminal className="w-6 h-6 text-primary" />
+        <Terminal className="w-6 h-6 text-primary" aria-hidden="true" />
       </motion.button>
-    </motion.div>
+    </div>
   );
 }
